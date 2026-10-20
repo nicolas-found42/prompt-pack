@@ -3,7 +3,7 @@ import globals from "globals";
 import prettier from "eslint-config-prettier";
 
 export default [
-  { ignores: ["node_modules/**", "package-lock.json"] },
+  { ignores: ["node_modules/**", "_site/**", "package-lock.json"] },
   js.configs.recommended,
   {
     files: ["**/*.js"],
@@ -17,6 +17,14 @@ export default [
       "no-empty": ["error", { allowEmptyCatch: true }],
       "no-unused-vars": ["error", { args: "none", varsIgnorePattern: "^_" }],
       eqeqeq: ["error", "smart"],
+    },
+  },
+  {
+    files: ["scripts/**/*.mjs", "*.config.mjs"],
+    languageOptions: {
+      ecmaVersion: 2023,
+      sourceType: "module",
+      globals: globals.node,
     },
   },
   prettier,

@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "check": "npm run format:check && npm run lint",
+    "build": "node scripts/build-pages.mjs",
     "dev": "npx --yes serve ."
   },
   "devDependencies": {
