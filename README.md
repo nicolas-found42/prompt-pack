@@ -31,18 +31,32 @@ npm run dev      # serve the deck locally
 npm run check    # prettier --check + eslint
 npm run format   # prettier --write
 npm run lint     # eslint
+npm run build    # stage the publishable site into _site/
 ```
+
+## Deployment
+
+`.github/workflows/pages.yml` publishes the deck to GitHub Pages on every push to `main`:
+
+1. `npm ci` installs the dev tooling.
+2. `npm run check` runs Prettier and ESLint — the deploy is blocked if either fails.
+3. `npm run build` stages only the site assets (`index.html`, `styles.css`, `app.js`) into `_site/`, so `node_modules` and tooling never reach the artifact.
+4. `actions/upload-pages-artifact` and `actions/deploy-pages` publish the result.
+
+Manual redeploy: **Actions → Deploy Pages → Run workflow**. To preview locally, run `npm run build` and serve `_site/`.
 
 ## Layout
 
-| Path         | Purpose                                                           |
-| ------------ | ----------------------------------------------------------------- |
-| `index.html` | Page shell and control markup                                     |
-| `styles.css` | All styling, including the collapsed-prompt state                 |
-| `app.js`     | The `ROWS` prompt dataset plus filtering, sorting, and copy logic |
-| `.vscode/`   | Editor and task wiring for format, lint, and Live Server          |
+| Path                          | Purpose                                                           |
+| ----------------------------- | ----------------------------------------------------------------- |
+| `index.html`                  | Page shell and control markup                                     |
+| `styles.css`                  | All styling, including the collapsed-prompt state                 |
+| `app.js`                      | The `ROWS` prompt dataset plus filtering, sorting, and copy logic |
+| `scripts/build-pages.mjs`     | Stages the publishable site into `_site/`                         |
+| `.github/workflows/pages.yml` | Checks-gated GitHub Pages deployment                              |
+| `.vscode/`                    | Editor and task wiring for format, lint, and Live Server          |
 
-The deck is plain HTML/CSS/JS — no build step and no runtime dependencies. `devDependencies` cover formatting and linting only.
+The deck is plain HTML/CSS/JS — the browser loads it with no build step and no runtime dependencies. `npm run build` exists only to stage the Pages artifact. `devDependencies` cover formatting and linting only.
 
 ## License
 
