@@ -45,6 +45,8 @@ npm run build    # stage the publishable site into _site/
 
 Manual redeploy: **Actions → Deploy Pages → Run workflow**. To preview locally, run `npm run build` and serve `_site/`.
 
+The workflow runs on the `ubuntu-26.04` runner image with Node 26. Node 24 or newer is required locally, since ESLint 10 declares `node >=24`.
+
 ## Layout
 
 | Path                          | Purpose                                                           |
