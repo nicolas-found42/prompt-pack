@@ -42,16 +42,21 @@ function applyFromUrl() {
   expandPathTo(state.path);
 }
 
+/** Add a node and all of its ancestors to a set of expanded tree keys. */
+function addAncestors(keys, key) {
+  let current = key;
+  while (current) {
+    keys.add(current);
+    const node = NODE_BY_KEY.get(current);
+    current = node ? node.parentKey : null;
+  }
+}
+
 /** Open the tree down to a selected path so the selection is always visible. */
 function expandPathTo(path) {
   const node = NODE_BY_KEY.get(path.join("/"));
   if (!node) return;
-  state.expanded.add(node.key);
-  let parent = node.parentKey;
-  while (parent) {
-    state.expanded.add(parent);
-    parent = NODE_BY_KEY.get(parent).parentKey;
-  }
+  addAncestors(state.expanded, node.key);
 }
 
 function syncUrl(mode) {
@@ -88,8 +93,10 @@ function renderCrumbs() {
   for (const name of state.path) {
     acc = [...acc, name];
     const current = acc.length === state.path.length;
+    // The crumb path is the taxonomy key of that ancestor, so it needs no
+    // separator of its own.
     parts.push(
-      `<button class="crumb${current ? " current" : ""}" data-path="${acc.join("|")}">${name}</button>`,
+      `<button class="crumb${current ? " current" : ""}" data-path="${acc.join("/")}">${name}</button>`,
     );
   }
   els.crumbs.innerHTML = parts.join('<span class="crumb-sep" aria-hidden="true">›</span>');
@@ -129,11 +136,7 @@ function render() {
   if (query) {
     for (const row of visible) {
       const info = PATH_BY_ID.get(row.id);
-      let parent = NODE_BY_KEY.get(info.key).parentKey;
-      while (parent) {
-        expanded.add(parent);
-        parent = NODE_BY_KEY.get(parent).parentKey;
-      }
+      addAncestors(expanded, info.key);
     }
   }
   for (const key of state.closed) expanded.delete(key);
@@ -254,7 +257,8 @@ els.facets.addEventListener("click", (event) => {
 els.crumbs.addEventListener("click", (event) => {
   const crumb = event.target.closest(".crumb");
   if (!crumb) return;
-  selectPath(crumb.dataset.path ? crumb.dataset.path.split("|") : []);
+  const node = crumb.dataset.path ? NODE_BY_KEY.get(crumb.dataset.path) : null;
+  selectPath(node ? node.path : []);
   state.closed.clear();
   expandPathTo(state.path);
   render();

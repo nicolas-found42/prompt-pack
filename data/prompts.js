@@ -1,12 +1,12 @@
 // The 107 prompt records that make up the deck.
-// Generated once from the original app.js dataset; edit titles, purposes or prompt text here.
-
+//
+// `order` is the position each prompt had in the original deck. Category
+// membership is not stored here: it lives in data/taxonomy.js, which is the
+// single source of truth for where a prompt sits in the navigation tree.
 export const PROMPTS = [
   {
     order: 1,
     id: "1.1",
-    cat: "Coding",
-    ci: 0,
     title: "Outcome Over Feature Implementation",
     purpose:
       "Ask for the underlying outcome or a lightweight agent playbook instead of writing complex application code for a feature that only surfaces information or guides a workflow.",
@@ -17,8 +17,6 @@ export const PROMPTS = [
   {
     order: 2,
     id: "1.2",
-    cat: "Coding",
-    ci: 0,
     title: "Observability & Blind-Spot Audit",
     purpose:
       "Ask the agent what historical data it can and cannot see when debugging an issue, and have it design the exact instrumentation needed for future self-diagnosis.",
@@ -29,8 +27,6 @@ export const PROMPTS = [
   {
     order: 3,
     id: "1.3",
-    cat: "Coding",
-    ci: 0,
     title: "Ephemeral Problem & State Visualizer",
     purpose:
       "Generate a one-off interactive visual tool to reason through a complex bug, state machine, or data flow without building a permanent product feature.",
@@ -41,8 +37,6 @@ export const PROMPTS = [
   {
     order: 4,
     id: "1.4",
-    cat: "Coding",
-    ci: 0,
     title: "Interactive Triage Playbook Conversion",
     purpose:
       "Replace brittle, multi-step troubleshooting code with a single conversational playbook that dynamically guides users, checks upstream fixes, and files clean issues.",
@@ -53,8 +47,6 @@ export const PROMPTS = [
   {
     order: 5,
     id: "1.5",
-    cat: "Coding",
-    ci: 0,
     title: "Primitive & Agent-Surface Architecture Audit",
     purpose:
       "Shift engineering effort away from static one-off buttons toward primitives, data pipes, and programmatic interfaces that let agents dynamically build what is needed.",
@@ -65,8 +57,6 @@ export const PROMPTS = [
   {
     order: 6,
     id: "1.6",
-    cat: "Coding",
-    ci: 0,
     title: "Parallel Sub-Agent Exploration & Handoff",
     purpose:
       "Orchestrate multiple parallel delegates to explore performance or architectural improvements independently before handing off implementation to a clean session.",
@@ -77,8 +67,6 @@ export const PROMPTS = [
   {
     order: 7,
     id: "1.7",
-    cat: "Coding",
-    ci: 0,
     title: "Deep Systems & Infrastructure Optimization",
     purpose:
       "Look past routine framework boilerplate to focus on high-leverage system architecture such as connection pooling, resource isolation, and runtime efficiency.",
@@ -89,8 +77,6 @@ export const PROMPTS = [
   {
     order: 8,
     id: "1.8",
-    cat: "Coding",
-    ci: 0,
     title: "Live Self-Execution & Verification",
     purpose:
       "Have the agent run the software itself, reproduce the failure directly, and verify its own fix end-to-end.",
@@ -101,8 +87,6 @@ export const PROMPTS = [
   {
     order: 9,
     id: "2.1",
-    cat: "Writing",
-    ci: 1,
     title: "Outcome-First Draft Synthesis",
     purpose:
       "Stop over-engineering structural prompts; state the desired impact and let the agent assemble and elevate the piece from raw context.",
@@ -113,8 +97,6 @@ export const PROMPTS = [
   {
     order: 10,
     id: "2.2",
-    cat: "Writing",
-    ci: 1,
     title: "Multi-Draft & Workstream Triage",
     purpose:
       "Programmatically audit all open writing drafts and fragments to decide what to publish, what to discard, and how to advance the rest.",
@@ -125,8 +107,6 @@ export const PROMPTS = [
   {
     order: 11,
     id: "2.3",
-    cat: "Writing",
-    ci: 1,
     title: "Interactive Editorial Triage",
     purpose:
       "Have the agent dynamically interview you to extract concrete examples and resolve vague claims before rewriting.",
@@ -137,8 +117,6 @@ export const PROMPTS = [
   {
     order: 12,
     id: "2.4",
-    cat: "Writing",
-    ci: 1,
     title: "Ephemeral Narrative & Argument Visualizer",
     purpose:
       "Create an ad-hoc visual map of a draft’s logic, pacing, and structure to spot structural flaws instantly.",
@@ -149,8 +127,6 @@ export const PROMPTS = [
   {
     order: 13,
     id: "2.5",
-    cat: "Writing",
-    ci: 1,
     title: "Parallel Angle & Voice Exploration",
     purpose:
       "Launch parallel explorations of different structural framing approaches before synthesizing the strongest version.",
@@ -161,8 +137,6 @@ export const PROMPTS = [
   {
     order: 14,
     id: "2.6",
-    cat: "Writing",
-    ci: 1,
     title: "Style & Editorial Skill Codification",
     purpose:
       "Extract recurring editorial corrections and voice preferences from the session into a reusable style guide.",
@@ -173,8 +147,6 @@ export const PROMPTS = [
   {
     order: 15,
     id: "2.7",
-    cat: "Writing",
-    ci: 1,
     title: "Reader Context & Blind-Spot Audit",
     purpose:
       "Identify implicit knowledge that exists in your head or notes but is missing from the actual page.",
@@ -185,8 +157,6 @@ export const PROMPTS = [
   {
     order: 16,
     id: "3.1",
-    cat: "Research",
-    ci: 2,
     title: "Disparate Source & Data Unification",
     purpose:
       "Ask the agent to directly ingest, normalize, and merge scattered exports and documents instead of building custom parsing tools.",
@@ -197,8 +167,6 @@ export const PROMPTS = [
   {
     order: 17,
     id: "3.2",
-    cat: "Research",
-    ci: 2,
     title: "On-Demand Interactive Research Visualizer",
     purpose: "Turn complex findings into an interactive visual exploration interface on the fly.",
     text: "Take all the findings, metrics, and comparisons we have uncovered in this research session and build a clean, self-contained interactive visual report. Make it easy to filter, compare, and inspect the underlying data points visually so I can explore the patterns directly and ask follow-up questions from the visual breakdown.",
@@ -208,8 +176,6 @@ export const PROMPTS = [
   {
     order: 18,
     id: "3.3",
-    cat: "Research",
-    ci: 2,
     title: "Parallel Hypothesis Delegation",
     purpose:
       "Use parallel sub-agents to investigate competing hypotheses simultaneously and synthesize the truth.",
@@ -220,8 +186,6 @@ export const PROMPTS = [
   {
     order: 19,
     id: "3.4",
-    cat: "Research",
-    ci: 2,
     title: "Information Access & Source Gap Introspection",
     purpose:
       "Ask the agent what data it cannot currently see that would be required to answer a research question with certainty.",
@@ -232,8 +196,6 @@ export const PROMPTS = [
   {
     order: 20,
     id: "3.5",
-    cat: "Research",
-    ci: 2,
     title: "Anomaly-to-Root-Cause Investigation Chain",
     purpose:
       "Trace an unexpected spike or anomaly in a summary report all the way back through underlying sources to actionable recommendations.",
@@ -244,8 +206,6 @@ export const PROMPTS = [
   {
     order: 21,
     id: "3.6",
-    cat: "Research",
-    ci: 2,
     title: "Cross-Session Research Audit & Deduplication",
     purpose:
       "Audit all past research threads and notes to surface forgotten conclusions and prevent duplicate work.",
@@ -256,8 +216,6 @@ export const PROMPTS = [
   {
     order: 22,
     id: "3.7",
-    cat: "Research",
-    ci: 2,
     title: "Primary Verification & Assumption Audit",
     purpose:
       "Force the agent to verify every claim against primary artifacts and explain any unverified gaps.",
@@ -268,8 +226,6 @@ export const PROMPTS = [
   {
     order: 23,
     id: "4.1",
-    cat: "General",
-    ci: 3,
     title: "Direct Outcome Execution (“Don’t Build It, Just Do It“)",
     purpose:
       "Skip building trackers, apps, or complex systems for tasks where you can simply ask the agent for the end result.",
@@ -280,8 +236,6 @@ export const PROMPTS = [
   {
     order: 24,
     id: "4.2",
-    cat: "General",
-    ci: 3,
     title: "Active Project & Task Triage",
     purpose:
       "Have the agent review all running workstreams, close out dead ends, organize active items, and draft the next actions.",
@@ -292,8 +246,6 @@ export const PROMPTS = [
   {
     order: 25,
     id: "4.3",
-    cat: "General",
-    ci: 3,
     title: "Communication & Inbox Stream Triage",
     purpose:
       "Replace compulsive inbox and notification checking with an agent audit that surfaces only what requires action.",
@@ -304,8 +256,6 @@ export const PROMPTS = [
   {
     order: 26,
     id: "4.4",
-    cat: "General",
-    ci: 3,
     title: "Scattered Record & Document Collection",
     purpose:
       "Have the agent gather, organize, and standardize files across disparate locations instead of writing custom scripts.",
@@ -316,8 +266,6 @@ export const PROMPTS = [
   {
     order: 27,
     id: "4.5",
-    cat: "General",
-    ci: 3,
     title: "Interactive Problem Unblocking",
     purpose:
       "Let the agent guide you through a messy, multi-branch problem conversationally, asking for screenshots or files as needed.",
@@ -328,8 +276,6 @@ export const PROMPTS = [
   {
     order: 28,
     id: "4.6",
-    cat: "General",
-    ci: 3,
     title: "Pre-Share Privacy & Secret Scrubbing",
     purpose:
       "Clean all sensitive credentials, personal data, and private identifiers before sharing or filing any output.",
@@ -340,8 +286,6 @@ export const PROMPTS = [
   {
     order: 29,
     id: "4.7",
-    cat: "General",
-    ci: 3,
     title: "Workflow-to-Pipeline Bridge Identification",
     purpose:
       "Identify where connecting two data sources or tools would let the agent automate an entire multi-step chain end-to-end.",
@@ -352,8 +296,6 @@ export const PROMPTS = [
   {
     order: 30,
     id: "5.1",
-    cat: "Meta",
-    ci: 4,
     title: "Environment & Tool-Call Latency Audit",
     purpose:
       "Audit the agent’s own historical tool calls and command executions on the machine to find slow operations and shell/environment mismatches.",
@@ -364,8 +306,6 @@ export const PROMPTS = [
   {
     order: 31,
     id: "5.2",
-    cat: "Meta",
-    ci: 4,
     title: "Context Window & Payload Visualizer",
     purpose:
       "Break down and visualize everything currently consuming the context window to catch hidden token bloat.",
@@ -376,8 +316,6 @@ export const PROMPTS = [
   {
     order: 32,
     id: "5.3",
-    cat: "Meta",
-    ci: 4,
     title: "Full Capability & Harness Introspection",
     purpose:
       "Ask the agent to exhaustively describe every tool, interface control, and verification mechanism available in its current context.",
@@ -388,8 +326,6 @@ export const PROMPTS = [
   {
     order: 33,
     id: "5.4",
-    cat: "Meta",
-    ci: 4,
     title: "Cross-Environment Capability Diff & Cloning",
     purpose:
       "Compare the current agent harness against another environment’s capabilities and replicate what is missing.",
@@ -400,8 +336,6 @@ export const PROMPTS = [
   {
     order: 34,
     id: "5.5",
-    cat: "Meta",
-    ci: 4,
     title: "Post-Mortem Failure & Omission Interrogation",
     purpose:
       "Ask the agent directly why it failed to perform an expected step or solve a problem, and what tool it needed.",
@@ -412,8 +346,6 @@ export const PROMPTS = [
   {
     order: 35,
     id: "5.6",
-    cat: "Meta",
-    ci: 4,
     title: "Cross-Thread Transcript Diagnostic",
     purpose:
       "Have an agent read the transcript of another agent session to diagnose where its reasoning or tool usage went wrong.",
@@ -424,8 +356,6 @@ export const PROMPTS = [
   {
     order: 36,
     id: "5.7",
-    cat: "Meta",
-    ci: 4,
     title: "Recurring Instruction to Skill & Memory Codification",
     purpose:
       "Detect repeated user instructions and convert them into permanent skills and project configuration files.",
@@ -436,8 +366,6 @@ export const PROMPTS = [
   {
     order: 37,
     id: "5.8",
-    cat: "Meta",
-    ci: 4,
     title: "Prompt & Mindset Elevation Critique",
     purpose:
       "Prompt about your prompts—ask the agent where you are thinking too narrowly or over-engineering instructions instead of asking for bigger outcomes.",
@@ -448,8 +376,6 @@ export const PROMPTS = [
   {
     order: 38,
     id: "1.9",
-    cat: "Coding",
-    ci: 0,
     title: "Backlog & Worktree Branch Triage",
     purpose:
       "Audit all local branches, stashes, and open issues to close dead experiments, merge ready work, and generate next-step implementation prompts.",
@@ -460,8 +386,6 @@ export const PROMPTS = [
   {
     order: 39,
     id: "1.10",
-    cat: "Coding",
-    ci: 0,
     title: "Dependency & Feature Surface Triage",
     purpose:
       "Evaluate installed libraries, internal helpers, and UI endpoints to strip dead weight and replace heavy dependencies with native primitives.",
@@ -472,8 +396,6 @@ export const PROMPTS = [
   {
     order: 40,
     id: "1.11",
-    cat: "Coding",
-    ci: 0,
     title: "Review Feedback & Convention Codification",
     purpose:
       "Extract repeated code review corrections and architectural fixes from recent sessions into durable repository instructions and lint rules.",
@@ -484,8 +406,6 @@ export const PROMPTS = [
   {
     order: 41,
     id: "1.12",
-    cat: "Coding",
-    ci: 0,
     title: "Ad-Hoc Script to Agent Primitive Codification",
     purpose:
       "Convert one-off debugging commands and database queries from the chat history into clean, callable CLI primitives for future agent runs.",
@@ -496,8 +416,6 @@ export const PROMPTS = [
   {
     order: 42,
     id: "1.13",
-    cat: "Coding",
-    ci: 0,
     title: "Interactive Architecture & Constraint Elicitation",
     purpose:
       "Have the agent interview you about edge cases, load realities, and non-goals before writing a single line of schema or system code.",
@@ -508,8 +426,6 @@ export const PROMPTS = [
   {
     order: 43,
     id: "1.14",
-    cat: "Coding",
-    ci: 0,
     title: "Interactive Edge-Case & Invariant Probe",
     purpose:
       "Walk through tricky state transitions conversationally with live runtime probes to uncover unspoken domain invariants.",
@@ -520,8 +436,6 @@ export const PROMPTS = [
   {
     order: 44,
     id: "1.15",
-    cat: "Coding",
-    ci: 0,
     title: "Parallel Refactor & Minimal-Diff Bakeoff",
     purpose:
       "Launch parallel sub-agents to attempt a surgical patch versus a clean primitive redesign and compare verified test outcomes.",
@@ -532,8 +446,6 @@ export const PROMPTS = [
   {
     order: 45,
     id: "1.16",
-    cat: "Coding",
-    ci: 0,
     title: "Parallel Adversarial Bug-Hunt & Fuzzing",
     purpose:
       "Pit one sub-agent building and hardening a feature against a parallel sub-agent actively trying to break it with live inputs.",
@@ -544,8 +456,6 @@ export const PROMPTS = [
   {
     order: 46,
     id: "1.17",
-    cat: "Coding",
-    ci: 0,
     title: "Ephemeral Diff & Blast-Radius Visualizer",
     purpose:
       "Generate a disposable interactive visual map of a complex pull request showing call-graph impact and verification coverage.",
@@ -556,8 +466,6 @@ export const PROMPTS = [
   {
     order: 47,
     id: "1.18",
-    cat: "Coding",
-    ci: 0,
     title: "Ephemeral Schema & Query Lineage Visualizer",
     purpose:
       "Build a one-off visual inspector for data transformations, schema relationships, and query bottlenecks without adding permanent admin tooling.",
@@ -568,8 +476,6 @@ export const PROMPTS = [
   {
     order: 48,
     id: "2.8",
-    cat: "Writing",
-    ci: 1,
     title: "Claim & Evidence Strength Triage",
     purpose:
       "Sort every assertion in a draft by how well it is proven, cutting weak filler and flagging high-stakes claims that need real artifacts.",
@@ -580,8 +486,6 @@ export const PROMPTS = [
   {
     order: 49,
     id: "2.9",
-    cat: "Writing",
-    ci: 1,
     title: "Audience Feedback & Comment Thread Triage",
     purpose:
       "Distill messy reviewer comments and conflicting edits across a shared draft into decisive structural changes versus bikeshedding to ignore.",
@@ -592,8 +496,6 @@ export const PROMPTS = [
   {
     order: 50,
     id: "2.10",
-    cat: "Writing",
-    ci: 1,
     title: "Domain Lexicon & Framing Codification",
     purpose:
       "Extract the strongest metaphors, terminology, and mental models from raw transcripts and published pieces into a reusable framing playbook.",
@@ -604,8 +506,6 @@ export const PROMPTS = [
   {
     order: 51,
     id: "2.11",
-    cat: "Writing",
-    ci: 1,
     title: "Cross-Format Adaptation Playbook Codification",
     purpose:
       "Turn the process of distilling a deep essay into executive briefings, launch notes, and threads into a repeatable markdown skill.",
@@ -616,8 +516,6 @@ export const PROMPTS = [
   {
     order: 52,
     id: "2.12",
-    cat: "Writing",
-    ci: 1,
     title: "Interactive Thesis & Counterargument Stress-Test",
     purpose:
       "Have the agent challenge your core thesis like a skeptical domain expert in a live back-and-forth before drafting.",
@@ -628,8 +526,6 @@ export const PROMPTS = [
   {
     order: 53,
     id: "2.13",
-    cat: "Writing",
-    ci: 1,
     title: "Interactive Voice-Note to Narrative Extraction",
     purpose:
       "Turn a rambling brain-dump into a structured piece by having the agent interview you to fill narrative gaps and capture authentic phrasing.",
@@ -640,8 +536,6 @@ export const PROMPTS = [
   {
     order: 54,
     id: "2.14",
-    cat: "Writing",
-    ci: 1,
     title: "Parallel Persona Reader Simulation",
     purpose:
       "Spin up parallel sub-agents representing distinct reader personas to critique a draft simultaneously and synthesize high-impact fixes.",
@@ -652,8 +546,6 @@ export const PROMPTS = [
   {
     order: 55,
     id: "2.15",
-    cat: "Writing",
-    ci: 1,
     title: "Parallel Compression & Expansion Experiments",
     purpose:
       "Explore a ruthless 300-word distillation alongside a deeply illustrated long-form version in parallel to find the ideal density.",
@@ -664,8 +556,6 @@ export const PROMPTS = [
   {
     order: 56,
     id: "2.16",
-    cat: "Writing",
-    ci: 1,
     title: "Ephemeral Pacing & Information-Density Visualizer",
     purpose:
       "Generate an interactive visual heatmap of sentence complexity, claim density, and concrete examples across a draft.",
@@ -676,8 +566,6 @@ export const PROMPTS = [
   {
     order: 57,
     id: "2.17",
-    cat: "Writing",
-    ci: 1,
     title: "Ephemeral Multi-Version Narrative Diff Visualizer",
     purpose:
       "Build an ad-hoc visual comparison of multiple draft iterations showing how arguments shifted, tightened, or lost nuance over time.",
@@ -688,8 +576,6 @@ export const PROMPTS = [
   {
     order: 58,
     id: "3.8",
-    cat: "Research",
-    ci: 2,
     title: "Source Credibility & Signal-to-Noise Triage",
     purpose:
       "Audit a pile of collected papers, docs, and benchmarks to discard secondary fluff and rank primary sources worth deep analysis.",
@@ -700,8 +586,6 @@ export const PROMPTS = [
   {
     order: 59,
     id: "3.9",
-    cat: "Research",
-    ci: 2,
     title: "Open Hypothesis & Investigation Queue Triage",
     purpose:
       "Prioritize competing research questions by decision impact so you stop rabbit-holing on low-leverage curiosities.",
@@ -712,8 +596,6 @@ export const PROMPTS = [
   {
     order: 60,
     id: "3.10",
-    cat: "Research",
-    ci: 2,
     title: "Recurring Evaluation Rubric & Benchmark Codification",
     purpose:
       "Distill ad-hoc vendor, model, or architecture comparisons into a standardized, repeatable evaluation skill and scoring harness.",
@@ -724,8 +606,6 @@ export const PROMPTS = [
   {
     order: 61,
     id: "3.11",
-    cat: "Research",
-    ci: 2,
     title: "Data Cleaning & Normalization Playbook Codification",
     purpose:
       "Capture the exact heuristics used to clean, join, and deduplicate messy raw exports into a reusable research skill.",
@@ -736,8 +616,6 @@ export const PROMPTS = [
   {
     order: 62,
     id: "3.12",
-    cat: "Research",
-    ci: 2,
     title: "Interactive Hypothesis & Scope Narrowing",
     purpose:
       "Have the agent interview you to sharpen a broad research prompt into falsifiable questions tied to a real decision before searching.",
@@ -748,8 +626,6 @@ export const PROMPTS = [
   {
     order: 63,
     id: "3.13",
-    cat: "Research",
-    ci: 2,
     title: "Interactive Anomaly & Domain Context Interrogation",
     purpose:
       "Combine automated statistical anomaly detection with an interactive interview to separate real breakthroughs from logging artifacts.",
@@ -760,8 +636,6 @@ export const PROMPTS = [
   {
     order: 64,
     id: "3.14",
-    cat: "Research",
-    ci: 2,
     title: "Parallel Multi-Corpus & Method Triangulation",
     purpose:
       "Dispatch parallel sub-agents across distinct data sources—quantitative logs, qualitative user transcripts, and external benchmarks—to triangulate truth.",
@@ -772,8 +646,6 @@ export const PROMPTS = [
   {
     order: 65,
     id: "3.15",
-    cat: "Research",
-    ci: 2,
     title: "Parallel Devil's Advocate & Pre-Mortem Red-Team",
     purpose:
       "Run a parallel red-team sub-agent to attack your emerging research conclusion using the same primary dataset.",
@@ -784,8 +656,6 @@ export const PROMPTS = [
   {
     order: 66,
     id: "3.16",
-    cat: "Research",
-    ci: 2,
     title: "Ephemeral Contradiction & Citation Graph Visualizer",
     purpose:
       "Generate a standalone interactive visual map showing which claims in a research corpus corroborate or contradict each other.",
@@ -796,8 +666,6 @@ export const PROMPTS = [
   {
     order: 67,
     id: "3.17",
-    cat: "Research",
-    ci: 2,
     title: "Ephemeral Sensitivity & Tradeoff Simulator",
     purpose:
       "Turn static research estimates into an interactive visual simulator where you can drag assumptions and see when conclusions flip.",
@@ -808,8 +676,6 @@ export const PROMPTS = [
   {
     order: 68,
     id: "4.8",
-    cat: "General",
-    ci: 3,
     title: "Recurring Commitment & Calendar Load Triage",
     purpose:
       "Audit upcoming meetings, recurring obligations, and open commitments to cancel low-leverage blocks and draft async replacements.",
@@ -820,8 +686,6 @@ export const PROMPTS = [
   {
     order: 69,
     id: "4.9",
-    cat: "General",
-    ci: 3,
     title: "Decision Bottleneck & Approval Queue Triage",
     purpose:
       "Surface every blocked decision waiting on your input across threads, sort by reversibility, and pre-draft the unblocking responses.",
@@ -832,8 +696,6 @@ export const PROMPTS = [
   {
     order: 70,
     id: "4.10",
-    cat: "General",
-    ci: 3,
     title: "Ad-Hoc Process to Autonomous Playbook Codification",
     purpose:
       "Turn a messy multi-step operational chore you just finished with the agent into a one-command markdown playbook.",
@@ -844,8 +706,6 @@ export const PROMPTS = [
   {
     order: 71,
     id: "4.11",
-    cat: "General",
-    ci: 3,
     title: "Personal Decision Criteria & Constraint Codification",
     purpose:
       "Extract your implicit priorities, dealbreakers, and tradeoffs from past decisions into a reusable filter skill.",
@@ -856,8 +716,6 @@ export const PROMPTS = [
   {
     order: 72,
     id: "4.12",
-    cat: "General",
-    ci: 3,
     title: "Interactive Decision & Tradeoff Elicitation",
     purpose:
       "Have the agent guide you through a complex multi-variable choice conversationally instead of building a sprawling comparison spreadsheet.",
@@ -868,8 +726,6 @@ export const PROMPTS = [
   {
     order: 73,
     id: "4.13",
-    cat: "General",
-    ci: 3,
     title: "Interactive Artifact & Messy Workspace Onboarding",
     purpose:
       "Drop the agent into a chaotic folder of screenshots, receipts, or notes and let it interview you to organize and execute the outcome.",
@@ -880,8 +736,6 @@ export const PROMPTS = [
   {
     order: 74,
     id: "4.14",
-    cat: "General",
-    ci: 3,
     title: "Parallel Scenario & Contingency Simulation",
     purpose:
       "Launch parallel sub-agents to stress-test a plan under optimistic, baseline, and failure scenarios before committing.",
@@ -892,8 +746,6 @@ export const PROMPTS = [
   {
     order: 75,
     id: "4.15",
-    cat: "General",
-    ci: 3,
     title: "Parallel Option Scouting & Negotiation Prep",
     purpose:
       "Use parallel sub-agents to independently evaluate competing vendors, contracts, or routes and synthesize leverage points.",
@@ -904,8 +756,6 @@ export const PROMPTS = [
   {
     order: 76,
     id: "4.16",
-    cat: "General",
-    ci: 3,
     title: "Ephemeral Dependency & Timeline Visualizer",
     purpose:
       "Generate a disposable interactive visual map of project dependencies, critical paths, and bottlenecks without setting up PM software.",
@@ -916,8 +766,6 @@ export const PROMPTS = [
   {
     order: 77,
     id: "4.17",
-    cat: "General",
-    ci: 3,
     title: "Manual Workaround & Shadow-System Audit",
     purpose:
       "Audit your workspace for brittle spreadsheets, checklists, and manual trackers that should be replaced by direct agent outcomes.",
@@ -928,8 +776,6 @@ export const PROMPTS = [
   {
     order: 78,
     id: "5.9",
-    cat: "Meta",
-    ci: 4,
     title: "Skill Library & Workspace Instruction Triage",
     purpose:
       "Audit all loaded skills, memory files, and workspace rules to prune conflicting instructions and merge redundant playbooks.",
@@ -940,8 +786,6 @@ export const PROMPTS = [
   {
     order: 79,
     id: "5.10",
-    cat: "Meta",
-    ci: 4,
     title: "Open Agent Thread & Session History Triage",
     purpose:
       "Scan active and recent agent sessions to close loops, salvage unmerged work, and archive dead-end threads.",
@@ -952,8 +796,6 @@ export const PROMPTS = [
   {
     order: 80,
     id: "5.11",
-    cat: "Meta",
-    ci: 4,
     title: "Self-Verification Loop & Proof Codification",
     purpose:
       "Convert the verification steps an agent needed to prove its work was correct into a mandatory pre-completion harness rule.",
@@ -964,8 +806,6 @@ export const PROMPTS = [
   {
     order: 81,
     id: "5.12",
-    cat: "Meta",
-    ci: 4,
     title: "Sub-Agent Delegation Topology Codification",
     purpose:
       "Package a successful multi-agent exploration, bakeoff, and synthesis workflow into a reusable orchestration skill.",
@@ -976,8 +816,6 @@ export const PROMPTS = [
   {
     order: 82,
     id: "5.13",
-    cat: "Meta",
-    ci: 4,
     title: "Interactive Harness & Permission Onboarding",
     purpose:
       "Have the agent inspect your machine and interactively walk you through connecting the high-leverage CLIs, logs, and permissions it lacks.",
@@ -988,8 +826,6 @@ export const PROMPTS = [
   {
     order: 83,
     id: "5.14",
-    cat: "Meta",
-    ci: 4,
     title: "Interactive Prompt & Playbook Co-Design",
     purpose:
       "Collaborate with the agent interactively to turn a vague recurring goal into a battle-tested, outcome-oriented markdown skill.",
@@ -1000,8 +836,6 @@ export const PROMPTS = [
   {
     order: 84,
     id: "5.15",
-    cat: "Meta",
-    ci: 4,
     title: "Parallel Prompt Strategy & Framing Bakeoff",
     purpose:
       "Test an outcome-first prompt against a step-by-step procedural prompt in parallel sub-agents to prove which framing yields better results.",
@@ -1012,8 +846,6 @@ export const PROMPTS = [
   {
     order: 85,
     id: "5.16",
-    cat: "Meta",
-    ci: 4,
     title: "Parallel Independent Verification & Judge Ensemble",
     purpose:
       "Dispatch parallel sub-agents to independently verify a complex agent output from different angles before accepting it.",
@@ -1024,8 +856,6 @@ export const PROMPTS = [
   {
     order: 86,
     id: "5.17",
-    cat: "Meta",
-    ci: 4,
     title: "Ephemeral Agent Execution & Tool-Chain Visualizer",
     purpose:
       "Build an interactive visual timeline of an agent run showing tool calls, retries, dead ends, and verification checkpoints.",
@@ -1036,8 +866,6 @@ export const PROMPTS = [
   {
     order: 87,
     id: "5.18",
-    cat: "Meta",
-    ci: 4,
     title: "Live Harness Self-Upgrade & Primitive Bootstrap",
     purpose:
       "Have the agent directly build, wire up, and verify the missing CLI tools or helper scripts it needs in its own environment.",
@@ -1048,8 +876,6 @@ export const PROMPTS = [
   {
     order: 88,
     id: "1.19",
-    cat: "Coding",
-    ci: 0,
     title: "Recurring Bug Class & Guardrail Codification",
     purpose:
       "Turn a one-off bug fix into a systemic sweep and permanent guardrail that prevents the entire class of failure across the codebase.",
@@ -1060,8 +886,6 @@ export const PROMPTS = [
   {
     order: 89,
     id: "1.20",
-    cat: "Coding",
-    ci: 0,
     title: "Legacy & Tech-Debt Triage Sweep",
     purpose:
       "Programmatically audit dead code, stale flags, and half-finished migrations to decide what to delete immediately and what to consolidate.",
@@ -1072,8 +896,6 @@ export const PROMPTS = [
   {
     order: 90,
     id: "2.18",
-    cat: "Writing",
-    ci: 1,
     title: "Skeptical Counter-Reader Stress Test",
     purpose:
       "Pressure-test a draft against its toughest, most informed critic to expose weak claims and preemptively answer strong objections.",
@@ -1084,8 +906,6 @@ export const PROMPTS = [
   {
     order: 91,
     id: "2.19",
-    cat: "Writing",
-    ci: 1,
     title: "Multi-Format Audience Adaptation",
     purpose:
       "Distill and reshape a finished core narrative into native versions for distinct audiences without diluting the central argument.",
@@ -1096,8 +916,6 @@ export const PROMPTS = [
   {
     order: 92,
     id: "3.18",
-    cat: "Research",
-    ci: 2,
     title: "Interactive Decision & Trade-Off Matrix",
     purpose:
       "Have the agent interview you to establish your true constraints and weighting criteria before translating research into a concrete recommendation.",
@@ -1108,8 +926,6 @@ export const PROMPTS = [
   {
     order: 93,
     id: "3.19",
-    cat: "Research",
-    ci: 2,
     title: "Repeatable Research Playbook Codification",
     purpose:
       "Extract the exact query patterns, data normalization steps, and verification rules from a successful investigation into a reusable skill.",
@@ -1120,8 +936,6 @@ export const PROMPTS = [
   {
     order: 94,
     id: "4.18",
-    cat: "General",
-    ci: 3,
     title: "Parallel Scenario & Pre-Mortem Simulation",
     purpose:
       "Launch parallel delegates to stress-test a major plan across failure modes, resource bottlenecks, and second-order effects before execution.",
@@ -1132,8 +946,6 @@ export const PROMPTS = [
   {
     order: 95,
     id: "4.19",
-    cat: "General",
-    ci: 3,
     title: "Ephemeral Operations & Dependency Visualizer",
     purpose:
       "Generate a one-off visual map of timelines, dependencies, or resource allocation directly from raw workspace notes without setting up project management software.",
@@ -1144,8 +956,6 @@ export const PROMPTS = [
   {
     order: 96,
     id: "5.19",
-    cat: "Meta",
-    ci: 4,
     title: "Skill & Workspace Instruction Pruning Triage",
     purpose:
       "Audit all accumulated skills, memory files, and workspace rules to delete stale directives, resolve contradictions, and merge overlapping playbooks.",
@@ -1156,8 +966,6 @@ export const PROMPTS = [
   {
     order: 97,
     id: "5.20",
-    cat: "Meta",
-    ci: 4,
     title: "Autonomous Verification Loop Construction",
     purpose:
       "Have the agent build a fast, self-contained verification harness so it can autonomously test and iterate on its own work without human babysitting.",
@@ -1168,8 +976,6 @@ export const PROMPTS = [
   {
     order: 98,
     id: "1.21",
-    cat: "Coding",
-    ci: 0,
     title: "Runtime Memory & Execution Hot-Path Visualizer",
     purpose:
       "Generate an interactive visual breakdown of memory layout, allocations, and hot-loop execution before writing optimization code.",
@@ -1180,8 +986,6 @@ export const PROMPTS = [
   {
     order: 99,
     id: "1.22",
-    cat: "Coding",
-    ci: 0,
     title: "Interactive Architecture & Dependency Uncoupling",
     purpose:
       "Have the agent inspect build targets and interview you on API boundary constraints before executing a multi-file refactoring end-to-end.",
@@ -1192,8 +996,6 @@ export const PROMPTS = [
   {
     order: 100,
     id: "2.20",
-    cat: "Writing",
-    ci: 1,
     title: "Claim-to-Evidence Density Triage",
     purpose:
       "Score every paragraph by its ratio of hard proof to abstract explanation and strip out low-density filler.",
@@ -1204,8 +1006,6 @@ export const PROMPTS = [
   {
     order: 101,
     id: "2.21",
-    cat: "Writing",
-    ci: 1,
     title: "Parallel Precision vs. Analogy Stress-Testing",
     purpose:
       "Draft a complex technical explanation simultaneously in ultra-strict technical prose and analogy-driven narrative, then synthesize the clearest version.",
@@ -1216,8 +1016,6 @@ export const PROMPTS = [
   {
     order: 102,
     id: "3.20",
-    cat: "Research",
-    ci: 2,
     title: "Autonomous Schema & Corpus Discovery",
     purpose:
       "Point the agent at an unfamiliar database or repository and have it autonomously map schemas, relationships, and anomalies without manual hand-holding.",
@@ -1228,8 +1026,6 @@ export const PROMPTS = [
   {
     order: 103,
     id: "3.21",
-    cat: "Research",
-    ci: 2,
     title: "Primary-Artifact Signal-to-Noise Triage",
     purpose:
       "Filter a pile of repositories, papers, and references down to original implementations and empirical benchmarks before deep analysis.",
@@ -1240,8 +1036,6 @@ export const PROMPTS = [
   {
     order: 104,
     id: "4.20",
-    cat: "General",
-    ci: 3,
     title: "Manual Glue & Friction Audit",
     purpose:
       "Audit recent workstreams to find where you are still acting as manual glue for setup, file organization, or status checks.",
@@ -1252,8 +1046,6 @@ export const PROMPTS = [
   {
     order: 105,
     id: "4.21",
-    cat: "General",
-    ci: 3,
     title: "One-Off Resolution to Playbook Codification",
     purpose:
       "Turn a messy multi-turn troubleshooting or operational win into a single reusable command playbook before closing the session.",
@@ -1264,8 +1056,6 @@ export const PROMPTS = [
   {
     order: 106,
     id: "5.21",
-    cat: "Meta",
-    ci: 4,
     title: "Adversarial Builder-Verifier Delegate Pair",
     purpose:
       "Pair a builder sub-agent with an adversarial verifier sub-agent so edge cases are broken and fixed before you ever review the output.",
@@ -1276,8 +1066,6 @@ export const PROMPTS = [
   {
     order: 107,
     id: "5.22",
-    cat: "Meta",
-    ci: 4,
     title: "Interactive Prompt Scope Expansion",
     purpose:
       "Instruct the agent to catch when you ask for a narrow, tactical step and proactively offer to swallow the surrounding end-to-end workflow.",

@@ -19,7 +19,7 @@ export function matchesQuery(row, query) {
   return HAYSTACK.get(row.id).includes(query);
 }
 
-export function escapeHtml(text) {
+function escapeHtml(text) {
   return text.replace(
     /[&<>"]/g,
     (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c],

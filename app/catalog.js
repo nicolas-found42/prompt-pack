@@ -6,7 +6,6 @@ import { TAXONOMY } from "../data/taxonomy.js";
 
 export const ROWS = PROMPTS;
 export const PATTERNS = [...new Set(ROWS.map((r) => r.pattern))].sort();
-export const CATEGORIES = TAXONOMY.categories.map((c) => c.category);
 
 /** Every taxonomy node, in depth-first order. */
 export const NODES = [];
@@ -81,14 +80,6 @@ for (const cat of TAXONOMY.categories) {
     }
     catNode.allIds.push(...subNode.allIds);
   }
-}
-
-/** Prompt ids in tree order. */
-export const CATALOG_IDS = [...TREE_INDEX.keys()];
-
-/** Node for a slash-joined path, or null when the path is not in the taxonomy. */
-export function nodeForPath(path) {
-  return NODE_BY_KEY.get(path.join("/")) || null;
 }
 
 /** Prompt ids belonging to a node, including the ids of its descendants. */

@@ -28,7 +28,7 @@ export function renderResults(root, { rows, query, expandedCards, expandAll }) {
     <summary><span class="label-closed">Show prompt</span><span class="label-open">Hide prompt</span></summary>
     <p class="text">${highlight(row.text, query)}</p>
   </details>
-  <button class="copy" data-o="${row.order}">Copy</button>
+  <button class="copy">Copy</button>
 </article>`;
     })
     .join("");
