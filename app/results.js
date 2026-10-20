@@ -18,7 +18,7 @@ export function renderResults(root, { rows, query, expandedCards, expandAll }) {
       return `<article class="card" data-id="${row.id}">
   <div class="top">
     <span class="num">${row.id}</span>
-    <span class="path">${path ? path.path.join(" › ") : ""}</span>
+    <span class="path">${path ? highlight(path.path.join(" › "), query) : ""}</span>
     <span class="tag">${row.pattern}</span>
     <span class="words">${row.words} words</span>
   </div>

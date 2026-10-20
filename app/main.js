@@ -284,6 +284,13 @@ els.body.addEventListener(
     if (details.open) state.expandedCards.add(id);
     else state.expandedCards.delete(id);
     if (!details.open && state.expandAll) {
+      // The other cards are open because of the global flag, not because their
+      // ids are recorded. Capture them before dropping the flag, so collapsing
+      // one card does not shut the rest on the next render.
+      for (const open of els.body.querySelectorAll("details.prompt[open]")) {
+        const openId = open.closest(".card")?.dataset.id;
+        if (openId) state.expandedCards.add(openId);
+      }
       state.expandAll = false;
       updateToggleLabel();
     }

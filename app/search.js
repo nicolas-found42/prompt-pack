@@ -26,10 +26,18 @@ function escapeHtml(text) {
   );
 }
 
-/** Escape, then wrap query hits in <mark>. */
+/**
+ * Escape the text, then wrap query hits in <mark>.
+ *
+ * The split happens on the raw text, before escaping: matching against the
+ * escaped string would let a query such as "a" hit the "amp" inside "&amp;"
+ * and corrupt the rendered output.
+ */
 export function highlight(text, query) {
-  const safe = escapeHtml(text);
-  if (!query) return safe;
+  if (!query) return escapeHtml(text);
   const pattern = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return safe.replace(new RegExp(`(${pattern})`, "gi"), "<mark>$1</mark>");
+  return text
+    .split(new RegExp(`(${pattern})`, "gi"))
+    .map((part, index) => (index % 2 ? `<mark>${escapeHtml(part)}</mark>` : escapeHtml(part)))
+    .join("");
 }
