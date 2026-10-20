@@ -48,7 +48,7 @@ The deck uses native ES modules, so it must be served over HTTP — `npm run dev
 
 1. `npm ci` installs the dev tooling.
 2. `npm run check` runs Prettier and ESLint — the deploy is blocked if either fails.
-3. `npm run build` stages only the site assets (`index.html`, `styles.css`, `app/`, `data/`) into `_site/`, so `node_modules` and tooling never reach the artifact.
+3. `npm run build` stages only the site assets (`index.html`, `styles/`, `app/`, `data/`) into `_site/`, so `node_modules` and tooling never reach the artifact.
 4. `actions/upload-pages-artifact` and `actions/deploy-pages` publish the result.
 
 Manual redeploy: **Actions → Deploy Pages → Run workflow**. To preview locally, run `npm run build` and serve `_site/`.
@@ -60,7 +60,12 @@ The workflow runs on the `ubuntu-26.04` runner image with Node 26. Node 24 or ne
 | Path                          | Purpose                                                           |
 | ----------------------------- | ----------------------------------------------------------------- |
 | `index.html`                  | Page shell: tree pane, controls, breadcrumb, result grid          |
-| `styles.css`                  | All styling, including the tree, chips and mobile drawer          |
+| `styles/tokens.css`           | Design tokens: colors, used site-wide; edit this to re-theme      |
+| `styles/base.css`             | Universal box model, document and form-control resets             |
+| `styles/layout.css`           | Two-pane shell, sidebar, masthead, mobile drawer                  |
+| `styles/tree.css`             | Taxonomy sidebar tree                                             |
+| `styles/controls.css`         | Search, sort, buttons, pattern chips, breadcrumb                  |
+| `styles/cards.css`            | Result grid, prompt cards, search highlighting                    |
 | `app/main.js`                 | Bootstrap: wires the tree, facets, search, grid and URL together  |
 | `app/state.js`                | The single mutable view state                                     |
 | `app/catalog.js`              | Joins prompts and taxonomy into the lookup structures the UI uses |

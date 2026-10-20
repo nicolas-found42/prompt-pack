@@ -1,0 +1,107 @@
+/* Tree: the taxonomy sidebar. */
+
+.tree-wrap {
+  padding: 6px 10px 48px;
+}
+
+.tree,
+.tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tree ul {
+  margin-left: 10px;
+  padding-left: 9px;
+  border-left: 1px solid var(--line);
+}
+
+.tree li[aria-expanded="false"] > ul {
+  display: none;
+}
+
+.node-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.node-row:hover {
+  background: var(--soft);
+}
+
+.twisty {
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.twisty::before {
+  content: "▸";
+  position: absolute;
+  inset: 0;
+}
+
+li.open > .node-row > .twisty::before {
+  content: "▾";
+}
+
+li.leaf > .node-row > .twisty::before {
+  content: "";
+}
+
+.node-label {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.node-count {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+}
+
+li[aria-level="1"] > .node-row {
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+li[aria-level="2"] > .node-row {
+  font-weight: 500;
+}
+
+li[aria-level="3"] > .node-row {
+  font-size: 0.9rem;
+}
+
+li.selected > .node-row {
+  background: var(--soft);
+  box-shadow: inset 2px 0 0 var(--link);
+}
+
+li.hit > .node-row > .node-label {
+  color: var(--link);
+}
+
+li.empty > .node-row {
+  opacity: 0.42;
+}
+
+li:focus-visible {
+  outline: none;
+}
+
+li:focus-visible > .node-row {
+  outline: 2px solid var(--link);
+  outline-offset: -2px;
+}

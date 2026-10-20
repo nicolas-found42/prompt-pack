@@ -4,7 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Universal Agent Prompt Deck</title>
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Load order is the API: tokens -> base -> layout -> components.
+         Later files win equal-specificity ties, so keep this order. -->
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/tree.css" />
+    <link rel="stylesheet" href="styles/controls.css" />
+    <link rel="stylesheet" href="styles/cards.css" />
   </head>
   <body>
     <div class="app">

@@ -1,8 +1,8 @@
 import { cpSync, existsSync, mkdirSync, rmSync, statSync } from "node:fs";
 
 const OUT = "_site";
-const SITE_FILES = ["index.html", "styles.css"];
-const SITE_DIRS = ["app", "data", "assets", "images", "fonts"];
+const SITE_FILES = ["index.html"];
+const SITE_DIRS = ["app", "data", "styles", "assets", "images", "fonts"];
 
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });

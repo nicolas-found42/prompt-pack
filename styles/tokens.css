@@ -1,0 +1,47 @@
+/* Design tokens.
+ *
+ * Every visual decision (color, background, line) is a custom property here.
+ * Change the site's appearance by editing this file; components only ever
+ * reference var(--…).
+ */
+
+:root {
+  --bg: #ffffff;
+  --ink: #1d232b;
+  --muted: #5d6672;
+  --line: #dde1e6;
+  --soft: #f4f6f8;
+  --link: #1f5fbf;
+  --mark-bg: #ffe58a;
+  --mark-ink: #1d232b;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16191d;
+    --ink: #e6e9ed;
+    --muted: #9aa3ae;
+    --line: #2c3239;
+    --soft: #1e2227;
+    --link: #7eaaf0;
+    --mark-bg: #ffe58a;
+    --mark-ink: #1d232b;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #16191d;
+  --ink: #e6e9ed;
+  --muted: #9aa3ae;
+  --line: #2c3239;
+  --soft: #1e2227;
+  --link: #7eaaf0;
+  --mark-bg: #ffe58a;
+  --mark-ink: #1d232b;
+  color-scheme: dark;
+}
