@@ -7,45 +7,82 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="wrap">
-      <h1>Universal Agent Prompt Deck</h1>
-      <p class="sub">107 prompts. Sort, filter or search with the controls below.</p>
-      <div class="controls">
-        <input
-          id="q"
-          type="search"
-          placeholder="Search titles and prompt text"
-          aria-label="Search prompts"
-        />
-        <label class="ctl"
-          >Category
-          <select id="cat">
-            <option value="">All</option>
-          </select></label
-        >
-        <label class="ctl"
-          >Pattern
-          <select id="pat">
-            <option value="">All</option>
-          </select></label
-        >
-        <label class="ctl"
-          >Sort
-          <select id="sort">
-            <option value="order:asc">Deck order</option>
-            <option value="title:asc">Title A–Z</option>
-            <option value="title:desc">Title Z–A</option>
-            <option value="cat:asc">Category</option>
-            <option value="pattern:asc">Pattern</option>
-            <option value="words:asc">Shortest first</option>
-            <option value="words:desc">Longest first</option>
-          </select></label
-        >
-        <button class="ghost" id="toggle" aria-pressed="false">Hide prompt text</button>
-        <span class="count" id="count"></span>
-      </div>
-      <div class="grid" id="body"></div>
+    <div class="app">
+      <aside class="sidebar" id="sidebar" aria-label="Prompt taxonomy">
+        <div class="sidebar-head">
+          <h2 class="sidebar-title">Categories</h2>
+          <button class="ghost drawer-close" id="drawer-close">Close</button>
+        </div>
+        <div class="tree-wrap">
+          <div id="tree"></div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="masthead">
+          <button
+            class="ghost drawer-open"
+            id="drawer-open"
+            aria-expanded="false"
+            aria-controls="sidebar"
+          >
+            Browse categories
+          </button>
+          <div>
+            <h1>Universal Agent Prompt Deck</h1>
+            <p class="sub">107 prompts · Category › Subcategory › Group</p>
+          </div>
+        </header>
+
+        <div class="controls">
+          <input
+            id="q"
+            type="search"
+            placeholder="Search titles, purposes and prompt text"
+            aria-label="Search prompts"
+          />
+          <label class="ctl"
+            >Sort
+            <select id="sort">
+              <option value="tree">Tree order</option>
+              <option value="title-asc">Title A–Z</option>
+              <option value="title-desc">Title Z–A</option>
+              <option value="pattern">Pattern</option>
+              <option value="words-asc">Shortest first</option>
+              <option value="words-desc">Longest first</option>
+            </select></label
+          >
+          <button class="ghost" id="toggle" aria-pressed="false">Expand all</button>
+          <span class="count" id="count"></span>
+        </div>
+
+        <div
+          class="facets"
+          id="facets"
+          role="group"
+          aria-label="Filter by interaction pattern"
+        ></div>
+
+        <div class="crumbs-row">
+          <nav class="crumbs" id="crumbs" aria-label="Current location"></nav>
+          <button class="ghost" id="copy-link">Copy link</button>
+        </div>
+
+        <div class="grid" id="body"></div>
+      </main>
     </div>
-    <script src="app.js"></script>
+
+    <div class="scrim" id="scrim"></div>
+    <script>
+      // ES modules cannot be loaded from a file:// URL. If the app did not boot,
+      // say so instead of leaving an empty page.
+      setTimeout(() => {
+        if (!document.querySelector("#tree li")) {
+          document.querySelector("#body").innerHTML =
+            '<p class="empty">This deck must be served over HTTP. Run <code>npm run dev</code> in the project folder and open the address it prints.</p>';
+        }
+      }, 1500);
+    </script>
+    <script type="module" src="app/main.js"></script>
   </body>
 </html>

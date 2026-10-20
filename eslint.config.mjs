@@ -20,6 +20,14 @@ export default [
     },
   },
   {
+    files: ["app/**/*.js", "data/**/*.js"],
+    languageOptions: {
+      ecmaVersion: 2023,
+      sourceType: "module",
+      globals: globals.browser,
+    },
+  },
+  {
     files: ["scripts/**/*.mjs", "*.config.mjs"],
     languageOptions: {
       ecmaVersion: 2023,
