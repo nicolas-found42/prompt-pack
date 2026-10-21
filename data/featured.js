@@ -34,4 +34,9 @@ export const START_HERE = [
     hint: "Find where you are thinking too small",
     ids: ["5.8"],
   },
+  {
+    label: "Bootstrap a fresh session",
+    hint: "Zero-context repo diagnostics, golden masters, and health audits",
+    ids: ["13.1", "11.1", "12.1"],
+  },
 ];

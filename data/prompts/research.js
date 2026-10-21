@@ -1,6 +1,6 @@
 // Prompts for one category of the deck. One record per block, one id per
 // line, so two contributors adding prompts never edit the same lines.
-//  is the position each prompt had in the original deck; category
+// order is the position each prompt had in the original deck; category
 // membership lives in data/taxonomy.js, the single source of truth for
 // where a prompt sits in the navigation tree.
 export const PROMPTS = [
@@ -13,6 +13,8 @@ export const PROMPTS = [
     text: "Examine all the raw data exports, documents, logs, and notes scattered across this workspace. Instead of writing a permanent software pipeline to manage them, directly normalize, cross-reference, and combine all of these disparate records into a single unified dataset and summary. Surface the most interesting long-term patterns, anomalies, and connections across the combined history.",
     words: 54,
     pattern: "Execute",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 17,
@@ -22,6 +24,8 @@ export const PROMPTS = [
     text: "Take all the findings, metrics, and comparisons we have uncovered in this research session and build a clean, self-contained interactive visual report. Make it easy to filter, compare, and inspect the underlying data points visually so I can explore the patterns directly and ask follow-up questions from the visual breakdown.",
     words: 50,
     pattern: "Visualize",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 18,
@@ -32,6 +36,8 @@ export const PROMPTS = [
     text: "Spin up parallel research delegates to investigate the question we are exploring from opposing angles: have one delegate gather the strongest primary evidence supporting our main hypothesis, and have another rigorously search for counter-evidence, edge cases, and alternative explanations. Synthesize their findings side by side, resolve the contradictions, and present a verified conclusion.",
     words: 53,
     pattern: "Parallel agents",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 19,
@@ -42,6 +48,8 @@ export const PROMPTS = [
     text: "Based on the question we are trying to answer right now, evaluate the data and sources currently available to you in this workspace. Tell me explicitly what information you can verify directly, what remains speculative because the data is missing, and what specific files, connections, or external sources I should expose to you so you can answer this with complete certainty.",
     words: 61,
     pattern: "Audit",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 20,
@@ -52,6 +60,8 @@ export const PROMPTS = [
     text: "Something in our latest metrics and reports looks unusually high and out of pattern. Go through our underlying source data, usage logs, and historical records to trace exactly what caused this spike. Break down the root causes by impact, identify what is driving the inefficiency, and give me a concrete execution plan to bring it back down immediately.",
     words: 58,
     pattern: "Execute",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 21,
@@ -62,6 +72,8 @@ export const PROMPTS = [
     text: "Audit all existing research notes, past transcripts, and open investigation threads in this workspace. Identify which questions we have already answered, where we have duplicate or overlapping investigations running, which stale threads should be closed out, and what high-value open questions remain unresolved. Consolidate the scattered findings into one clean master index.",
     words: 52,
     pattern: "Audit",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 22,
@@ -72,6 +84,8 @@ export const PROMPTS = [
     text: "Review the conclusions and summary points we just generated. Audit every single claim against the primary source files and raw data available in this environment. Flag any statement that relies on assumption rather than direct verification, run the necessary checks to verify those points directly, and explain if any missing tool or access prevented full verification.",
     words: 56,
     pattern: "Audit",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 58,
@@ -82,6 +96,8 @@ export const PROMPTS = [
     text: "Go through all the papers, articles, benchmark logs, and reference files we have dropped into this workspace. Run a strict source triage: separate primary empirical artifacts and first-hand technical post-mortems from derivative summaries, marketing fluff, or outdated speculation. Archive the low-signal material, rank the primary sources by direct relevance to our core question, and extract the verified claims from the top tier right now.",
     words: 64,
     pattern: "Triage",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 59,
@@ -92,6 +108,8 @@ export const PROMPTS = [
     text: "Review all the open research questions, unresolved anomalies, and side investigations we have accumulated in this project. Triage the queue by actual decision leverage: identify which questions will directly change what we build or decide today, which ones can be answered immediately with data already in this environment, and which low-impact rabbit holes we should close out immediately. Execute the highest-leverage check first.",
     words: 63,
     pattern: "Triage",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 60,
@@ -102,6 +120,8 @@ export const PROMPTS = [
     text: "Look at the criteria, stress tests, failure checks, and cost calculations we used to evaluate options in this research thread. Instead of reinventing our comparison methodology from scratch next time, codify this exact evaluation rubric and data-collection workflow into a reusable markdown skill and lightweight verification script so future evaluations run against the exact same standard automatically.",
     words: 57,
     pattern: "Codify",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 61,
@@ -112,6 +132,8 @@ export const PROMPTS = [
     text: "Review all the schema mappings, unit conversions, outlier filters, and deduplication rules you just applied to unify our raw research exports. Package those exact normalization heuristics and validation assertions into a clean markdown playbook and callable helper primitive so that whenever new raw data drops into this workspace, you can ingest, verify, and merge it into the master dataset in one step.",
     words: 62,
     pattern: "Codify",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 62,
@@ -122,6 +144,8 @@ export const PROMPTS = [
     text: "Before you launch a massive, sprawling research sweep on this topic, act as an interactive research partner to narrow our scope. Ask me targeted questions about what concrete decision depends on this answer, what constraints or disqualifiers already rule out half the field, and what baseline data or screenshots I can drop into this chat right now. Once we have locked onto a sharp, falsifiable question, execute the deep investigation.",
     words: 70,
     pattern: "Interactive",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 63,
@@ -132,6 +156,8 @@ export const PROMPTS = [
     text: "Scan our dataset and surface the top statistical anomalies, sudden regime shifts, and unexpected correlations that stand out in the raw numbers. Instead of guessing what caused them in a vacuum, walk through each anomaly with me interactively: show me the exact slice of data, ask me what operational events or unlogged real-world changes happened around those timestamps, and help me separate genuine insights from instrumentation noise.",
     words: 67,
     pattern: "Interactive",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 64,
@@ -142,6 +168,8 @@ export const PROMPTS = [
     text: "Spin up three parallel research delegates to investigate this question across completely independent evidence streams: have one analyze our raw quantitative telemetry and logs, have the second mine qualitative user reports and support transcripts, and have the third gather external benchmarks and primary literature. Cross-examine where all three streams agree, expose where they contradict each other, and synthesize a verified conclusion.",
     words: 61,
     pattern: "Parallel agents",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 65,
@@ -152,6 +180,8 @@ export const PROMPTS = [
     text: "We are converging on a recommendation, and I want to make sure confirmation bias is not blinding us. Spin up two parallel delegates over our primary data: task one with building the strongest case for our current conclusion, and task the other with acting as a ruthless red-team that searches the exact same raw records for survivorship bias, confounding variables, and counterexamples. Present the clash and tell me what actually holds up.",
     words: 72,
     pattern: "Parallel agents",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 66,
@@ -162,6 +192,8 @@ export const PROMPTS = [
     text: "Instead of giving me a long prose literature review, build a standalone, self-contained interactive visual map of all the sources and data points in this workspace. Visually connect claims that corroborate each other, highlight direct contradictions between sources, and trace which secondary assertions actually rest on a single unverified origin, so I can inspect the evidence topology at a glance.",
     words: 60,
     pattern: "Visualize",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 67,
@@ -172,6 +204,8 @@ export const PROMPTS = [
     text: "Our research conclusion depends on several uncertain assumptions around volume, latency, and cost. Build a standalone interactive visual simulator right now using the numbers we have gathered so I can adjust the key input assumptions with live sliders, see the exact threshold where one option overtakes another, and identify which single variable drives the most variance.",
     words: 56,
     pattern: "Visualize",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 92,
@@ -182,6 +216,8 @@ export const PROMPTS = [
     text: "We have gathered plenty of raw research and options, and now we need to make a definitive choice. Before you rank the options, interview me interactively to lock down our real constraints, non-negotiable requirements, risk tolerance, and what trade-offs we are actually willing to accept. Once my answers are clear, evaluate every option against those exact criteria using our verified research data and give me a decisive recommendation.",
     words: 68,
     pattern: "Interactive",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 93,
@@ -192,6 +228,8 @@ export const PROMPTS = [
     text: "Review the entire investigation we just completed—including which sources yielded the highest-signal data, how we cleaned and cross-referenced the records, what false leads we had to discard, and how we verified the final numbers. Distill this methodology into a clean, repeatable research playbook so that next time new data drops or we need to refresh this analysis, you can execute the entire investigation end-to-end from a single prompt.",
     words: 68,
     pattern: "Codify",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 102,
@@ -202,6 +240,8 @@ export const PROMPTS = [
     text: "Point yourself directly at this unfamiliar database, codebase, or raw archive and map out its structure without waiting for me to explain the schema. Run exploratory queries and file inspections to discover the core tables, entity relationships, edge-case anomalies, and undocumented conventions on your own, then hand me a verified architectural map and the highest-leverage questions we can answer with this data.",
     words: 62,
     pattern: "Execute",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 103,
@@ -212,6 +252,8 @@ export const PROMPTS = [
     text: "Scan all the candidate repositories, articles, datasets, and references we have collected for this topic. Triage them by actual primary-source signal: separate original implementations and raw empirical benchmarks from derivative summaries, outdated forks, and surface-level commentary. Archive the low-signal noise and focus our deep analysis exclusively on the primary artifacts that actually prove how the system works.",
     words: 57,
     pattern: "Triage",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 117,
@@ -222,6 +264,8 @@ export const PROMPTS = [
     text: "Our research conclusion rests on several estimates we are not fully sure about—adoption rates, cost per unit, time saved. Instead of presenting a single confident number, build a standalone interactive visual model of the decision where I can adjust each uncertain input with live sliders and see exactly which piece of evidence would flip the recommendation. Show the threshold values, rank the uncertainties by how much they move the outcome, and tell me the three cheapest ways to get the evidence that would settle this.",
     words: 85,
     pattern: "Visualize",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 118,
@@ -232,6 +276,8 @@ export const PROMPTS = [
     text: "We just made a decision after a long investigation, and next quarter someone will re-litigate it from scratch because the reasoning only lives in chat. Codify it into a durable decision record: the exact question we were answering, the options we considered, the evidence that decided it, the assumptions we accepted, and what would change our mind. Write it as a concise permanent markdown record in the repo, and link it from the code or config it governs so the next person finds the reasoning at the point of decision.",
     words: 90,
     pattern: "Codify",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 119,
@@ -242,6 +288,8 @@ export const PROMPTS = [
     text: "Before we commit to our own approach, I want a proper teardown of the competing products, tools, or methodologies in this space—not a feature checklist, but an honest map of what they do better than we do. Spin up parallel delegates, one per serious competitor or alternative, to dissect their actual behavior, pricing, failure modes, and the complaints users have about them. Synthesize their findings into the specific things we should steal, the traps they fell into that we should avoid, and the gaps nobody is serving.",
     words: 87,
     pattern: "Parallel agents",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 120,
@@ -252,5 +300,7 @@ export const PROMPTS = [
     text: "I have a meeting coming up and I do not want to walk in cold or waste the first ten minutes on context. Pull together everything in this workspace about the people, projects, and open threads involved—past decisions, unresolved questions, commitments I have made, and where we last left each thread. Synthesize it into a tight pre-meeting briefing: the three things I should push for, the two landmines to avoid stepping on, and the exact questions I should ask to unblock whatever is stuck.",
     words: 84,
     pattern: "Execute",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
 ];

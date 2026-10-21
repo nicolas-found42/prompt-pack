@@ -939,5 +939,144 @@ export const TAXONOMY = {
         },
       ],
     },
+    {
+      category: "Evaluation",
+      subcategories: [
+        {
+          name: "Ground-Truth Harnesses",
+          summary:
+            "Capture baselines, property invariants, and cross-check alternative implementations",
+          groups: [
+            {
+              name: "Differential Testing & Golden Masters",
+              summary: "Freeze empirical baselines and falsify fixtures against reality",
+              ids: ["11.1", "11.2", "11.3"],
+            },
+            {
+              name: "Oracle & Property Invariants",
+              summary:
+                "Verify state machine round-trips, extreme numerics, and algebraic properties",
+              ids: ["11.4", "11.5", "11.6"],
+            },
+          ],
+        },
+        {
+          name: "Behavioral Benchmarking",
+          summary:
+            "Measure drift, initialization bottlenecks, fuzz boundaries, and resource limits",
+          groups: [
+            {
+              name: "Drift & Regression Detection",
+              summary: "Benchmark execution latency and reconstruct minimal historical reproducers",
+              ids: ["11.7", "11.8", "11.9"],
+            },
+            {
+              name: "Fuzzing & Boundary Stress",
+              summary: "Mutate hostile inputs and simulate network drops and resource exhaustion",
+              ids: ["11.10", "11.11", "11.12"],
+            },
+          ],
+        },
+        {
+          name: "Automated Rubrics & Verification",
+          summary:
+            "Enforce strict behavioral gates, audit vacuous tests, and score outputs deterministically",
+          groups: [
+            {
+              name: "Calibrated Scoring & Rubrics",
+              summary: "Run multi-model arenas and establish objective evaluation schemas",
+              ids: ["11.13", "11.14", "11.15", "11.16"],
+            },
+            {
+              name: "Falsification & Gate Enforcement",
+              summary:
+                "Probe negative contracts, quarantine flaky tests, and generate standalone scorecards",
+              ids: ["11.17", "11.18", "11.19", "11.20"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      category: "Security",
+      subcategories: [
+        {
+          name: "Attack Surface & Isolation",
+          summary:
+            "Map entrypoints, sandbox execution environments, and test authorization barriers",
+          groups: [
+            {
+              name: "Sandbox & Capability Boundaries",
+              summary:
+                "Probe filesystem jailbreaks, subprocess escapes, and enforce blast radius limits",
+              ids: ["12.1", "12.2", "12.3", "12.4"],
+            },
+            {
+              name: "Threat Surface & Egress Audits",
+              summary:
+                "Intercept secret egress, map entrypoints, and block prompt injection vectors",
+              ids: ["12.5", "12.6", "12.7", "12.8"],
+            },
+          ],
+        },
+        {
+          name: "Supply Chain & Secret Hygiene",
+          summary:
+            "Verify package provenance, prune bloated dependencies, and sanitize credentials",
+          groups: [
+            {
+              name: "Dependency Provenance & Pruning",
+              summary:
+                "Audit lockfile signatures, eliminate unmaintained packages, and flag typo-squats",
+              ids: ["12.9", "12.10", "12.11", "12.12"],
+            },
+            {
+              name: "Credential Exposure & Sanitization",
+              summary: "Excavate secrets from git history and redact runtime error telemetry",
+              ids: ["12.13", "12.14", "12.15"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      category: "Operations",
+      subcategories: [
+        {
+          name: "Reliability & Incident Posture",
+          summary:
+            "Triage cold-start health, verify readiness probes, and rehearse chaos scenarios",
+          groups: [
+            {
+              name: "Cold-Start Triage & Telemetry Probing",
+              summary: "Assess repo readiness from scratch and audit unhandled promise rejections",
+              ids: ["13.1", "13.2", "13.3", "13.4"],
+            },
+            {
+              name: "Runbook Verification & Rehearsals",
+              summary: "Automate manual runbooks and rehearse disaster recovery against snapshots",
+              ids: ["13.5", "13.6", "13.7", "13.8"],
+            },
+          ],
+        },
+        {
+          name: "System Invariants & Recovery",
+          summary:
+            "Prove migration reversibility, reconcile dual writes, and stress connection pools",
+          groups: [
+            {
+              name: "Migration Safety & Rollback Proofs",
+              summary: "Verify zero-downtime schema transitions and canary rollback compatibility",
+              ids: ["13.9", "13.10", "13.11", "13.12"],
+            },
+            {
+              name: "Resource Exhaustion & Dead-Letter Drains",
+              summary: "Pinpoint memory leaks, drain poison queues, and test socket limits",
+              ids: ["13.13", "13.14", "13.15"],
+            },
+          ],
+        },
+      ],
+    },
   ],
 };

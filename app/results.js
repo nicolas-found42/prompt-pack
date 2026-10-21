@@ -37,6 +37,7 @@ export function renderResults(root, { rows, query, expandedCards, expandAll, has
   <div class="top">
     <span class="num">${row.id}</span>
     <span class="path">${path ? highlight(path.path.join(" › "), query) : ""}</span>
+    <span class="tag tag-session">${row.session === "fresh" ? "Fresh session" : "In-progress"}</span>
     <span class="tag">${row.pattern}</span>
     <span class="words">${row.words} words</span>
   </div>

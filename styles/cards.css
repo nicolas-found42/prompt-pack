@@ -191,6 +191,12 @@
   white-space: nowrap;
 }
 
+.tag-session {
+  border-color: var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
 .copy {
   align-self: flex-start;
   background: none;

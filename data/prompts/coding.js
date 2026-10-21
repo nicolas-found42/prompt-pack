@@ -1,6 +1,6 @@
 // Prompts for one category of the deck. One record per block, one id per
 // line, so two contributors adding prompts never edit the same lines.
-//  is the position each prompt had in the original deck; category
+// order is the position each prompt had in the original deck; category
 // membership lives in data/taxonomy.js, the single source of truth for
 // where a prompt sits in the navigation tree.
 export const PROMPTS = [
@@ -13,6 +13,8 @@ export const PROMPTS = [
     text: "Before we write any application code for what we are discussing, step back and evaluate whether this actually needs to be a built feature at all. Determine if the goal is really just retrieving information, generating a report, or guiding a dynamic workflow that an agent can execute directly on demand. If this can be solved entirely by asking you for the outcome, or by replacing hundreds of lines of rigid logic with a tiny entrypoint and a markdown playbook, show me that approach first and execute the outcome directly.",
     words: 90,
     pattern: "Execute",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 2,
@@ -23,6 +25,8 @@ export const PROMPTS = [
     text: "If I asked you right now to diagnose and debug intermittent or historical issues in the part of the system we are working on, do you currently have access to enough logs, state history, and diagnostic data to see what actually happened in the past? Inspect our current logging and telemetry setup. Tell me clearly what you can see right now, what blind spots exist, and how you recommend we introduce and expose the missing data so that you can automatically diagnose and verify these issues in the future.",
     words: 89,
     pattern: "Audit",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 3,
@@ -33,6 +37,8 @@ export const PROMPTS = [
     text: "I want to understand the exact state flow, bottlenecks, and behavior of the problem we are currently working on without building a permanent dashboard into the product. Generate a standalone, self-contained, interactive visual breakdown that maps out the current data, execution flow, and failure points so we can inspect it visually right now.",
     words: 53,
     pattern: "Visualize",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 4,
@@ -43,6 +49,8 @@ export const PROMPTS = [
     text: "Instead of building a rigid, multi-stage troubleshooting workflow in code with custom input routing for every edge case, turn this entire diagnostic flow into a concise markdown playbook that an agent can run interactively. Structure the playbook so the agent first asks the user to describe what went wrong in their own words, asks them to paste screenshots or logs directly if helpful, asks targeted follow-up questions when descriptions are vague until clear reproduction steps are established, inspects local environment facts, checks the source code and upstream issue tracker to see if the problem is already known or fixed, scrubs all secrets and personal data, and either resolves the local configuration issue or drafts a clean report on an existing issue rather than creating a duplicate.",
     words: 126,
     pattern: "Interactive",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 5,
@@ -53,6 +61,8 @@ export const PROMPTS = [
     text: "Review our current codebase, planned features, and open backlog items. Separate them into two categories: first, surface-level features or static views that a user or agent could simply prompt for on demand; second, core primitives, data pipelines, programmatic tool interfaces, and inline rendering capabilities that we must build so agents can dynamically access, control, and visualize the system. Recommend how we can strip away the unnecessary static features and refocus our engineering on the foundational primitives and data pipes.",
     words: 79,
     pattern: "Audit",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 6,
@@ -63,6 +73,8 @@ export const PROMPTS = [
     text: "Spin up two parallel delegates to independently explore performance wins, architectural bottlenecks, and reliability improvements across both the client and server layers of this project. Once both delegates finish their investigations, synthesize and compare their findings, prioritize the highest-leverage improvements, and start a fresh implementation workflow to execute the best changes cleanly.",
     words: 52,
     pattern: "Parallel agents",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 7,
@@ -73,6 +85,8 @@ export const PROMPTS = [
     text: "Look past the surface-level application code, syntax choices, and standard queries in this project, and analyze our deep system architecture. Examine how our connection layers, state persistence, process isolation, memory management, and execution runtimes actually operate under load. Identify how we can re-architect these foundational layers to keep connections warm, minimize resource overhead, and dramatically improve speed and cost efficiency.",
     words: 60,
     pattern: "Execute",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 8,
@@ -83,6 +97,8 @@ export const PROMPTS = [
     text: "This issue is still happening. Do not just guess from reading the static files—run the project yourself in this environment, trigger the exact flow that is failing, observe the live output and interface state, and figure out why the previous attempt did not resolve it. Once you identify the real root cause, apply the fix, run it again to verify the result firsthand, and capture proof that the issue is resolved.",
     words: 71,
     pattern: "Audit",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 38,
@@ -93,6 +109,8 @@ export const PROMPTS = [
     text: "Inspect all open git branches, uncommitted worktrees, stashes, and linked issue threads across this repository. Give me a decisive engineering triage: identify which branches are verified and ready to merge right now, which abandoned experiments or redundant PRs should be closed and deleted, and which in-progress changes conflict or overlap. For every active branch worth finishing, write the exact command or prompt I should run next to ship it cleanly.",
     words: 70,
     pattern: "Triage",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 39,
@@ -103,6 +121,8 @@ export const PROMPTS = [
     text: "Scan our dependency manifest, internal utility modules, and exposed feature endpoints across this codebase. Triage everything into three buckets: foundational primitives we actively rely on, bloated libraries or fragile wrappers that you can replace with a few lines of native code, and dead features or unused endpoints that should be deleted immediately. Execute the cleanup plan and verify that the test suite and runtime still pass.",
     words: 66,
     pattern: "Triage",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 40,
@@ -113,6 +133,8 @@ export const PROMPTS = [
     text: "Review the diffs, refactors, and code corrections I have asked you to make across our recent engineering sessions. Identify every recurring pattern in what I keep fixing—including error handling conventions, state ownership rules, naming boundaries, and test assertions. Distill these unspoken standards into a permanent repository instruction file and automated check scripts so you and future agents enforce them automatically before finishing any task.",
     words: 64,
     pattern: "Codify",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 41,
@@ -123,6 +145,8 @@ export const PROMPTS = [
     text: "Look through the one-off shell commands, inspection scripts, and database queries we have cobbled together during this debugging session. Instead of letting those workflows vanish in the chat history or building a bloated admin UI around them, package the highest-leverage operations into clean, composable CLI primitives with structured output and a concise markdown skill so you can invoke them directly on demand.",
     words: 62,
     pattern: "Codify",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 42,
@@ -133,6 +157,8 @@ export const PROMPTS = [
     text: "Before you write any code or lock in a schema for this system change, act as an interactive staff engineer and interview me. Inspect the existing codebase first so you do not ask obvious questions, then ask me targeted follow-up questions about real-world traffic patterns, failure tolerance, state recovery, and what we explicitly refuse to build. Once we have eliminated every ambiguous assumption together, execute the simplest primitive architecture directly.",
     words: 70,
     pattern: "Interactive",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 43,
@@ -143,6 +169,8 @@ export const PROMPTS = [
     text: "We have subtle edge cases hiding in this module's state transitions. Do not write a massive speculative test matrix yet—walk through the suspicious scenarios with me interactively. Run small live probes against the code, show me the actual outputs for ambiguous inputs, and ask me in plain terms what the domain invariant should be whenever behavior looks questionable. Once we confirm the exact rules, lock them in with targeted verification tests.",
     words: 71,
     pattern: "Interactive",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 44,
@@ -153,6 +181,8 @@ export const PROMPTS = [
     text: "Spin up two parallel delegates in isolated worktrees to solve this architectural bottleneck using competing strategies: have one delegate craft the smallest, lowest-risk surgical patch to the existing code, and have the other redesign the underlying primitive cleanly from first principles. Have both delegates run the full verification suite and benchmark their results, then compare the diffs side by side so we can merge the stronger implementation.",
     words: 67,
     pattern: "Parallel agents",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 45,
@@ -163,6 +193,8 @@ export const PROMPTS = [
     text: "Spin up two parallel delegates to stress-test the code we just wrote: task the first delegate with generating adversarial inputs, concurrency races, and malformed payloads to break the running implementation, while the second delegate traces the live failure states and hardens the underlying primitives. Reconcile their findings into a minimal, verified patch with reproducible regression proof.",
     words: 56,
     pattern: "Parallel agents",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 46,
@@ -173,6 +205,8 @@ export const PROMPTS = [
     text: "This change touches too many files to review safely as a flat text diff. Generate a standalone, self-contained interactive visual map of our current branch that groups modifications by architectural layer, traces the downstream blast radius across callers and state stores, and highlights which modified code paths have been verified by live execution versus left untested.",
     words: 56,
     pattern: "Visualize",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 47,
@@ -183,6 +217,8 @@ export const PROMPTS = [
     text: "Instead of building an internal admin page to inspect our data layer, inspect our current schemas, migrations, and live query plans and generate a standalone interactive visual explorer right now. Map out how records flow across tables, where N+1 queries or lock contentions happen under load, and which fields are redundant so we can spot structural simplifications at a glance.",
     words: 60,
     pattern: "Visualize",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 88,
@@ -193,6 +229,8 @@ export const PROMPTS = [
     text: "Do not treat this bug as an isolated one-off patch. After you identify the root cause, analyze the underlying pattern that allowed this class of failure to happen in the first place. Scan the entire codebase for every sibling occurrence of the same anti-pattern or missing check, fix them all together, and codify a lightweight automated check or workspace rule so that you and future agents catch this entire bug class before finishing any task.",
     words: 75,
     pattern: "Codify",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 89,
@@ -203,6 +241,8 @@ export const PROMPTS = [
     text: "Scan this repository for dead code paths, unused dependencies, stale feature flags, half-completed migrations, and temporary workarounds that have outlived their purpose. Give me a ruthless triage report: separate what can be safely deleted right now with zero behavior change, what should be consolidated into a single clean pattern, and what legacy areas are stable enough to leave alone. Execute the safe deletions first and verify that all checks still pass.",
     words: 71,
     pattern: "Triage",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 98,
@@ -213,6 +253,8 @@ export const PROMPTS = [
     text: "Instead of guessing where frame drops, memory churn, or query latency are coming from, inspect our hot execution paths and generate a standalone interactive visual breakdown of memory allocations, call depth, and data movement across a full cycle. Highlight every unnecessary copy, cache miss risk, and blocking call so we can pinpoint the exact bottleneck visually before touching a single line of code.",
     words: 63,
     pattern: "Visualize",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 99,
@@ -223,6 +265,8 @@ export const PROMPTS = [
     text: "We need to untangle a tightly coupled module in this repository without breaking downstream callers. Before proposing a file layout or moving headers around, inspect the dependency graph and interview me interactively about which boundaries need to stay stable, which internals should be hidden, and how the build target is consumed. Once we lock down the contract, execute the refactoring and verify the build end-to-end.",
     words: 65,
     pattern: "Interactive",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 108,
@@ -233,6 +277,8 @@ export const PROMPTS = [
     text: "Audit the user interface we have been building for accessibility problems a sighted, mouse-driven developer would never notice: missing labels on interactive controls, color-only meaning, unreadable contrast ratios, keyboard traps, and focus order that makes no sense. Run the checks against the live interface where you can, fix the highest-impact barriers directly in the code, and verify the fixes with an actual keyboard-only pass and a screen-reader or accessibility-tree inspection rather than just reading the markup.",
     words: 76,
     pattern: "Audit",
+    session: "in-progress",
+    tags: ["in-progress"],
   },
   {
     order: 109,
@@ -243,6 +289,8 @@ export const PROMPTS = [
     text: "Review the API surface we are about to ship or have just shipped—routes, method signatures, payload shapes, error formats, and versioning—as if you were the most annoying consumer of it. Flag inconsistent naming, missing idempotency, error responses that leak internals, undocumented required fields, and breaking changes hiding inside additive-looking diffs. Propose the corrected contract, apply the safe fixes directly, and verify the live endpoints behave the way the corrected contract promises.",
     words: 71,
     pattern: "Audit",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 110,
@@ -253,6 +301,8 @@ export const PROMPTS = [
     text: "A pull request just landed from a contributor outside our core team, and I do not want to rubber-stamp it or write a hostile review. Read the diff and the linked discussion first, then walk me through it interactively: ask me what the contributor's actual goal is, probe the risky hunks one at a time, and show me where the change conflicts with our conventions or introduces a subtle regression. Once we agree on what is genuinely wrong versus stylistically different, draft the exact review comments and apply the safe fixes yourself.",
     words: 92,
     pattern: "Interactive",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 111,
@@ -263,6 +313,8 @@ export const PROMPTS = [
     text: "Instead of guessing which endpoints or jobs are eating our infrastructure budget, instrument the live system and generate a standalone, self-contained interactive visual breakdown of cost and latency per request path, background job, and database query. Show me exactly where the money and milliseconds go, highlight the few paths that dominate the bill, and let me drill into each one visually so we can decide what to optimize or kill before touching any code.",
     words: 74,
     pattern: "Visualize",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
   {
     order: 112,
@@ -273,5 +325,7 @@ export const PROMPTS = [
     text: "We are about to ship a change that is hard to undo, and I want a real reversibility plan instead of a hope. Interview me interactively about what state this change touches, what the blast radius is if it goes wrong, and how fast we would need to react. Then produce a concrete rollback plan: the exact revert steps, the data-migration reversal, the feature-flag kill switch, and a live drill where you actually execute the rollback path in a safe environment and prove it restores the previous behavior.",
     words: 88,
     pattern: "Interactive",
+    session: "fresh",
+    tags: ["fresh-session"],
   },
 ];
