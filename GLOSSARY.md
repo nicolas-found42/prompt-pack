@@ -28,8 +28,11 @@ _Avoid_: section, folder, bucket (a Start here bucket is a different thing).
 
 **Pattern**:
 The interaction style a prompt is built around — Execute, Audit, Visualize,
-Interactive, Parallel agents, Triage, Codify. Patterns are the facet chips that
-filter the grid.
+Interactive, Parallel agents, Triage, Codify, Reconstruct, Reconcile. Patterns
+are the facet chips that filter the grid. `Reconstruct` covers recovering
+behavior, structure, or a format from an existing artifact; `Reconcile` covers
+proving agreement between two implementations, where the verdict or the
+enforced expectation is the deliverable.
 
 **Start here**:
 The curated default view: a small set of plain-language buckets shown only when
