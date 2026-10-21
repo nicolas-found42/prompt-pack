@@ -61,6 +61,7 @@
   --space-4: 16px;
   --space-5: 24px;
   --type-h1: clamp(1.45rem, 1.3rem + 1vw, 1.9rem);
+  --type-small: 0.85rem;
   --type-body: clamp(0.94rem, 0.9rem + 0.2vw, 1rem);
   --type-title: clamp(1.05rem, 1rem + 0.4vw, 1.2rem);
   --leading-body: 1.6;
