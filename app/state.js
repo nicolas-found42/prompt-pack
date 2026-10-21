@@ -6,7 +6,7 @@ export const state = {
   path: [],
   /** Active interaction patterns. Empty = no pattern filter. */
   patterns: [],
-  /** Search query. Non-empty queries search the whole deck, ignoring the selected path. */
+  /** Search query. Non-empty queries search the whole deck unless scoped is set. */
   q: "",
   /** Sort key: tree | title-asc | title-desc | pattern | words-asc | words-desc. */
   sort: "tree",
@@ -18,6 +18,12 @@ export const state = {
   expandedCards: new Set(),
   /** Whether every prompt body is expanded. */
   expandAll: false,
+  /** Ids of the "Start here" bucket shown in the default view. Empty = all prompts. */
+  featured: [],
+  /** True when a query is narrowed to the selected tree branch. */
+  scoped: false,
+  /** Master switch for the "/" and Ctrl/⌘+K shortcuts (WCAG 2.1.4). */
+  shortcuts: true,
 };
 
 /** The taxonomy key of the selected path, or "" when nothing is selected. */

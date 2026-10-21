@@ -1,0 +1,277 @@
+// Prompts for one category of the deck. One record per block, one id per
+// line, so two contributors adding prompts never edit the same lines.
+//  is the position each prompt had in the original deck; category
+// membership lives in data/taxonomy.js, the single source of truth for
+// where a prompt sits in the navigation tree.
+export const PROMPTS = [
+  {
+    order: 1,
+    id: "1.1",
+    title: "Outcome Over Feature Implementation",
+    purpose:
+      "Ask for the underlying outcome or a lightweight agent playbook instead of writing complex application code for a feature that only surfaces information or guides a workflow.",
+    text: "Before we write any application code for what we are discussing, step back and evaluate whether this actually needs to be a built feature at all. Determine if the goal is really just retrieving information, generating a report, or guiding a dynamic workflow that an agent can execute directly on demand. If this can be solved entirely by asking you for the outcome, or by replacing hundreds of lines of rigid logic with a tiny entrypoint and a markdown playbook, show me that approach first and execute the outcome directly.",
+    words: 90,
+    pattern: "Execute",
+  },
+  {
+    order: 2,
+    id: "1.2",
+    title: "Observability & Blind-Spot Audit",
+    purpose:
+      "Ask the agent what historical data it can and cannot see when debugging an issue, and have it design the exact instrumentation needed for future self-diagnosis.",
+    text: "If I asked you right now to diagnose and debug intermittent or historical issues in the part of the system we are working on, do you currently have access to enough logs, state history, and diagnostic data to see what actually happened in the past? Inspect our current logging and telemetry setup. Tell me clearly what you can see right now, what blind spots exist, and how you recommend we introduce and expose the missing data so that you can automatically diagnose and verify these issues in the future.",
+    words: 89,
+    pattern: "Audit",
+  },
+  {
+    order: 3,
+    id: "1.3",
+    title: "Ephemeral Problem & State Visualizer",
+    purpose:
+      "Generate a one-off interactive visual tool to reason through a complex bug, state machine, or data flow without building a permanent product feature.",
+    text: "I want to understand the exact state flow, bottlenecks, and behavior of the problem we are currently working on without building a permanent dashboard into the product. Generate a standalone, self-contained, interactive visual breakdown that maps out the current data, execution flow, and failure points so we can inspect it visually right now.",
+    words: 53,
+    pattern: "Visualize",
+  },
+  {
+    order: 4,
+    id: "1.4",
+    title: "Interactive Triage Playbook Conversion",
+    purpose:
+      "Replace brittle, multi-step troubleshooting code with a single conversational playbook that dynamically guides users, checks upstream fixes, and files clean issues.",
+    text: "Instead of building a rigid, multi-stage troubleshooting workflow in code with custom input routing for every edge case, turn this entire diagnostic flow into a concise markdown playbook that an agent can run interactively. Structure the playbook so the agent first asks the user to describe what went wrong in their own words, asks them to paste screenshots or logs directly if helpful, asks targeted follow-up questions when descriptions are vague until clear reproduction steps are established, inspects local environment facts, checks the source code and upstream issue tracker to see if the problem is already known or fixed, scrubs all secrets and personal data, and either resolves the local configuration issue or drafts a clean report on an existing issue rather than creating a duplicate.",
+    words: 126,
+    pattern: "Interactive",
+  },
+  {
+    order: 5,
+    id: "1.5",
+    title: "Primitive & Agent-Surface Architecture Audit",
+    purpose:
+      "Shift engineering effort away from static one-off buttons toward primitives, data pipes, and programmatic interfaces that let agents dynamically build what is needed.",
+    text: "Review our current codebase, planned features, and open backlog items. Separate them into two categories: first, surface-level features or static views that a user or agent could simply prompt for on demand; second, core primitives, data pipelines, programmatic tool interfaces, and inline rendering capabilities that we must build so agents can dynamically access, control, and visualize the system. Recommend how we can strip away the unnecessary static features and refocus our engineering on the foundational primitives and data pipes.",
+    words: 79,
+    pattern: "Audit",
+  },
+  {
+    order: 6,
+    id: "1.6",
+    title: "Parallel Sub-Agent Exploration & Handoff",
+    purpose:
+      "Orchestrate multiple parallel delegates to explore performance or architectural improvements independently before handing off implementation to a clean session.",
+    text: "Spin up two parallel delegates to independently explore performance wins, architectural bottlenecks, and reliability improvements across both the client and server layers of this project. Once both delegates finish their investigations, synthesize and compare their findings, prioritize the highest-leverage improvements, and start a fresh implementation workflow to execute the best changes cleanly.",
+    words: 52,
+    pattern: "Parallel agents",
+  },
+  {
+    order: 7,
+    id: "1.7",
+    title: "Deep Systems & Infrastructure Optimization",
+    purpose:
+      "Look past routine framework boilerplate to focus on high-leverage system architecture such as connection pooling, resource isolation, and runtime efficiency.",
+    text: "Look past the surface-level application code, syntax choices, and standard queries in this project, and analyze our deep system architecture. Examine how our connection layers, state persistence, process isolation, memory management, and execution runtimes actually operate under load. Identify how we can re-architect these foundational layers to keep connections warm, minimize resource overhead, and dramatically improve speed and cost efficiency.",
+    words: 60,
+    pattern: "Execute",
+  },
+  {
+    order: 8,
+    id: "1.8",
+    title: "Live Self-Execution & Verification",
+    purpose:
+      "Have the agent run the software itself, reproduce the failure directly, and verify its own fix end-to-end.",
+    text: "This issue is still happening. Do not just guess from reading the static files—run the project yourself in this environment, trigger the exact flow that is failing, observe the live output and interface state, and figure out why the previous attempt did not resolve it. Once you identify the real root cause, apply the fix, run it again to verify the result firsthand, and capture proof that the issue is resolved.",
+    words: 71,
+    pattern: "Audit",
+  },
+  {
+    order: 38,
+    id: "1.9",
+    title: "Backlog & Worktree Branch Triage",
+    purpose:
+      "Audit all local branches, stashes, and open issues to close dead experiments, merge ready work, and generate next-step implementation prompts.",
+    text: "Inspect all open git branches, uncommitted worktrees, stashes, and linked issue threads across this repository. Give me a decisive engineering triage: identify which branches are verified and ready to merge right now, which abandoned experiments or redundant PRs should be closed and deleted, and which in-progress changes conflict or overlap. For every active branch worth finishing, write the exact command or prompt I should run next to ship it cleanly.",
+    words: 70,
+    pattern: "Triage",
+  },
+  {
+    order: 39,
+    id: "1.10",
+    title: "Dependency & Feature Surface Triage",
+    purpose:
+      "Evaluate installed libraries, internal helpers, and UI endpoints to strip dead weight and replace heavy dependencies with native primitives.",
+    text: "Scan our dependency manifest, internal utility modules, and exposed feature endpoints across this codebase. Triage everything into three buckets: foundational primitives we actively rely on, bloated libraries or fragile wrappers that you can replace with a few lines of native code, and dead features or unused endpoints that should be deleted immediately. Execute the cleanup plan and verify that the test suite and runtime still pass.",
+    words: 66,
+    pattern: "Triage",
+  },
+  {
+    order: 40,
+    id: "1.11",
+    title: "Review Feedback & Convention Codification",
+    purpose:
+      "Extract repeated code review corrections and architectural fixes from recent sessions into durable repository instructions and lint rules.",
+    text: "Review the diffs, refactors, and code corrections I have asked you to make across our recent engineering sessions. Identify every recurring pattern in what I keep fixing—including error handling conventions, state ownership rules, naming boundaries, and test assertions. Distill these unspoken standards into a permanent repository instruction file and automated check scripts so you and future agents enforce them automatically before finishing any task.",
+    words: 64,
+    pattern: "Codify",
+  },
+  {
+    order: 41,
+    id: "1.12",
+    title: "Ad-Hoc Script to Agent Primitive Codification",
+    purpose:
+      "Convert one-off debugging commands and database queries from the chat history into clean, callable CLI primitives for future agent runs.",
+    text: "Look through the one-off shell commands, inspection scripts, and database queries we have cobbled together during this debugging session. Instead of letting those workflows vanish in the chat history or building a bloated admin UI around them, package the highest-leverage operations into clean, composable CLI primitives with structured output and a concise markdown skill so you can invoke them directly on demand.",
+    words: 62,
+    pattern: "Codify",
+  },
+  {
+    order: 42,
+    id: "1.13",
+    title: "Interactive Architecture & Constraint Elicitation",
+    purpose:
+      "Have the agent interview you about edge cases, load realities, and non-goals before writing a single line of schema or system code.",
+    text: "Before you write any code or lock in a schema for this system change, act as an interactive staff engineer and interview me. Inspect the existing codebase first so you do not ask obvious questions, then ask me targeted follow-up questions about real-world traffic patterns, failure tolerance, state recovery, and what we explicitly refuse to build. Once we have eliminated every ambiguous assumption together, execute the simplest primitive architecture directly.",
+    words: 70,
+    pattern: "Interactive",
+  },
+  {
+    order: 43,
+    id: "1.14",
+    title: "Interactive Edge-Case & Invariant Probe",
+    purpose:
+      "Walk through tricky state transitions conversationally with live runtime probes to uncover unspoken domain invariants.",
+    text: "We have subtle edge cases hiding in this module's state transitions. Do not write a massive speculative test matrix yet—walk through the suspicious scenarios with me interactively. Run small live probes against the code, show me the actual outputs for ambiguous inputs, and ask me in plain terms what the domain invariant should be whenever behavior looks questionable. Once we confirm the exact rules, lock them in with targeted verification tests.",
+    words: 71,
+    pattern: "Interactive",
+  },
+  {
+    order: 44,
+    id: "1.15",
+    title: "Parallel Refactor & Minimal-Diff Bakeoff",
+    purpose:
+      "Launch parallel sub-agents to attempt a surgical patch versus a clean primitive redesign and compare verified test outcomes.",
+    text: "Spin up two parallel delegates in isolated worktrees to solve this architectural bottleneck using competing strategies: have one delegate craft the smallest, lowest-risk surgical patch to the existing code, and have the other redesign the underlying primitive cleanly from first principles. Have both delegates run the full verification suite and benchmark their results, then compare the diffs side by side so we can merge the stronger implementation.",
+    words: 67,
+    pattern: "Parallel agents",
+  },
+  {
+    order: 45,
+    id: "1.16",
+    title: "Parallel Adversarial Bug-Hunt & Fuzzing",
+    purpose:
+      "Pit one sub-agent building and hardening a feature against a parallel sub-agent actively trying to break it with live inputs.",
+    text: "Spin up two parallel delegates to stress-test the code we just wrote: task the first delegate with generating adversarial inputs, concurrency races, and malformed payloads to break the running implementation, while the second delegate traces the live failure states and hardens the underlying primitives. Reconcile their findings into a minimal, verified patch with reproducible regression proof.",
+    words: 56,
+    pattern: "Parallel agents",
+  },
+  {
+    order: 46,
+    id: "1.17",
+    title: "Ephemeral Diff & Blast-Radius Visualizer",
+    purpose:
+      "Generate a disposable interactive visual map of a complex pull request showing call-graph impact and verification coverage.",
+    text: "This change touches too many files to review safely as a flat text diff. Generate a standalone, self-contained interactive visual map of our current branch that groups modifications by architectural layer, traces the downstream blast radius across callers and state stores, and highlights which modified code paths have been verified by live execution versus left untested.",
+    words: 56,
+    pattern: "Visualize",
+  },
+  {
+    order: 47,
+    id: "1.18",
+    title: "Ephemeral Schema & Query Lineage Visualizer",
+    purpose:
+      "Build a one-off visual inspector for data transformations, schema relationships, and query bottlenecks without adding permanent admin tooling.",
+    text: "Instead of building an internal admin page to inspect our data layer, inspect our current schemas, migrations, and live query plans and generate a standalone interactive visual explorer right now. Map out how records flow across tables, where N+1 queries or lock contentions happen under load, and which fields are redundant so we can spot structural simplifications at a glance.",
+    words: 60,
+    pattern: "Visualize",
+  },
+  {
+    order: 88,
+    id: "1.19",
+    title: "Recurring Bug Class & Guardrail Codification",
+    purpose:
+      "Turn a one-off bug fix into a systemic sweep and permanent guardrail that prevents the entire class of failure across the codebase.",
+    text: "Do not treat this bug as an isolated one-off patch. After you identify the root cause, analyze the underlying pattern that allowed this class of failure to happen in the first place. Scan the entire codebase for every sibling occurrence of the same anti-pattern or missing check, fix them all together, and codify a lightweight automated check or workspace rule so that you and future agents catch this entire bug class before finishing any task.",
+    words: 75,
+    pattern: "Codify",
+  },
+  {
+    order: 89,
+    id: "1.20",
+    title: "Legacy & Tech-Debt Triage Sweep",
+    purpose:
+      "Programmatically audit dead code, stale flags, and half-finished migrations to decide what to delete immediately and what to consolidate.",
+    text: "Scan this repository for dead code paths, unused dependencies, stale feature flags, half-completed migrations, and temporary workarounds that have outlived their purpose. Give me a ruthless triage report: separate what can be safely deleted right now with zero behavior change, what should be consolidated into a single clean pattern, and what legacy areas are stable enough to leave alone. Execute the safe deletions first and verify that all checks still pass.",
+    words: 71,
+    pattern: "Triage",
+  },
+  {
+    order: 98,
+    id: "1.21",
+    title: "Runtime Memory & Execution Hot-Path Visualizer",
+    purpose:
+      "Generate an interactive visual breakdown of memory layout, allocations, and hot-loop execution before writing optimization code.",
+    text: "Instead of guessing where frame drops, memory churn, or query latency are coming from, inspect our hot execution paths and generate a standalone interactive visual breakdown of memory allocations, call depth, and data movement across a full cycle. Highlight every unnecessary copy, cache miss risk, and blocking call so we can pinpoint the exact bottleneck visually before touching a single line of code.",
+    words: 63,
+    pattern: "Visualize",
+  },
+  {
+    order: 99,
+    id: "1.22",
+    title: "Interactive Architecture & Dependency Uncoupling",
+    purpose:
+      "Have the agent inspect build targets and interview you on API boundary constraints before executing a multi-file refactoring end-to-end.",
+    text: "We need to untangle a tightly coupled module in this repository without breaking downstream callers. Before proposing a file layout or moving headers around, inspect the dependency graph and interview me interactively about which boundaries need to stay stable, which internals should be hidden, and how the build target is consumed. Once we lock down the contract, execute the refactoring and verify the build end-to-end.",
+    words: 65,
+    pattern: "Interactive",
+  },
+  {
+    order: 108,
+    id: "1.23",
+    title: "Accessibility & Inclusive-Interface Audit",
+    purpose:
+      "Audit the UI for accessibility failures a sighted developer would never catch, and fix the highest-impact barriers directly.",
+    text: "Audit the user interface we have been building for accessibility problems a sighted, mouse-driven developer would never notice: missing labels on interactive controls, color-only meaning, unreadable contrast ratios, keyboard traps, and focus order that makes no sense. Run the checks against the live interface where you can, fix the highest-impact barriers directly in the code, and verify the fixes with an actual keyboard-only pass and a screen-reader or accessibility-tree inspection rather than just reading the markup.",
+    words: 76,
+    pattern: "Audit",
+  },
+  {
+    order: 109,
+    id: "1.24",
+    title: "API Surface & Contract Design Review",
+    purpose:
+      "Review a proposed or existing API surface for consistency, naming, versioning, and error-contract problems before it calcifies.",
+    text: "Review the API surface we are about to ship or have just shipped—routes, method signatures, payload shapes, error formats, and versioning—as if you were the most annoying consumer of it. Flag inconsistent naming, missing idempotency, error responses that leak internals, undocumented required fields, and breaking changes hiding inside additive-looking diffs. Propose the corrected contract, apply the safe fixes directly, and verify the live endpoints behave the way the corrected contract promises.",
+    words: 71,
+    pattern: "Audit",
+  },
+  {
+    order: 110,
+    id: "1.25",
+    title: "Interactive Third-Party Pull Request Review",
+    purpose:
+      "Walk through a pull request from an outside contributor conversationally, probing intent before approving or requesting changes.",
+    text: "A pull request just landed from a contributor outside our core team, and I do not want to rubber-stamp it or write a hostile review. Read the diff and the linked discussion first, then walk me through it interactively: ask me what the contributor's actual goal is, probe the risky hunks one at a time, and show me where the change conflicts with our conventions or introduces a subtle regression. Once we agree on what is genuinely wrong versus stylistically different, draft the exact review comments and apply the safe fixes yourself.",
+    words: 92,
+    pattern: "Interactive",
+  },
+  {
+    order: 111,
+    id: "1.26",
+    title: "Ephemeral Cost & Latency Budget Visualizer",
+    purpose:
+      "Generate a one-off interactive visual breakdown of where compute, memory, and money are actually being spent per request path.",
+    text: "Instead of guessing which endpoints or jobs are eating our infrastructure budget, instrument the live system and generate a standalone, self-contained interactive visual breakdown of cost and latency per request path, background job, and database query. Show me exactly where the money and milliseconds go, highlight the few paths that dominate the bill, and let me drill into each one visually so we can decide what to optimize or kill before touching any code.",
+    words: 74,
+    pattern: "Visualize",
+  },
+  {
+    order: 112,
+    id: "1.27",
+    title: "Interactive Rollback & Reversibility Planner",
+    purpose:
+      "Interview the team about blast radius and reversibility before a risky deploy, then produce a concrete rollback plan.",
+    text: "We are about to ship a change that is hard to undo, and I want a real reversibility plan instead of a hope. Interview me interactively about what state this change touches, what the blast radius is if it goes wrong, and how fast we would need to react. Then produce a concrete rollback plan: the exact revert steps, the data-migration reversal, the feature-flag kill switch, and a live drill where you actually execute the rollback path in a safe environment and prove it restores the previous behavior.",
+    words: 88,
+    pattern: "Interactive",
+  },
+];

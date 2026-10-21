@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
     <title>Universal Agent Prompt Deck</title>
     <!-- Load order is the API: tokens -> base -> layout -> components.
          Later files win equal-specificity ties, so keep this order. -->
@@ -12,6 +13,16 @@
     <link rel="stylesheet" href="styles/tree.css" />
     <link rel="stylesheet" href="styles/controls.css" />
     <link rel="stylesheet" href="styles/cards.css" />
+    <link rel="modulepreload" href="data/prompts/index.js" />
+    <link rel="modulepreload" href="data/prompts/coding.js" />
+    <link rel="modulepreload" href="data/prompts/writing.js" />
+    <link rel="modulepreload" href="data/prompts/research.js" />
+    <link rel="modulepreload" href="data/prompts/general.js" />
+    <link rel="modulepreload" href="data/prompts/meta.js" />
+    <link rel="modulepreload" href="data/prompts/learning.js" />
+    <link rel="modulepreload" href="data/prompts/communication.js" />
+    <link rel="modulepreload" href="data/prompts/life-admin.js" />
+    <link rel="modulepreload" href="data/featured.js" />
   </head>
   <body>
     <a class="skip-link" href="#body">Skip to prompts</a>
@@ -38,9 +49,18 @@
           </button>
           <div>
             <h1>Universal Agent Prompt Deck</h1>
-            <p class="sub">107 prompts · Category › Subcategory › Group</p>
+            <p class="sub" id="deck-sub">Category › Subcategory › Group</p>
           </div>
         </header>
+
+        <details class="howto">
+          <summary>How to use this deck</summary>
+          <ol>
+            <li>Browse the categories on the left, or search — search covers the whole deck.</li>
+            <li>Open a card to read the full prompt, then copy it into your agent.</li>
+            <li>Copy the link to share exactly the view you are looking at.</li>
+          </ol>
+        </details>
 
         <div class="controls-bar">
           <div class="controls">
@@ -54,21 +74,32 @@
               />
               <kbd class="kbd-hint" aria-hidden="true">⌘K</kbd>
             </div>
-            <label class="ctl"
-              >Sort
-              <select id="sort">
-                <option value="tree">Tree order</option>
-                <option value="title-asc">Title A–Z</option>
-                <option value="title-desc">Title Z–A</option>
-                <option value="pattern">Pattern</option>
-                <option value="words-asc">Shortest first</option>
-                <option value="words-desc">Longest first</option>
-              </select></label
-            >
-            <button class="ghost" id="toggle" aria-pressed="false">Expand all</button>
-            <span class="count" id="count"></span>
+            <details class="view-options">
+              <summary>View options</summary>
+              <div class="view-options-body">
+                <label class="ctl"
+                  >Sort
+                  <select id="sort">
+                    <option value="tree">Tree order</option>
+                    <option value="title-asc">Title A–Z</option>
+                    <option value="title-desc">Title Z–A</option>
+                    <option value="pattern">Pattern</option>
+                    <option value="words-asc">Shortest first</option>
+                    <option value="words-desc">Longest first</option>
+                  </select></label
+                >
+                <button class="ghost" id="toggle" aria-pressed="false">Expand all</button>
+                <label class="ctl ctl-check">
+                  <input type="checkbox" id="shortcuts-toggle" checked />
+                  Keyboard shortcuts
+                </label>
+              </div>
+            </details>
+            <span class="count" id="count" role="status"></span>
           </div>
         </div>
+
+        <p class="scope" id="scope" hidden></p>
 
         <div
           class="facets"
@@ -81,6 +112,10 @@
           <nav class="crumbs" id="crumbs" aria-label="Current location"></nav>
           <button class="ghost" id="copy-link">Copy link</button>
         </div>
+
+        <p class="branch-summary" id="branch-summary" hidden></p>
+
+        <section class="featured" id="featured" aria-label="Start here" hidden></section>
 
         <div class="grid" id="body" tabindex="-1"></div>
       </main>

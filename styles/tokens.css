@@ -5,9 +5,9 @@
  * file; components only ever reference var(--…).
  *
  * Organization: one :root block per theme (light default, dark via
- * prefers-color-scheme or data-theme="dark"), plus a shared block for the
- * theme-independent tokens (spacing, radii, type scale). Only --shadow-*
- * differ in structure per theme, so they live inside each theme block.
+ * prefers-color-scheme), plus a shared block for the theme-independent
+ * tokens (spacing, radii, type scale). Only --shadow-* differ in structure
+ * per theme, so they live inside each theme block.
  */
 
 /* Light theme (default). */
@@ -28,9 +28,9 @@
   color-scheme: light;
 }
 
-/* Dark theme: OS preference, unless the visitor forced light. */
+/* Dark theme: the visitor's OS preference. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root {
     --bg: #12151a;
     --surface: #1a1e25;
     --ink: #e7eaee;
@@ -46,24 +46,6 @@
     --shadow-pop: 0 12px 32px rgb(0 0 0 / 55%);
     color-scheme: dark;
   }
-}
-
-/* Dark theme: forced via data-theme="dark". */
-:root[data-theme="dark"] {
-  --bg: #12151a;
-  --surface: #1a1e25;
-  --ink: #e7eaee;
-  --muted: #9aa4b0;
-  --line: #2b313b;
-  --soft: #22272f;
-  --link: #85b2f2;
-  --link-soft: #223247;
-  --mark-bg: #ffe58a;
-  --mark-ink: #1b222c;
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 40%);
-  --shadow-lift: 0 8px 20px rgb(0 0 0 / 45%);
-  --shadow-pop: 0 12px 32px rgb(0 0 0 / 55%);
-  color-scheme: dark;
 }
 
 /* Theme-independent tokens: spacing scale, radii, type scale, box model,

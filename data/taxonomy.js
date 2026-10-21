@@ -91,6 +91,34 @@ export const TAXONOMY = {
             },
           ],
         },
+        {
+          name: "Interface & API Quality",
+          summary:
+            "Audit accessibility, API contracts, and third-party contributions before they calcify",
+          groups: [
+            {
+              name: "Design Reviews",
+              summary: "Audit API surfaces and accessibility before shipping",
+              ids: ["1.23", "1.24"],
+            },
+            {
+              name: "Contribution Review",
+              summary: "Probe third-party PRs and plan reversibility",
+              ids: ["1.25", "1.27"],
+            },
+          ],
+        },
+        {
+          name: "Resource Efficiency",
+          summary: "See where compute and money actually go before optimizing",
+          groups: [
+            {
+              name: "Cost Visibility",
+              summary: "Visualize cost and latency budgets per path",
+              ids: ["1.26"],
+            },
+          ],
+        },
       ],
     },
     {
@@ -173,6 +201,27 @@ export const TAXONOMY = {
               name: "Simulated Readership",
               summary: "Channeling skeptical personas to preempt real reader pushback",
               ids: ["2.14", "2.18"],
+            },
+          ],
+        },
+        {
+          name: "Derivative & Accessible Formats",
+          summary: "Release notes, locales, plain language, and presentation narratives",
+          groups: [
+            {
+              name: "Release Communication",
+              summary: "Draft release notes and changelogs from merged diffs",
+              ids: ["2.22"],
+            },
+            {
+              name: "Audience & Locale Adaptation",
+              summary: "Translate across locales and into plain language",
+              ids: ["2.23", "2.24"],
+            },
+            {
+              name: "Presentation Structure",
+              summary: "Map a talk's narrative arc before presenting",
+              ids: ["2.25"],
             },
           ],
         },
@@ -292,6 +341,22 @@ export const TAXONOMY = {
             },
           ],
         },
+        {
+          name: "Decision & Competitive Evidence",
+          summary: "Model thresholds, record decisions, and tear down competitors",
+          groups: [
+            {
+              name: "Decision Records",
+              summary: "Codify rationale and model evidence thresholds",
+              ids: ["3.22", "3.23"],
+            },
+            {
+              name: "Competitive & Context Intel",
+              summary: "Tear down alternatives and brief for meetings",
+              ids: ["3.24", "3.25"],
+            },
+          ],
+        },
       ],
     },
     {
@@ -382,6 +447,22 @@ export const TAXONOMY = {
             },
           ],
         },
+        {
+          name: "Money & Major Decisions",
+          summary: "Audit spending, pressure-test purchases, contracts, and career moves",
+          groups: [
+            {
+              name: "Spend & Purchase Triage",
+              summary: "Audit recurring spend and elicit big-purchase decisions",
+              ids: ["4.22", "4.23"],
+            },
+            {
+              name: "Contract & Career Moves",
+              summary: "Triage consumer contracts and bake off career materials",
+              ids: ["4.24", "4.25"],
+            },
+          ],
+        },
       ],
     },
     {
@@ -469,6 +550,181 @@ export const TAXONOMY = {
               name: "Outcome Assurance",
               summary: "Break work adversarially and expand narrow requests",
               ids: ["5.21", "5.22"],
+            },
+          ],
+        },
+        {
+          name: "Cost & Effectiveness",
+          summary: "Measure token spend, session health, and whether skills actually work",
+          groups: [
+            {
+              name: "Spend & Session Health",
+              summary: "Audit token budgets and visualize session drift",
+              ids: ["5.23", "5.26"],
+            },
+            {
+              name: "Effectiveness Verification",
+              summary: "Verify skills change outcomes and codify failure patterns",
+              ids: ["5.24", "5.25"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      category: "Learning",
+      subcategories: [
+        {
+          name: "Understanding & Mastery",
+          summary: "Build working mental models through adaptive explanation and interrogation",
+          groups: [
+            {
+              name: "Adaptive Explanation",
+              summary: "Explain at my level and interrogate my understanding",
+              ids: ["6.1", "6.2"],
+            },
+            {
+              name: "Misconception Correction",
+              summary: "Hunt wrong beliefs and drill the correct model",
+              ids: ["6.11"],
+            },
+          ],
+        },
+        {
+          name: "Learning Operations",
+          summary: "Plan, triage, and codify the learning itself",
+          groups: [
+            {
+              name: "Study Planning",
+              summary: "Sequence material into a plan and triage the backlog",
+              ids: ["6.3", "6.10"],
+            },
+            {
+              name: "Retention & Playbooks",
+              summary: "Retain via review and codify what worked",
+              ids: ["6.14"],
+            },
+          ],
+        },
+        {
+          name: "Skill & Language Building",
+          summary: "Build a skill or a language through practice and bakeoffs",
+          groups: [
+            {
+              name: "Skill Roadmaps",
+              summary: "Elicit a skill roadmap from real constraints",
+              ids: ["6.8"],
+            },
+            {
+              name: "Explanation Bakeoffs",
+              summary: "Compare teaching devices and practice a language",
+              ids: ["6.4", "6.7"],
+            },
+            {
+              name: "Knowledge Mapping",
+              summary: "Map what I know versus what is new",
+              ids: ["6.6"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      category: "Communication",
+      subcategories: [
+        {
+          name: "Message Production",
+          summary: "Draft, adapt, and dispatch messages in my voice",
+          groups: [
+            {
+              name: "Inbox & Replies",
+              summary: "Draft send-ready replies and polish rambles",
+              ids: ["7.1"],
+            },
+            {
+              name: "Audience Adaptation",
+              summary: "Adapt one message per audience from the same facts",
+              ids: ["7.4", "7.10"],
+            },
+          ],
+        },
+        {
+          name: "Difficult Conversations",
+          summary: "Rehearse, elicit, and deliver hard conversations",
+          groups: [
+            {
+              name: "Rehearsal",
+              summary: "Rehearse difficult conversations and negotiations",
+              ids: ["7.2", "7.6"],
+            },
+            {
+              name: "Feedback & Repair",
+              summary: "Audit tone, deliver feedback, and pay follow-up debt",
+              ids: ["7.3", "7.7", "7.12"],
+            },
+          ],
+        },
+        {
+          name: "Meeting & Incident Comms",
+          summary: "Run meetings to action and audit incident communication",
+          groups: [
+            {
+              name: "Incident Communication",
+              summary: "Audit incident comms and rewrite the templates",
+              ids: ["7.11"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      category: "Life Admin",
+      subcategories: [
+        {
+          name: "Money & Coverage",
+          summary: "Audit spending, decisions, and health records",
+          groups: [
+            {
+              name: "Finance Triage",
+              summary: "Audit spending and elicit financial decisions",
+              ids: ["8.1", "8.2"],
+            },
+            {
+              name: "Health Records",
+              summary: "Consolidate medical records into one picture",
+              ids: ["8.4"],
+            },
+          ],
+        },
+        {
+          name: "Travel & Home",
+          summary: "Plan trips and sequence home maintenance",
+          groups: [
+            {
+              name: "Travel Planning",
+              summary: "Consolidate itineraries and bake off options",
+              ids: ["8.5", "8.6"],
+            },
+            {
+              name: "Home Upkeep",
+              summary: "Triage repairs and decide on renovations",
+              ids: ["8.7", "8.8"],
+            },
+          ],
+        },
+        {
+          name: "Daily Life Systems",
+          summary: "Meals, fitness, habits, and life changes",
+          groups: [
+            {
+              name: "Meals & Fitness",
+              summary: "Plan meals and visualize recovery",
+              ids: ["8.9", "8.10"],
+            },
+            {
+              name: "Life Changes",
+              summary: "Simulate major life changes before committing",
+              ids: ["8.13"],
             },
           ],
         },

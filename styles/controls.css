@@ -1,3 +1,94 @@
+/* How-to disclosure and view-options disclosure ------------------------------ */
+
+.howto {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-3);
+  font-size: var(--type-small);
+}
+
+.howto summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--link);
+}
+
+.howto ol {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-5);
+  color: var(--muted);
+}
+
+.howto li {
+  margin: 2px 0;
+}
+
+.view-options {
+  font-size: var(--type-small);
+  color: var(--muted);
+}
+
+.view-options summary {
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  list-style: none;
+}
+
+.view-options summary::-webkit-details-marker {
+  display: none;
+}
+
+.view-options summary::before {
+  content: "▸ ";
+}
+
+.view-options[open] summary::before {
+  content: "▾ ";
+}
+
+.view-options-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-2) 0;
+}
+
+.ctl-check {
+  cursor: pointer;
+  user-select: none;
+}
+
+.scope {
+  margin: var(--space-2) 0 0;
+  color: var(--muted);
+  font-size: var(--type-small);
+}
+
+.scope strong {
+  color: var(--ink);
+}
+
+.linklike {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--link);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.branch-summary {
+  margin: 0 0 var(--space-2);
+  color: var(--muted);
+}
+
 /* Controls: search box, sort select, buttons, pattern chips, breadcrumb. */
 
 .controls {

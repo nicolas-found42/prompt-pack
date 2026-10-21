@@ -1,0 +1,256 @@
+// Prompts for one category of the deck. One record per block, one id per
+// line, so two contributors adding prompts never edit the same lines.
+//  is the position each prompt had in the original deck; category
+// membership lives in data/taxonomy.js, the single source of truth for
+// where a prompt sits in the navigation tree.
+export const PROMPTS = [
+  {
+    order: 16,
+    id: "3.1",
+    title: "Disparate Source & Data Unification",
+    purpose:
+      "Ask the agent to directly ingest, normalize, and merge scattered exports and documents instead of building custom parsing tools.",
+    text: "Examine all the raw data exports, documents, logs, and notes scattered across this workspace. Instead of writing a permanent software pipeline to manage them, directly normalize, cross-reference, and combine all of these disparate records into a single unified dataset and summary. Surface the most interesting long-term patterns, anomalies, and connections across the combined history.",
+    words: 54,
+    pattern: "Execute",
+  },
+  {
+    order: 17,
+    id: "3.2",
+    title: "On-Demand Interactive Research Visualizer",
+    purpose: "Turn complex findings into an interactive visual exploration interface on the fly.",
+    text: "Take all the findings, metrics, and comparisons we have uncovered in this research session and build a clean, self-contained interactive visual report. Make it easy to filter, compare, and inspect the underlying data points visually so I can explore the patterns directly and ask follow-up questions from the visual breakdown.",
+    words: 50,
+    pattern: "Visualize",
+  },
+  {
+    order: 18,
+    id: "3.3",
+    title: "Parallel Hypothesis Delegation",
+    purpose:
+      "Use parallel sub-agents to investigate competing hypotheses simultaneously and synthesize the truth.",
+    text: "Spin up parallel research delegates to investigate the question we are exploring from opposing angles: have one delegate gather the strongest primary evidence supporting our main hypothesis, and have another rigorously search for counter-evidence, edge cases, and alternative explanations. Synthesize their findings side by side, resolve the contradictions, and present a verified conclusion.",
+    words: 53,
+    pattern: "Parallel agents",
+  },
+  {
+    order: 19,
+    id: "3.4",
+    title: "Information Access & Source Gap Introspection",
+    purpose:
+      "Ask the agent what data it cannot currently see that would be required to answer a research question with certainty.",
+    text: "Based on the question we are trying to answer right now, evaluate the data and sources currently available to you in this workspace. Tell me explicitly what information you can verify directly, what remains speculative because the data is missing, and what specific files, connections, or external sources I should expose to you so you can answer this with complete certainty.",
+    words: 61,
+    pattern: "Audit",
+  },
+  {
+    order: 20,
+    id: "3.5",
+    title: "Anomaly-to-Root-Cause Investigation Chain",
+    purpose:
+      "Trace an unexpected spike or anomaly in a summary report all the way back through underlying sources to actionable recommendations.",
+    text: "Something in our latest metrics and reports looks unusually high and out of pattern. Go through our underlying source data, usage logs, and historical records to trace exactly what caused this spike. Break down the root causes by impact, identify what is driving the inefficiency, and give me a concrete execution plan to bring it back down immediately.",
+    words: 58,
+    pattern: "Execute",
+  },
+  {
+    order: 21,
+    id: "3.6",
+    title: "Cross-Session Research Audit & Deduplication",
+    purpose:
+      "Audit all past research threads and notes to surface forgotten conclusions and prevent duplicate work.",
+    text: "Audit all existing research notes, past transcripts, and open investigation threads in this workspace. Identify which questions we have already answered, where we have duplicate or overlapping investigations running, which stale threads should be closed out, and what high-value open questions remain unresolved. Consolidate the scattered findings into one clean master index.",
+    words: 52,
+    pattern: "Audit",
+  },
+  {
+    order: 22,
+    id: "3.7",
+    title: "Primary Verification & Assumption Audit",
+    purpose:
+      "Force the agent to verify every claim against primary artifacts and explain any unverified gaps.",
+    text: "Review the conclusions and summary points we just generated. Audit every single claim against the primary source files and raw data available in this environment. Flag any statement that relies on assumption rather than direct verification, run the necessary checks to verify those points directly, and explain if any missing tool or access prevented full verification.",
+    words: 56,
+    pattern: "Audit",
+  },
+  {
+    order: 58,
+    id: "3.8",
+    title: "Source Credibility & Signal-to-Noise Triage",
+    purpose:
+      "Audit a pile of collected papers, docs, and benchmarks to discard secondary fluff and rank primary sources worth deep analysis.",
+    text: "Go through all the papers, articles, benchmark logs, and reference files we have dropped into this workspace. Run a strict source triage: separate primary empirical artifacts and first-hand technical post-mortems from derivative summaries, marketing fluff, or outdated speculation. Archive the low-signal material, rank the primary sources by direct relevance to our core question, and extract the verified claims from the top tier right now.",
+    words: 64,
+    pattern: "Triage",
+  },
+  {
+    order: 59,
+    id: "3.9",
+    title: "Open Hypothesis & Investigation Queue Triage",
+    purpose:
+      "Prioritize competing research questions by decision impact so you stop rabbit-holing on low-leverage curiosities.",
+    text: "Review all the open research questions, unresolved anomalies, and side investigations we have accumulated in this project. Triage the queue by actual decision leverage: identify which questions will directly change what we build or decide today, which ones can be answered immediately with data already in this environment, and which low-impact rabbit holes we should close out immediately. Execute the highest-leverage check first.",
+    words: 63,
+    pattern: "Triage",
+  },
+  {
+    order: 60,
+    id: "3.10",
+    title: "Recurring Evaluation Rubric & Benchmark Codification",
+    purpose:
+      "Distill ad-hoc vendor, model, or architecture comparisons into a standardized, repeatable evaluation skill and scoring harness.",
+    text: "Look at the criteria, stress tests, failure checks, and cost calculations we used to evaluate options in this research thread. Instead of reinventing our comparison methodology from scratch next time, codify this exact evaluation rubric and data-collection workflow into a reusable markdown skill and lightweight verification script so future evaluations run against the exact same standard automatically.",
+    words: 57,
+    pattern: "Codify",
+  },
+  {
+    order: 61,
+    id: "3.11",
+    title: "Data Cleaning & Normalization Playbook Codification",
+    purpose:
+      "Capture the exact heuristics used to clean, join, and deduplicate messy raw exports into a reusable research skill.",
+    text: "Review all the schema mappings, unit conversions, outlier filters, and deduplication rules you just applied to unify our raw research exports. Package those exact normalization heuristics and validation assertions into a clean markdown playbook and callable helper primitive so that whenever new raw data drops into this workspace, you can ingest, verify, and merge it into the master dataset in one step.",
+    words: 62,
+    pattern: "Codify",
+  },
+  {
+    order: 62,
+    id: "3.12",
+    title: "Interactive Hypothesis & Scope Narrowing",
+    purpose:
+      "Have the agent interview you to sharpen a broad research prompt into falsifiable questions tied to a real decision before searching.",
+    text: "Before you launch a massive, sprawling research sweep on this topic, act as an interactive research partner to narrow our scope. Ask me targeted questions about what concrete decision depends on this answer, what constraints or disqualifiers already rule out half the field, and what baseline data or screenshots I can drop into this chat right now. Once we have locked onto a sharp, falsifiable question, execute the deep investigation.",
+    words: 70,
+    pattern: "Interactive",
+  },
+  {
+    order: 63,
+    id: "3.13",
+    title: "Interactive Anomaly & Domain Context Interrogation",
+    purpose:
+      "Combine automated statistical anomaly detection with an interactive interview to separate real breakthroughs from logging artifacts.",
+    text: "Scan our dataset and surface the top statistical anomalies, sudden regime shifts, and unexpected correlations that stand out in the raw numbers. Instead of guessing what caused them in a vacuum, walk through each anomaly with me interactively: show me the exact slice of data, ask me what operational events or unlogged real-world changes happened around those timestamps, and help me separate genuine insights from instrumentation noise.",
+    words: 67,
+    pattern: "Interactive",
+  },
+  {
+    order: 64,
+    id: "3.14",
+    title: "Parallel Multi-Corpus & Method Triangulation",
+    purpose:
+      "Dispatch parallel sub-agents across distinct data sources—quantitative logs, qualitative user transcripts, and external benchmarks—to triangulate truth.",
+    text: "Spin up three parallel research delegates to investigate this question across completely independent evidence streams: have one analyze our raw quantitative telemetry and logs, have the second mine qualitative user reports and support transcripts, and have the third gather external benchmarks and primary literature. Cross-examine where all three streams agree, expose where they contradict each other, and synthesize a verified conclusion.",
+    words: 61,
+    pattern: "Parallel agents",
+  },
+  {
+    order: 65,
+    id: "3.15",
+    title: "Parallel Devil's Advocate & Pre-Mortem Red-Team",
+    purpose:
+      "Run a parallel red-team sub-agent to attack your emerging research conclusion using the same primary dataset.",
+    text: "We are converging on a recommendation, and I want to make sure confirmation bias is not blinding us. Spin up two parallel delegates over our primary data: task one with building the strongest case for our current conclusion, and task the other with acting as a ruthless red-team that searches the exact same raw records for survivorship bias, confounding variables, and counterexamples. Present the clash and tell me what actually holds up.",
+    words: 72,
+    pattern: "Parallel agents",
+  },
+  {
+    order: 66,
+    id: "3.16",
+    title: "Ephemeral Contradiction & Citation Graph Visualizer",
+    purpose:
+      "Generate a standalone interactive visual map showing which claims in a research corpus corroborate or contradict each other.",
+    text: "Instead of giving me a long prose literature review, build a standalone, self-contained interactive visual map of all the sources and data points in this workspace. Visually connect claims that corroborate each other, highlight direct contradictions between sources, and trace which secondary assertions actually rest on a single unverified origin, so I can inspect the evidence topology at a glance.",
+    words: 60,
+    pattern: "Visualize",
+  },
+  {
+    order: 67,
+    id: "3.17",
+    title: "Ephemeral Sensitivity & Tradeoff Simulator",
+    purpose:
+      "Turn static research estimates into an interactive visual simulator where you can drag assumptions and see when conclusions flip.",
+    text: "Our research conclusion depends on several uncertain assumptions around volume, latency, and cost. Build a standalone interactive visual simulator right now using the numbers we have gathered so I can adjust the key input assumptions with live sliders, see the exact threshold where one option overtakes another, and identify which single variable drives the most variance.",
+    words: 56,
+    pattern: "Visualize",
+  },
+  {
+    order: 92,
+    id: "3.18",
+    title: "Interactive Decision & Trade-Off Matrix",
+    purpose:
+      "Have the agent interview you to establish your true constraints and weighting criteria before translating research into a concrete recommendation.",
+    text: "We have gathered plenty of raw research and options, and now we need to make a definitive choice. Before you rank the options, interview me interactively to lock down our real constraints, non-negotiable requirements, risk tolerance, and what trade-offs we are actually willing to accept. Once my answers are clear, evaluate every option against those exact criteria using our verified research data and give me a decisive recommendation.",
+    words: 68,
+    pattern: "Interactive",
+  },
+  {
+    order: 93,
+    id: "3.19",
+    title: "Repeatable Research Playbook Codification",
+    purpose:
+      "Extract the exact query patterns, data normalization steps, and verification rules from a successful investigation into a reusable skill.",
+    text: "Review the entire investigation we just completed—including which sources yielded the highest-signal data, how we cleaned and cross-referenced the records, what false leads we had to discard, and how we verified the final numbers. Distill this methodology into a clean, repeatable research playbook so that next time new data drops or we need to refresh this analysis, you can execute the entire investigation end-to-end from a single prompt.",
+    words: 68,
+    pattern: "Codify",
+  },
+  {
+    order: 102,
+    id: "3.20",
+    title: "Autonomous Schema & Corpus Discovery",
+    purpose:
+      "Point the agent at an unfamiliar database or repository and have it autonomously map schemas, relationships, and anomalies without manual hand-holding.",
+    text: "Point yourself directly at this unfamiliar database, codebase, or raw archive and map out its structure without waiting for me to explain the schema. Run exploratory queries and file inspections to discover the core tables, entity relationships, edge-case anomalies, and undocumented conventions on your own, then hand me a verified architectural map and the highest-leverage questions we can answer with this data.",
+    words: 62,
+    pattern: "Execute",
+  },
+  {
+    order: 103,
+    id: "3.21",
+    title: "Primary-Artifact Signal-to-Noise Triage",
+    purpose:
+      "Filter a pile of repositories, papers, and references down to original implementations and empirical benchmarks before deep analysis.",
+    text: "Scan all the candidate repositories, articles, datasets, and references we have collected for this topic. Triage them by actual primary-source signal: separate original implementations and raw empirical benchmarks from derivative summaries, outdated forks, and surface-level commentary. Archive the low-signal noise and focus our deep analysis exclusively on the primary artifacts that actually prove how the system works.",
+    words: 57,
+    pattern: "Triage",
+  },
+  {
+    order: 117,
+    id: "3.22",
+    title: "Ephemeral Cost-Benefit & Evidence Threshold Visualizer",
+    purpose:
+      "Turn a research conclusion resting on uncertain numbers into an interactive visual showing exactly which evidence would flip the decision.",
+    text: "Our research conclusion rests on several estimates we are not fully sure about—adoption rates, cost per unit, time saved. Instead of presenting a single confident number, build a standalone interactive visual model of the decision where I can adjust each uncertain input with live sliders and see exactly which piece of evidence would flip the recommendation. Show the threshold values, rank the uncertainties by how much they move the outcome, and tell me the three cheapest ways to get the evidence that would settle this.",
+    words: 85,
+    pattern: "Visualize",
+  },
+  {
+    order: 118,
+    id: "3.23",
+    title: "Decision Log & Rationale Codification",
+    purpose:
+      "Convert a concluded investigation into a durable decision record that captures the options, the evidence, and why the losers lost.",
+    text: "We just made a decision after a long investigation, and next quarter someone will re-litigate it from scratch because the reasoning only lives in chat. Codify it into a durable decision record: the exact question we were answering, the options we considered, the evidence that decided it, the assumptions we accepted, and what would change our mind. Write it as a concise permanent markdown record in the repo, and link it from the code or config it governs so the next person finds the reasoning at the point of decision.",
+    words: 90,
+    pattern: "Codify",
+  },
+  {
+    order: 119,
+    id: "3.24",
+    title: "Parallel Competitor & Alternative Teardown",
+    purpose:
+      "Tear down competing products or approaches in parallel delegates to find what they do better and what we should steal.",
+    text: "Before we commit to our own approach, I want a proper teardown of the competing products, tools, or methodologies in this space—not a feature checklist, but an honest map of what they do better than we do. Spin up parallel delegates, one per serious competitor or alternative, to dissect their actual behavior, pricing, failure modes, and the complaints users have about them. Synthesize their findings into the specific things we should steal, the traps they fell into that we should avoid, and the gaps nobody is serving.",
+    words: 87,
+    pattern: "Parallel agents",
+  },
+  {
+    order: 120,
+    id: "3.25",
+    title: "Meeting-Prep Briefing From Workspace Evidence",
+    purpose:
+      "Assemble everything known about the people and topics in an upcoming meeting into a briefing, instead of walking in cold.",
+    text: "I have a meeting coming up and I do not want to walk in cold or waste the first ten minutes on context. Pull together everything in this workspace about the people, projects, and open threads involved—past decisions, unresolved questions, commitments I have made, and where we last left each thread. Synthesize it into a tight pre-meeting briefing: the three things I should push for, the two landmines to avoid stepping on, and the exact questions I should ask to unblock whatever is stuck.",
+    words: 84,
+    pattern: "Execute",
+  },
+];
