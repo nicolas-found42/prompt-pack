@@ -16,7 +16,13 @@ const HAYSTACK = new Map(
   ROWS.map((row) => {
     const path = PATH_BY_ID.get(row.id);
     const pathText = path ? path.path.join(" ") : "";
-    return [row.id, fold(`${row.title} ${row.purpose} ${row.text} ${pathText}`)];
+    const tagsText = Array.isArray(row.tags) ? row.tags.join(" ") : "";
+    return [
+      row.id,
+      fold(
+        `${row.title} ${row.purpose} ${row.text} ${pathText} ${row.pattern} ${row.session || ""} ${tagsText}`,
+      ),
+    ];
   }),
 );
 

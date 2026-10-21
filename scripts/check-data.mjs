@@ -34,10 +34,22 @@ for (const row of PROMPTS) {
 
 // Every record has the required fields with the right shapes.
 for (const row of PROMPTS) {
-  for (const field of ["id", "title", "purpose", "text", "pattern"]) {
+  for (const field of ["id", "title", "purpose", "text", "pattern", "session"]) {
     if (typeof row[field] !== "string" || !row[field].trim()) {
       problems.push(`record "${row.id}": missing or empty "${field}"`);
     }
+  }
+  if (!["fresh", "in-progress"].includes(row.session)) {
+    problems.push(
+      `record "${row.id}": invalid session "${row.session}" (must be "fresh" or "in-progress")`,
+    );
+  }
+  if (
+    !Array.isArray(row.tags) ||
+    !row.tags.length ||
+    row.tags.some((t) => typeof t !== "string" || !t.trim())
+  ) {
+    problems.push(`record "${row.id}": "tags" must be a non-empty array of strings`);
   }
   if (!Number.isInteger(row.order)) problems.push(`record "${row.id}": "order" is not an integer`);
   if (!Number.isInteger(row.words)) problems.push(`record "${row.id}": "words" is not an integer`);

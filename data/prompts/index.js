@@ -13,6 +13,9 @@ import { PROMPTS as communication } from "./communication.js";
 import { PROMPTS as lifeAdmin } from "./life-admin.js";
 import { PROMPTS as reconstruction } from "./reconstruction.js";
 import { PROMPTS as agency } from "./agency.js";
+import { PROMPTS as evaluation } from "./evaluation.js";
+import { PROMPTS as security } from "./security.js";
+import { PROMPTS as operations } from "./operations.js";
 
 export const PROMPTS = [
   ...coding,
@@ -25,4 +28,7 @@ export const PROMPTS = [
   ...lifeAdmin,
   ...reconstruction,
   ...agency,
+  ...evaluation,
+  ...security,
+  ...operations,
 ];
