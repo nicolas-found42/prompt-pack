@@ -14,19 +14,20 @@
   height: 100vh;
   overflow-y: auto;
   overscroll-behavior: contain;
-  background: var(--bg);
+  background: var(--surface);
 }
 
 .sidebar-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 14px 14px 6px;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4) var(--space-2);
   position: sticky;
   top: 0;
-  background: var(--bg);
+  background: var(--surface);
   z-index: 2;
+  border-bottom: 1px solid var(--line);
 }
 
 .sidebar-title {
@@ -39,24 +40,42 @@
 
 .main {
   min-width: 0;
-  padding: 18px 22px 64px;
+  padding: var(--space-5) var(--space-5) 96px;
 }
 
 .masthead {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding-top: var(--space-1);
 }
 
 h1 {
-  font-size: 1.4rem;
-  margin: 0 0 2px;
+  font-size: var(--type-h1);
+  line-height: 1.25;
+  margin: 0 0 4px;
 }
 
 .sub {
   color: var(--muted);
   margin: 0;
+}
+
+/* The search/sort row stays pinned while the results scroll under it. */
+.controls-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+  padding: var(--space-3) var(--space-5);
+  margin: 0 calc(-1 * var(--space-5));
+  border-bottom: 1px solid var(--line);
+}
+
+.controls-bar .controls {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 /* Drawer (small screens). The sidebar becomes an off-canvas panel opened
@@ -107,7 +126,11 @@ h1 {
     pointer-events: auto;
   }
   .main {
-    padding: 16px 14px 56px;
+    padding: var(--space-4) var(--space-3) 72px;
+  }
+  .controls-bar {
+    padding: var(--space-2) var(--space-3);
+    margin: 0 calc(-1 * var(--space-3));
   }
   .grid {
     grid-template-columns: 1fr;

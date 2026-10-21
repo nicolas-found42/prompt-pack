@@ -25,8 +25,23 @@ The deck is two panes: a taxonomy tree on the left and the matching prompts on t
 | Breadcrumb       | Shows the current path; click a crumb to jump back up, or Copy link to share |
 | Expand all       | Opens every prompt body at once; each card also opens on its own             |
 
+Keyboard shortcuts:
+
+| Key               | Action                                                                              |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| `/` or `Ctrl/⌘+K` | Focus the search box (and select its text)                                          |
+| `Esc`             | Clear the search; press again to jump back to All prompts; closes the mobile drawer |
+| `↑` / `↓`         | Move between tree nodes (when the tree has focus)                                   |
+| `→` / `←`         | Expand / collapse a tree node, or move to its first child / parent                  |
+| `Enter` / `Space` | Select the focused tree node                                                        |
+
+The search/sort bar stays pinned while you scroll, and a skip link jumps
+straight to the prompt grid for keyboard and screen-reader users.
+
 A search always covers the whole deck — the tree selection only scopes the results
 when the search box is empty. The counter shows how many of the 107 prompts match.
+With no results, a clear panel offers a one-click reset of the search, pattern chips
+and tree selection.
 
 ## Development
 

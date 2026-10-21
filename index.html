@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/cards.css" />
   </head>
   <body>
+    <a class="skip-link" href="#body">Skip to prompts</a>
     <div class="app">
       <aside class="sidebar" id="sidebar" aria-label="Prompt taxonomy">
         <div class="sidebar-head">
@@ -41,26 +42,32 @@
           </div>
         </header>
 
-        <div class="controls">
-          <input
-            id="q"
-            type="search"
-            placeholder="Search titles, purposes and prompt text"
-            aria-label="Search prompts"
-          />
-          <label class="ctl"
-            >Sort
-            <select id="sort">
-              <option value="tree">Tree order</option>
-              <option value="title-asc">Title A–Z</option>
-              <option value="title-desc">Title Z–A</option>
-              <option value="pattern">Pattern</option>
-              <option value="words-asc">Shortest first</option>
-              <option value="words-desc">Longest first</option>
-            </select></label
-          >
-          <button class="ghost" id="toggle" aria-pressed="false">Expand all</button>
-          <span class="count" id="count"></span>
+        <div class="controls-bar">
+          <div class="controls">
+            <div class="search-wrap">
+              <input
+                id="q"
+                type="search"
+                placeholder="Search titles, purposes and prompt text"
+                aria-label="Search prompts"
+                aria-keyshortcuts="Control+k Meta+k /"
+              />
+              <kbd class="kbd-hint" aria-hidden="true">⌘K</kbd>
+            </div>
+            <label class="ctl"
+              >Sort
+              <select id="sort">
+                <option value="tree">Tree order</option>
+                <option value="title-asc">Title A–Z</option>
+                <option value="title-desc">Title Z–A</option>
+                <option value="pattern">Pattern</option>
+                <option value="words-asc">Shortest first</option>
+                <option value="words-desc">Longest first</option>
+              </select></label
+            >
+            <button class="ghost" id="toggle" aria-pressed="false">Expand all</button>
+            <span class="count" id="count"></span>
+          </div>
         </div>
 
         <div
@@ -75,7 +82,7 @@
           <button class="ghost" id="copy-link">Copy link</button>
         </div>
 
-        <div class="grid" id="body"></div>
+        <div class="grid" id="body" tabindex="-1"></div>
       </main>
     </div>
 

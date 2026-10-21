@@ -141,12 +141,12 @@ function render() {
   }
   for (const key of state.closed) expanded.delete(key);
   currentExpanded = expanded;
-
   renderResults(els.body, {
     rows: sortRows(visible),
     query,
     expandedCards: state.expandedCards,
     expandAll: state.expandAll,
+    hasFilters: Boolean(query || state.patterns.length || state.path.length),
   });
   renderFacets(els.facets, {
     patterns: PATTERNS,
@@ -166,6 +166,9 @@ function selectNode(key) {
   expandPathTo(state.path);
   render();
   syncUrl("push");
+  // On small screens the tree is an off-canvas drawer: close it so the
+  // selected prompts are immediately visible.
+  if (document.body.classList.contains("drawer-open")) setDrawer(false);
 }
 
 function toggleNode(key) {
@@ -299,6 +302,18 @@ els.body.addEventListener(
 );
 
 els.body.addEventListener("click", async (event) => {
+  const clear = event.target.closest("#clear-filters");
+  if (clear) {
+    state.q = "";
+    els.q.value = "";
+    clearPatterns();
+    selectPath([]);
+    state.closed.clear();
+    render();
+    syncUrl("push");
+    els.q.focus();
+    return;
+  }
   const button = event.target.closest(".copy");
   if (!button) return;
   const card = button.closest(".card");
@@ -310,15 +325,46 @@ els.body.addEventListener("click", async (event) => {
     button.textContent = "Copy";
   }, 1400);
 });
-
 els.drawerOpen.addEventListener("click", () =>
   setDrawer(!document.body.classList.contains("drawer-open")),
 );
 els.drawerClose.addEventListener("click", () => setDrawer(false));
 els.scrim.addEventListener("click", () => setDrawer(false));
 
+const FOCUSABLE = new Set(["INPUT", "SELECT", "TEXTAREA"]);
+
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") setDrawer(false);
+  const inField = FOCUSABLE.has(event.target.tagName) || event.target.isContentEditable;
+
+  // "/" or Ctrl/Cmd+K anywhere focuses search; Escape clears or steps back.
+  const isFocusSearch =
+    (event.key === "/" && !inField) ||
+    ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k");
+  if (isFocusSearch) {
+    event.preventDefault();
+    els.q.focus();
+    els.q.select();
+    return;
+  }
+  if (event.key === "Escape") {
+    if (document.body.classList.contains("drawer-open")) {
+      setDrawer(false);
+      els.drawerOpen.focus();
+    } else if (els.q.value) {
+      state.q = "";
+      els.q.value = "";
+      state.closed.clear();
+      render();
+      syncUrl("replace");
+    } else if (state.path.length) {
+      selectPath([]);
+      state.closed.clear();
+      expandPathTo(state.path);
+      render();
+      syncUrl("push");
+      els.q.focus();
+    }
+  }
 });
 
 window.addEventListener("popstate", () => {

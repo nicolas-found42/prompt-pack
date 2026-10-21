@@ -2,18 +2,39 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-2);
 }
 
 .card {
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 14px;
+  border-radius: var(--radius);
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  background: var(--bg);
+  gap: var(--space-1);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--muted) 45%, var(--line));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  .card:hover {
+    transform: none;
+  }
 }
 
 .card .top {
@@ -21,14 +42,19 @@
   flex-wrap: wrap;
   gap: 4px 8px;
   align-items: center;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--muted);
-  margin-bottom: 4px;
+  margin-bottom: var(--space-1);
 }
 
 .card .num,
 .card .words {
   font-variant-numeric: tabular-nums;
+}
+
+.card .num {
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .card .path {
@@ -42,59 +68,83 @@
 }
 
 .title {
-  font-weight: 600;
+  font-weight: 650;
+  font-size: 1.02rem;
+  line-height: 1.35;
   margin: 0;
 }
 
 .purpose {
   color: var(--muted);
-  margin: 2px 0 6px;
+  margin: 4px 0 8px;
+  font-size: 0.92rem;
 }
 
 .text {
-  margin: 8px 0 0;
-  padding: 8px 10px;
+  margin: var(--space-2) 0 0;
+  padding: var(--space-3);
   background: var(--soft);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   max-width: 72ch;
+  font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .tag {
   display: inline-block;
-  font-size: 0.8rem;
-  padding: 1px 8px;
+  font-size: 0.78rem;
+  font-weight: 550;
+  padding: 2px 9px;
   border-radius: 999px;
   border: 1px solid var(--line);
+  background: var(--soft);
+  color: var(--muted);
   white-space: nowrap;
 }
 
 .copy {
   align-self: flex-start;
-  margin-top: 8px;
+  margin-top: var(--space-3);
   background: none;
   border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: var(--type-small);
   white-space: nowrap;
+  transition:
+    border-color 0.12s ease,
+    background-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.copy:hover {
+  border-color: var(--link);
+  color: var(--link);
+  background: var(--link-soft);
 }
 
 /* Prompt body disclosure ----------------------------------------------- */
 
 .prompt {
-  margin-top: 2px;
+  margin-top: var(--space-1);
 }
 
 .prompt summary {
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: var(--type-small);
+  font-weight: 550;
   color: var(--link);
   list-style: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 2px 0;
+  gap: var(--space-2);
+  padding: 3px 0;
+  border-radius: var(--radius-sm);
+}
+
+.prompt summary:hover {
+  text-decoration: underline;
 }
 
 .prompt summary::-webkit-details-marker {
@@ -104,6 +154,7 @@
 .prompt summary::before {
   content: "▸";
   font-size: 10px;
+  transition: transform 0.12s ease;
 }
 
 .prompt[open] summary::before {
@@ -122,13 +173,37 @@
   display: none;
 }
 
+/* Empty / no-results state -------------------------------------------------- */
+
 .empty {
+  grid-column: 1 / -1;
   color: var(--muted);
-  padding: 24px 8px;
+  background: var(--surface);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  margin-top: var(--space-2);
+  text-align: center;
+}
+
+.empty-title {
+  color: var(--ink);
+  font-weight: 650;
+  font-size: 1.05rem;
+  margin: 0 0 var(--space-2);
+}
+
+.empty-hint {
+  margin: 0 0 var(--space-4);
+}
+
+.empty .ghost {
+  margin: 0 auto;
 }
 
 mark {
   background: var(--mark-bg);
   color: var(--mark-ink);
-  border-radius: 2px;
+  border-radius: 3px;
+  padding: 0 1px;
 }
