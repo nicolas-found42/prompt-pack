@@ -106,8 +106,14 @@ li.hit > .node-row > .node-label {
   font-weight: 550;
 }
 
+/* Zero-hit branches fade to muted text instead of opacity, which dropped
+ * contrast below 4.5:1 in both themes. */
 li.empty > .node-row {
-  opacity: 0.45;
+  color: var(--muted);
+}
+
+li.empty > .node-row > .node-count {
+  background: transparent;
 }
 
 li:focus-visible {

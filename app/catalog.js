@@ -1,7 +1,7 @@
 // Joins the two data files into the lookup structures the UI needs:
 // a flat depth-first node list, a prompt-id -> path map, and the tree order index.
 
-import { PROMPTS } from "../data/prompts.js";
+import { PROMPTS } from "../data/prompts/index.js";
 import { TAXONOMY } from "../data/taxonomy.js";
 
 export const ROWS = PROMPTS;

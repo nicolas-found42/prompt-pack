@@ -1,8 +1,86 @@
+/* Start here: curated buckets shown on the default view ---------------------- */
+
+.featured {
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.featured-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+
+.featured-title {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.featured-hint {
+  color: var(--muted);
+  font-size: var(--type-small);
+  margin: 0;
+}
+
+#clear-featured {
+  margin-left: auto;
+}
+
+.buckets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: var(--space-3);
+}
+
+.bucket {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--space-3);
+  font: inherit;
+  color: var(--ink);
+  transition:
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.bucket:hover {
+  border-color: var(--muted);
+  box-shadow: var(--shadow-card);
+}
+
+.bucket[aria-pressed="true"] {
+  border-color: var(--link);
+  box-shadow: inset 0 0 0 1px var(--link);
+}
+
+.bucket-label {
+  font-weight: 600;
+}
+
+.bucket-hint {
+  color: var(--muted);
+  font-size: var(--type-small);
+}
+
+.bucket-count {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+  margin-top: var(--space-1);
+}
+
 /* Cards: the result grid, prompt cards, and search highlighting. */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: var(--space-4);
   margin-top: var(--space-2);
 }
@@ -20,21 +98,17 @@
     box-shadow 0.15s ease,
     transform 0.15s ease,
     border-color 0.15s ease;
+  /* Skip layout and paint for off-screen cards; the intrinsic size keeps the
+   * scrollbar honest until a card is rendered. 270px is the content-box
+   * height of a collapsed card; padding and border add 34px. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 270px;
 }
 
 .card:hover {
   box-shadow: var(--shadow-lift);
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--muted) 45%, var(--line));
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card {
-    transition: none;
-  }
-  .card:hover {
-    transform: none;
-  }
 }
 
 .card .top {
@@ -195,6 +269,16 @@
 
 .empty-hint {
   margin: 0 0 var(--space-4);
+}
+
+.suggest {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--link);
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .empty .ghost {

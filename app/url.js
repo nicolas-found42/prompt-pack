@@ -6,7 +6,7 @@ export function encodeState(state) {
   const params = new URLSearchParams();
   if (state.q) params.set("q", state.q);
   if (state.patterns.length) params.set("pat", state.patterns.join(","));
-  if (state.sort && state.sort !== "tree") params.set("sort", state.sort);
+  if (state.scoped && state.q) params.set("in", "1");
   const path = state.path.map(encodeURIComponent).join("/");
   const query = params.toString();
   return query ? `#/${path}?${query}` : `#/${path}`;
@@ -21,6 +21,6 @@ export function decodeState(hash) {
     path,
     patterns: (params.get("pat") || "").split(",").filter(Boolean),
     q: params.get("q") || "",
-    sort: params.get("sort") || "tree",
+    scoped: params.get("in") === "1",
   };
 }

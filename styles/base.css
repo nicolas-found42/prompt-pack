@@ -7,7 +7,8 @@
 }
 
 html {
-  scroll-padding-top: env(safe-area-inset-top, 0px);
+  /* The sticky controls bar can cover the element focus lands on. */
+  scroll-padding-top: 72px;
 }
 
 /* Skip link: hidden until focused, jumps straight to the prompt grid. */
@@ -87,7 +88,18 @@ button {
   color: var(--ink);
 }
 
-::focus-visible {
+:focus-visible {
   outline: 2px solid var(--link);
   outline-offset: 2px;
+}
+
+/* One global reduced-motion rule: kill transitions and transforms everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
 }

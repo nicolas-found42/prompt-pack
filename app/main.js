@@ -8,6 +8,7 @@ import { matchesQuery } from "./search.js";
 import { buildTree, updateTree } from "./tree.js";
 import { renderResults } from "./results.js";
 import { renderFacets } from "./facets.js";
+import { renderFeatured } from "./featured.js";
 
 const $ = (selector) => document.querySelector(selector);
 
@@ -24,6 +25,12 @@ const els = {
   drawerOpen: $("#drawer-open"),
   drawerClose: $("#drawer-close"),
   scrim: $("#scrim"),
+  featured: $("#featured"),
+  scope: $("#scope"),
+  scopeNarrow: $("#scope-narrow"),
+  scopeReset: $("#scope-reset"),
+  summary: $("#branch-summary"),
+  shortcuts: $("#shortcuts-toggle"),
 };
 
 const ROWS_BY_ID = new Map(ROWS.map((row) => [row.id, row]));
@@ -39,6 +46,9 @@ function applyFromUrl() {
   state.patterns = parsed.patterns.filter((pattern) => PATTERNS.includes(pattern));
   state.q = parsed.q;
   state.sort = SORTS.includes(parsed.sort) ? parsed.sort : "tree";
+  state.scoped = parsed.scoped && known;
+  // The Start here default never fights a shared link: any URL state hides it.
+  state.featured = [];
   expandPathTo(state.path);
 }
 
@@ -102,6 +112,35 @@ function renderCrumbs() {
   els.crumbs.innerHTML = parts.join('<span class="crumb-sep" aria-hidden="true">›</span>');
 }
 
+/** The one-line description authored on the selected taxonomy node, if any. */
+function renderSummary() {
+  const node = state.path.length ? NODE_BY_KEY.get(selectedKey()) : null;
+  els.summary.textContent = node?.summary || "";
+  els.summary.hidden = !node?.summary;
+}
+
+/** State the search scope out loud: a query searches the whole deck unless narrowed. */
+function renderScope(visibleCount, branchCount) {
+  if (!state.q) {
+    els.scope.hidden = true;
+    return;
+  }
+  els.scope.hidden = false;
+  if (state.scoped) {
+    els.scope.innerHTML = `Searching only <strong>${state.path[0]}</strong> (${visibleCount} of ${branchCount}) · <button class="linklike" id="scope-reset" type="button">search everything</button>`;
+  } else {
+    const narrow = state.path.length
+      ? ` · <button class="linklike" id="scope-narrow" type="button">search only ${state.path[0]}</button>`
+      : "";
+    els.scope.innerHTML = `Searching all ${ROWS.length} prompts${narrow}`;
+  }
+}
+
+/** The Start here section shows only on a completely default view. */
+function isDefaultView() {
+  return !state.path.length && !state.q && !state.patterns.length && state.sort === "tree";
+}
+
 function render() {
   const query = state.q.trim().toLowerCase();
   const patterns = new Set(state.patterns);
@@ -111,9 +150,15 @@ function render() {
   const scopeRows = (state.path.length ? idsUnder(selectedKey()) : ALL_IDS).map((id) =>
     ROWS_BY_ID.get(id),
   );
-  const scoped = scopeRows.filter((row) => patternOk(row) && queryOk(row));
-  // A query searches the whole deck; the tree selection only scopes an empty search.
-  const visible = query ? ROWS.filter((row) => patternOk(row) && queryOk(row)) : scoped;
+  // A query searches the whole deck unless the visitor narrowed it to the
+  // selected branch; without a query the tree selection scopes the view.
+  const visible = query
+    ? state.scoped
+      ? scopeRows.filter((row) => patternOk(row) && queryOk(row))
+      : ROWS.filter((row) => patternOk(row) && queryOk(row))
+    : state.featured.length
+      ? state.featured.map((id) => ROWS_BY_ID.get(id)).filter((row) => patternOk(row))
+      : scopeRows.filter(patternOk);
 
   const counts = new Map();
   const hitKeys = new Set();
@@ -141,18 +186,33 @@ function render() {
   }
   for (const key of state.closed) expanded.delete(key);
   currentExpanded = expanded;
+
+  if (isDefaultView()) {
+    // Re-render the buckets every time so aria-pressed reflects the selection,
+    // and show the "Show all prompts" escape hatch only while a bucket is active.
+    renderFeatured(els.featured, { selected: state.featured, total: ROWS.length });
+    els.featured.hidden = false;
+  } else {
+    els.featured.hidden = true;
+    els.featured.innerHTML = "";
+  }
+
   renderResults(els.body, {
     rows: sortRows(visible),
     query,
     expandedCards: state.expandedCards,
     expandAll: state.expandAll,
-    hasFilters: Boolean(query || state.patterns.length || state.path.length),
+    hasFilters: Boolean(
+      query || state.patterns.length || state.path.length || state.featured.length,
+    ),
   });
   renderFacets(els.facets, {
     patterns: PATTERNS,
     counts: patternCounts,
     selected: state.patterns,
   });
+  renderScope(visible.length, scopeRows.length);
+  renderSummary();
   updateTree({ counts, expanded, selectedKey: selectedKey(), hitKeys });
   renderCrumbs();
   els.count.textContent = `Showing ${visible.length} of ${ROWS.length}`;
@@ -163,6 +223,8 @@ function selectNode(key) {
   if (!node) return;
   selectPath(node.path);
   state.closed.clear();
+  state.featured = [];
+  state.scoped = false;
   expandPathTo(state.path);
   render();
   syncUrl("push");
@@ -213,6 +275,10 @@ function updateToggleLabel() {
   els.toggle.setAttribute("aria-pressed", state.expandAll ? "true" : "false");
 }
 
+function announce(message) {
+  els.count.textContent = message;
+}
+
 buildTree(els.tree, {
   onSelect: selectNode,
   onToggle: toggleNode,
@@ -231,12 +297,14 @@ buildTree(els.tree, {
 els.q.addEventListener("input", () => {
   state.q = els.q.value;
   state.closed.clear();
+  state.featured = [];
   render();
   syncUrl("replace");
 });
 
 els.sort.addEventListener("change", () => {
   state.sort = els.sort.value;
+  state.featured = [];
   render();
   syncUrl("replace");
 });
@@ -251,10 +319,16 @@ els.toggle.addEventListener("click", () => {
 els.facets.addEventListener("click", (event) => {
   const chip = event.target.closest(".chip");
   if (!chip) return;
+  // Re-rendering replaces the chips, which would drop focus; remember the
+  // pressed chip and restore focus to it after the render.
+  const pressed = chip.dataset.pat || "";
   if (chip.dataset.clear) clearPatterns();
   else togglePattern(chip.dataset.pat);
+  state.featured = [];
   render();
   syncUrl("push");
+  const next = els.facets.querySelector(`[data-pat="${CSS.escape(pressed)}"]`);
+  (next || els.facets.querySelector(".chip-clear"))?.focus();
 });
 
 els.crumbs.addEventListener("click", (event) => {
@@ -263,6 +337,8 @@ els.crumbs.addEventListener("click", (event) => {
   const node = crumb.dataset.path ? NODE_BY_KEY.get(crumb.dataset.path) : null;
   selectPath(node ? node.path : []);
   state.closed.clear();
+  state.featured = [];
+  state.scoped = false;
   expandPathTo(state.path);
   render();
   syncUrl("push");
@@ -271,9 +347,42 @@ els.crumbs.addEventListener("click", (event) => {
 els.copyLink.addEventListener("click", async () => {
   const ok = await copyText(location.href);
   els.copyLink.textContent = ok ? "Link copied" : "Copy blocked";
+  announce(ok ? "Link copied to clipboard" : "Copy blocked by the browser");
   setTimeout(() => {
     els.copyLink.textContent = "Copy link";
   }, 1400);
+});
+
+els.featured.addEventListener("click", (event) => {
+  const clear = event.target.closest("#clear-featured");
+  if (clear) {
+    state.featured = [];
+    render();
+    return;
+  }
+  const bucket = event.target.closest(".bucket");
+  if (!bucket) return;
+  const ids = bucket.dataset.ids.split(",");
+  const same =
+    state.featured.length === ids.length && ids.every((id) => state.featured.includes(id));
+  state.featured = same ? [] : ids;
+  render();
+});
+
+els.scope.addEventListener("click", (event) => {
+  if (event.target.closest("#scope-narrow")) {
+    state.scoped = true;
+    render();
+    syncUrl("replace");
+  } else if (event.target.closest("#scope-reset")) {
+    state.scoped = false;
+    render();
+    syncUrl("replace");
+  }
+});
+
+els.shortcuts.addEventListener("change", () => {
+  state.shortcuts = els.shortcuts.checked;
 });
 
 els.body.addEventListener(
@@ -302,6 +411,16 @@ els.body.addEventListener(
 );
 
 els.body.addEventListener("click", async (event) => {
+  const suggest = event.target.closest(".suggest");
+  if (suggest) {
+    state.q = suggest.dataset.q;
+    els.q.value = state.q;
+    state.closed.clear();
+    render();
+    syncUrl("replace");
+    els.q.focus();
+    return;
+  }
   const clear = event.target.closest("#clear-filters");
   if (clear) {
     state.q = "";
@@ -309,6 +428,8 @@ els.body.addEventListener("click", async (event) => {
     clearPatterns();
     selectPath([]);
     state.closed.clear();
+    state.featured = [];
+    state.scoped = false;
     render();
     syncUrl("push");
     els.q.focus();
@@ -321,6 +442,7 @@ els.body.addEventListener("click", async (event) => {
   if (!row) return;
   const ok = await copyText(row.text);
   button.textContent = ok ? "Copied" : "Copy blocked";
+  announce(ok ? "Prompt copied to clipboard" : "Copy blocked by the browser");
   setTimeout(() => {
     button.textContent = "Copy";
   }, 1400);
@@ -337,9 +459,12 @@ document.addEventListener("keydown", (event) => {
   const inField = FOCUSABLE.has(event.target.tagName) || event.target.isContentEditable;
 
   // "/" or Ctrl/Cmd+K anywhere focuses search; Escape clears or steps back.
+  // The shortcuts master switch (WCAG 2.1.4) gates the focus shortcut only —
+  // Escape always works.
   const isFocusSearch =
-    (event.key === "/" && !inField) ||
-    ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k");
+    state.shortcuts &&
+    ((event.key === "/" && !inField) ||
+      ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k"));
   if (isFocusSearch) {
     event.preventDefault();
     els.q.focus();
@@ -359,6 +484,8 @@ document.addEventListener("keydown", (event) => {
     } else if (state.path.length) {
       selectPath([]);
       state.closed.clear();
+      state.featured = [];
+      state.scoped = false;
       expandPathTo(state.path);
       render();
       syncUrl("push");
@@ -377,5 +504,6 @@ window.addEventListener("popstate", () => {
 applyFromUrl();
 els.q.value = state.q;
 els.sort.value = state.sort;
+els.shortcuts.checked = state.shortcuts;
 render();
 syncUrl("replace");
