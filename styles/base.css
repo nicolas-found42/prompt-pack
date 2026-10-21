@@ -9,6 +9,8 @@
 html {
   /* The sticky controls bar can cover the element focus lands on. */
   scroll-padding-top: 72px;
+  /* Reserve the scrollbar lane so expand/collapse never shifts the grid. */
+  scrollbar-gutter: stable;
 }
 
 /* Skip link: hidden until focused, jumps straight to the prompt grid. */
@@ -49,8 +51,8 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font:
-    15px/1.55 ui-sans-serif,
+  font-family:
+    ui-sans-serif,
     system-ui,
     -apple-system,
     "Segoe UI",
@@ -58,6 +60,11 @@ body {
     "Helvetica Neue",
     Arial,
     sans-serif;
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
