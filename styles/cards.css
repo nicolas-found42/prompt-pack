@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  height: 100%;
   text-align: left;
   cursor: pointer;
   border: 1px solid var(--line);
@@ -47,12 +48,15 @@
   color: var(--ink);
   transition:
     border-color 0.12s ease,
-    box-shadow 0.12s ease;
+    box-shadow 0.12s ease,
+    transform 0.15s ease;
 }
 
-.bucket:hover {
+.bucket:hover,
+.bucket:focus-visible {
   border-color: var(--muted);
   box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
 }
 
 .bucket[aria-pressed="true"] {
@@ -86,12 +90,14 @@
 }
 
 .card {
+  height: 100%;
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
   background: var(--surface);
   box-shadow: var(--shadow-card);
   transition:
@@ -111,6 +117,12 @@
   border-color: color-mix(in srgb, var(--muted) 45%, var(--line));
 }
 
+/* Keyboard parity: the same affordance as hover, without the lift. */
+.card:focus-within {
+  box-shadow: var(--shadow-lift);
+  border-color: color-mix(in srgb, var(--muted) 45%, var(--line));
+}
+
 .card .top {
   display: flex;
   flex-wrap: wrap;
@@ -118,7 +130,6 @@
   align-items: center;
   font-size: 0.8rem;
   color: var(--muted);
-  margin-bottom: var(--space-1);
 }
 
 .card .num,
@@ -143,15 +154,17 @@
 
 .title {
   font-weight: 650;
-  font-size: 1.02rem;
-  line-height: 1.35;
+  font-size: var(--type-title);
+  line-height: var(--leading-tight);
   margin: 0;
+  text-wrap: balance;
 }
 
 .purpose {
   color: var(--muted);
-  margin: 4px 0 8px;
+  margin: 0;
   font-size: 0.92rem;
+  text-wrap: pretty;
 }
 
 .text {
@@ -162,6 +175,8 @@
   max-width: 72ch;
   font-size: 0.92rem;
   line-height: 1.6;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .tag {
@@ -178,7 +193,6 @@
 
 .copy {
   align-self: flex-start;
-  margin-top: var(--space-3);
   background: none;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
@@ -199,10 +213,6 @@
 }
 
 /* Prompt body disclosure ----------------------------------------------- */
-
-.prompt {
-  margin-top: var(--space-1);
-}
 
 .prompt summary {
   cursor: pointer;

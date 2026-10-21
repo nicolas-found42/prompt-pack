@@ -69,7 +69,9 @@ h1 {
   position: sticky;
   top: 0;
   z-index: 5;
-  background: var(--bg);
+  background: var(--bar-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   padding: var(--space-3) var(--space-5);
   margin: 0 calc(-1 * var(--space-5));
   border-bottom: 1px solid var(--line);
