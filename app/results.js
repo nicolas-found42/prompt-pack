@@ -4,10 +4,15 @@
 import { PATH_BY_ID } from "./catalog.js";
 import { highlight } from "./search.js";
 
-export function renderResults(root, { rows, query, expandedCards, expandAll }) {
+export function renderResults(root, { rows, query, expandedCards, expandAll, hasFilters }) {
   if (!rows.length) {
-    root.innerHTML =
-      '<p class="empty">No prompts match these filters. Clear the search, the pattern chips, or pick another branch.</p>';
+    root.innerHTML = hasFilters
+      ? `<div class="empty">
+  <p class="empty-title">No prompts match</p>
+  <p class="empty-hint">Try a shorter query, fewer pattern chips, or another branch of the tree.</p>
+  <button class="ghost" id="clear-filters" type="button">Clear search and filters</button>
+</div>`
+      : '<p class="empty">No prompts in this branch yet.</p>';
     return;
   }
 

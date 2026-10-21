@@ -1,47 +1,84 @@
 /* Design tokens.
  *
- * Every visual decision (color, background, line) is a custom property here.
- * Change the site's appearance by editing this file; components only ever
- * reference var(--…).
+ * Every visual decision (color, background, line, radius, shadow, spacing)
+ * is a custom property here. Change the site's appearance by editing this
+ * file; components only ever reference var(--…).
+ *
+ * Organization: one :root block per theme (light default, dark via
+ * prefers-color-scheme or data-theme="dark"), plus a shared block for the
+ * theme-independent tokens (spacing, radii, type scale). Only --shadow-*
+ * differ in structure per theme, so they live inside each theme block.
  */
 
+/* Light theme (default). */
 :root {
-  --bg: #ffffff;
-  --ink: #1d232b;
-  --muted: #5d6672;
-  --line: #dde1e6;
-  --soft: #f4f6f8;
-  --link: #1f5fbf;
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --ink: #1b222c;
+  --muted: #5a6472;
+  --line: #dfe3e9;
+  --soft: #eef1f5;
+  --link: #1d5fc2;
+  --link-soft: #e3edfb;
   --mark-bg: #ffe58a;
-  --mark-ink: #1d232b;
+  --mark-ink: #1b222c;
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 6%), 0 1px 3px rgb(16 24 40 / 10%);
+  --shadow-lift: 0 6px 18px rgb(16 24 40 / 12%);
+  --shadow-pop: 0 10px 30px rgb(16 24 40 / 18%);
   color-scheme: light;
-  box-sizing: border-box;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+/* Dark theme: OS preference, unless the visitor forced light. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #16191d;
-    --ink: #e6e9ed;
-    --muted: #9aa3ae;
-    --line: #2c3239;
-    --soft: #1e2227;
-    --link: #7eaaf0;
+    --bg: #12151a;
+    --surface: #1a1e25;
+    --ink: #e7eaee;
+    --muted: #9aa4b0;
+    --line: #2b313b;
+    --soft: #22272f;
+    --link: #85b2f2;
+    --link-soft: #223247;
     --mark-bg: #ffe58a;
-    --mark-ink: #1d232b;
+    --mark-ink: #1b222c;
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 40%);
+    --shadow-lift: 0 8px 20px rgb(0 0 0 / 45%);
+    --shadow-pop: 0 12px 32px rgb(0 0 0 / 55%);
     color-scheme: dark;
   }
 }
 
+/* Dark theme: forced via data-theme="dark". */
 :root[data-theme="dark"] {
-  --bg: #16191d;
-  --ink: #e6e9ed;
-  --muted: #9aa3ae;
-  --line: #2c3239;
-  --soft: #1e2227;
-  --link: #7eaaf0;
+  --bg: #12151a;
+  --surface: #1a1e25;
+  --ink: #e7eaee;
+  --muted: #9aa4b0;
+  --line: #2b313b;
+  --soft: #22272f;
+  --link: #85b2f2;
+  --link-soft: #223247;
   --mark-bg: #ffe58a;
-  --mark-ink: #1d232b;
+  --mark-ink: #1b222c;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 40%);
+  --shadow-lift: 0 8px 20px rgb(0 0 0 / 45%);
+  --shadow-pop: 0 12px 32px rgb(0 0 0 / 55%);
   color-scheme: dark;
+}
+
+/* Theme-independent tokens: spacing scale, radii, type scale, box model,
+ * safe-area insets. Defined once; every theme inherits them. */
+:root {
+  --radius: 10px;
+  --radius-sm: 7px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --type-h1: 1.45rem;
+  --type-small: 0.85rem;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }

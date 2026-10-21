@@ -10,18 +10,64 @@ html {
   scroll-padding-top: env(safe-area-inset-top, 0px);
 }
 
+/* Skip link: hidden until focused, jumps straight to the prompt grid. */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: var(--space-3);
+  z-index: 100;
+  background: var(--surface);
+  color: var(--link);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-weight: 600;
+  box-shadow: var(--shadow-pop);
+  transition: top 0.12s ease;
+}
+
+.skip-link:focus-visible {
+  top: var(--space-2);
+}
+
+/* Anchor target for the skip link: show where focus lands. */
+#body:focus-visible {
+  outline: none;
+}
+
+#body:focus-visible::before {
+  content: "";
+  display: block;
+  height: 2px;
+  margin: calc(-1 * var(--space-2)) 0 var(--space-2);
+  border-radius: 2px;
+  background: var(--link);
+}
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
   font:
-    15px/1.5 -apple-system,
-    BlinkMacSystemFont,
+    15px/1.55 ui-sans-serif,
+    system-ui,
+    -apple-system,
     "Segoe UI",
     Roboto,
     "Helvetica Neue",
     Arial,
     sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2 {
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--link) 25%, transparent);
 }
 
 /* Safe-area bar behind the sticky header. */
@@ -41,7 +87,7 @@ button {
   color: var(--ink);
 }
 
-:focus-visible {
+::focus-visible {
   outline: 2px solid var(--link);
   outline-offset: 2px;
 }

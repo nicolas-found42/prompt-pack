@@ -1,7 +1,7 @@
 /* Tree: the taxonomy sidebar. */
 
 .tree-wrap {
-  padding: 6px 10px 48px;
+  padding: var(--space-2) var(--space-3) 96px;
 }
 
 .tree,
@@ -11,9 +11,10 @@
   padding: 0;
 }
 
+/* Indent guides: each nested level gets a hairline on its left. */
 .tree ul {
-  margin-left: 10px;
-  padding-left: 9px;
+  margin-left: 9px;
+  padding-left: 10px;
   border-left: 1px solid var(--line);
 }
 
@@ -24,11 +25,12 @@
 .node-row {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 6px;
-  border-radius: 6px;
+  gap: var(--space-2);
+  padding: 5px var(--space-2);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   user-select: none;
+  transition: background-color 0.12s ease;
 }
 
 .node-row:hover {
@@ -67,13 +69,17 @@ li.leaf > .node-row > .twisty::before {
 
 .node-count {
   color: var(--muted);
-  font-size: 0.76rem;
+  background: var(--soft);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  padding: 0 7px;
+  border-radius: 999px;
   font-variant-numeric: tabular-nums;
 }
 
 li[aria-level="1"] > .node-row {
-  font-weight: 600;
-  margin-top: 8px;
+  font-weight: 650;
+  margin-top: var(--space-3);
 }
 
 li[aria-level="2"] > .node-row {
@@ -85,16 +91,23 @@ li[aria-level="3"] > .node-row {
 }
 
 li.selected > .node-row {
-  background: var(--soft);
-  box-shadow: inset 2px 0 0 var(--link);
+  background: var(--link-soft);
+  box-shadow: inset 3px 0 0 var(--link);
+  font-weight: 600;
+}
+
+li.selected > .node-row > .node-count {
+  background: color-mix(in srgb, var(--link) 14%, var(--surface));
+  color: var(--link);
 }
 
 li.hit > .node-row > .node-label {
   color: var(--link);
+  font-weight: 550;
 }
 
 li.empty > .node-row {
-  opacity: 0.42;
+  opacity: 0.45;
 }
 
 li:focus-visible {
