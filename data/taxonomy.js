@@ -730,5 +730,214 @@ export const TAXONOMY = {
         },
       ],
     },
+    {
+      category: "Reconstruction",
+      summary: "Rebuild an existing system from its artifact, with evidence instead of guesses",
+      subcategories: [
+        {
+          name: "Reference Capture",
+          summary: "Record what the original actually does before anything replaces it",
+          groups: [
+            {
+              name: "Function Oracles",
+              summary: "Call original routines directly and keep their results as ground truth",
+              ids: ["9.1"],
+            },
+            {
+              name: "Headless Seams",
+              summary: "Recorder-swap external dependencies so the original runs without a display",
+              ids: ["9.2"],
+            },
+          ],
+        },
+        {
+          name: "Format Recovery",
+          summary:
+            "Recover on-disk structure byte by byte, then prove the writer as well as the reader",
+          groups: [
+            {
+              name: "Byte Accounting",
+              summary:
+                "Falsify field hypotheses against hostile files until no byte is unexplained",
+              ids: ["9.4"],
+            },
+            {
+              name: "Writer Interop",
+              summary:
+                "Rebuild the writer and exchange artifacts with the original in both directions",
+              ids: ["9.5"],
+            },
+          ],
+        },
+        {
+          name: "Equivalence Proof",
+          summary: "Compare two implementations until every difference is named and fixed",
+          groups: [
+            {
+              name: "Deterministic Replays",
+              summary: "Pin seed, timestep, input, and clock so the same run can happen twice",
+              ids: ["9.8"],
+            },
+            {
+              name: "Divergence Hunting",
+              summary: "Bisect traces and frame streams to the exact first disagreement",
+              ids: ["9.7", "9.9"],
+            },
+            {
+              name: "Input Reduction",
+              summary: "Shrink a failing input until the smallest artifact still reproduces it",
+              ids: ["9.6"],
+            },
+          ],
+        },
+        {
+          name: "Exactness at Scale",
+          summary:
+            "Bound broad claims with numeric contracts, corpus counts, and frozen boundaries",
+          groups: [
+            {
+              name: "Precision Contracts",
+              summary: "Publish a trust table before porting any math that must match bit for bit",
+              ids: ["9.3"],
+            },
+            {
+              name: "Corpus Accounting",
+              summary: "Make silent skips fail and compare per-file counts against the original",
+              ids: ["9.10"],
+            },
+            {
+              name: "Frozen Expectations",
+              summary: "Freeze the accepted prefix and fail when the boundary moves backwards",
+              ids: ["9.11"],
+            },
+          ],
+        },
+        {
+          name: "Evidence Handover",
+          summary: "Keep the claims, the repository, and the next session honest",
+          groups: [
+            {
+              name: "Generated Registries",
+              summary: "Regenerate per-symbol evidence from source and tests, and fail on drift",
+              ids: ["9.12"],
+            },
+            {
+              name: "Provenance & Recovery",
+              summary:
+                "Enforce a clean-room boundary and resume interrupted work without hiding failures",
+              ids: ["9.13", "9.14"],
+            },
+            {
+              name: "Viability Decisions",
+              summary:
+                "Run the experiment that could kill an approach before it consumes another week",
+              ids: ["9.15"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      category: "Agency",
+      summary:
+        "Act in a shared system on purpose: bound your authority, land changes safely, prove they landed",
+      subcategories: [
+        {
+          name: "Authority & Boundaries",
+          summary: "Decide in advance what may be done without a human, and stop at the edge",
+          groups: [
+            {
+              name: "Written Policy",
+              summary: "Turn an unwritten judgment call into a policy the agent can obey",
+              ids: ["10.1"],
+            },
+            {
+              name: "Pre-Action Gates",
+              summary: "Classify an action before running it and refuse past the threshold",
+              ids: ["10.2"],
+            },
+            {
+              name: "Refusing to Act",
+              summary: "Make the case for no change as strongly as the case for changing",
+              ids: ["10.3"],
+            },
+          ],
+        },
+        {
+          name: "Rehearsal & Reversibility",
+          summary: "Exercise an irreversible action somewhere harmless before it counts",
+          groups: [
+            {
+              name: "Shadow Runs",
+              summary: "Rehearse against a copy and diff intent from effect",
+              ids: ["10.4"],
+            },
+            {
+              name: "Retry Safety",
+              summary: "Make mutation resumable without applying an effect twice",
+              ids: ["10.5"],
+            },
+          ],
+        },
+        {
+          name: "Coordination",
+          summary: "Work alongside other agents and the user without colliding or drifting",
+          groups: [
+            {
+              name: "Territory",
+              summary: "Claim what you will touch and release it when done",
+              ids: ["10.6"],
+            },
+            {
+              name: "Intent Integrity",
+              summary: "Notice when the work has drifted from the request and stop",
+              ids: ["10.10"],
+            },
+          ],
+        },
+        {
+          name: "Landing Changes",
+          summary: "Commit, merge, and send work in units that can be undone and reviewed",
+          groups: [
+            {
+              name: "Commit Shape",
+              summary: "Split work into commits that each build and revert alone",
+              ids: ["10.7"],
+            },
+            {
+              name: "Conflict & Narrative",
+              summary: "Resolve both intents, then explain the change to a reviewer",
+              ids: ["10.8", "10.9"],
+            },
+            {
+              name: "Merge Gates",
+              summary: "Merge only on pre-committed checks, then verify the shared branch",
+              ids: ["10.11", "10.14"],
+            },
+          ],
+        },
+        {
+          name: "Proof & Follow-Through",
+          summary: "Show that the change is live, that it should stay, and that the loop is closed",
+          groups: [
+            {
+              name: "Artifact Identity",
+              summary: "Prove the running system is the reviewed build",
+              ids: ["10.12"],
+            },
+            {
+              name: "Kill Criteria",
+              summary: "Commit the revert threshold before shipping and honor it",
+              ids: ["10.13"],
+            },
+            {
+              name: "Closing the Loop",
+              summary: "Link, update, and state what a user can now do",
+              ids: ["10.15"],
+            },
+          ],
+        },
+      ],
+    },
   ],
 };

@@ -11,6 +11,8 @@ import { PROMPTS as meta } from "./meta.js";
 import { PROMPTS as learning } from "./learning.js";
 import { PROMPTS as communication } from "./communication.js";
 import { PROMPTS as lifeAdmin } from "./life-admin.js";
+import { PROMPTS as reconstruction } from "./reconstruction.js";
+import { PROMPTS as agency } from "./agency.js";
 
 export const PROMPTS = [
   ...coding,
@@ -21,4 +23,6 @@ export const PROMPTS = [
   ...learning,
   ...communication,
   ...lifeAdmin,
+  ...reconstruction,
+  ...agency,
 ];
