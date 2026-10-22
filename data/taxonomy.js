@@ -1,5 +1,5 @@
 // The navigation hierarchy: Category -> Subcategory -> Group -> prompt.
-// Ids reference entries in data/prompts.js. Every prompt id belongs to exactly one group.
+// Ids reference entries in data/prompts/index.js. Every prompt id belongs to exactly one group.
 
 export const TAXONOMY = {
   categories: [
@@ -66,7 +66,7 @@ export const TAXONOMY = {
             {
               name: "Rival Solutions",
               summary: "Bake off rival refactors and pit builders against breakers",
-              ids: ["1.15", "1.16"],
+              ids: ["1.15", "1.16", "1.34"],
             },
           ],
         },
@@ -82,7 +82,7 @@ export const TAXONOMY = {
             {
               name: "Blanket Sweeps",
               summary: "Convert one-off fixes and legacy sweeps into permanent guardrails",
-              ids: ["1.19", "1.20"],
+              ids: ["1.19", "1.20", "1.32"],
             },
             {
               name: "Structural Rework",
@@ -104,7 +104,7 @@ export const TAXONOMY = {
             {
               name: "Contribution Review",
               summary: "Probe third-party PRs and plan reversibility",
-              ids: ["1.25", "1.27"],
+              ids: ["1.25", "1.27", "1.35"],
             },
           ],
         },
@@ -115,7 +115,30 @@ export const TAXONOMY = {
             {
               name: "Cost Visibility",
               summary: "Visualize cost and latency budgets per path",
-              ids: ["1.26"],
+              ids: ["1.26", "1.33"],
+            },
+          ],
+        },
+        {
+          name: "Artifact & Contract Recovery",
+          summary: "Reverse-engineer legacy wire protocols, AST grammars, and untyped payloads",
+          groups: [
+            {
+              name: "Protocol & Format Recovery",
+              summary: "Decode binary frames, serialized bytecode, and untyped schemas",
+              ids: ["1.28", "1.29", "1.37"],
+            },
+          ],
+        },
+        {
+          name: "Implementation Parity",
+          summary: "Reconcile dual engines, query builders, and database migration rollbacks",
+          groups: [
+            {
+              name: "Behavior Reconciliation",
+              summary:
+                "Prove zero semantic divergence across parsers, queries, and schema rollbacks",
+              ids: ["1.30", "1.31", "1.36"],
             },
           ],
         },
@@ -131,7 +154,7 @@ export const TAXONOMY = {
             {
               name: "Raw Material Synthesis",
               summary: "Assembling publication-ready drafts directly from rough notes",
-              ids: ["2.1", "2.13"],
+              ids: ["2.1", "2.13", "2.27", "2.32"],
             },
             {
               name: "Contrast Experiments",
@@ -152,7 +175,7 @@ export const TAXONOMY = {
             {
               name: "Author Questioning",
               summary: "Extracting examples plus thesis defense through direct dialogue",
-              ids: ["2.3", "2.12"],
+              ids: ["2.3", "2.12", "2.33"],
             },
           ],
         },
@@ -168,7 +191,7 @@ export const TAXONOMY = {
             {
               name: "Pacing Calibration",
               summary: "Measuring pacing rhythm plus proof density paragraph by paragraph",
-              ids: ["2.16", "2.20"],
+              ids: ["2.16", "2.20", "2.30"],
             },
           ],
         },
@@ -179,7 +202,7 @@ export const TAXONOMY = {
             {
               name: "Voice Distillation",
               summary: "Extracting rhythm preferences plus domain phrasing into guides",
-              ids: ["2.6", "2.10"],
+              ids: ["2.6", "2.10", "2.26", "2.34"],
             },
             {
               name: "Format Translation",
@@ -195,7 +218,7 @@ export const TAXONOMY = {
             {
               name: "Gap Detection",
               summary: "Surfacing missing context plus unsupported claims needing proof",
-              ids: ["2.7", "2.8"],
+              ids: ["2.7", "2.8", "2.31"],
             },
             {
               name: "Simulated Readership",
@@ -225,6 +248,23 @@ export const TAXONOMY = {
             },
           ],
         },
+        {
+          name: "Editorial Reconciliation & Archaeology",
+          summary: "Reconcile revisions against original meaning and recover lost draft iterations",
+          groups: [
+            {
+              name: "Truth & Drift Reconciliation",
+              summary:
+                "Verify prose revisions preserve technical facts and documentation matches code",
+              ids: ["2.28", "2.29"],
+            },
+            {
+              name: "Revision Archaeology",
+              summary: "Reconstruct discarded arguments and thesis evolution from commit histories",
+              ids: ["2.35"],
+            },
+          ],
+        },
       ],
     },
     {
@@ -247,7 +287,7 @@ export const TAXONOMY = {
             {
               name: "Inquiry Framing",
               summary: "Splitting hypotheses across delegates plus surfacing data gaps",
-              ids: ["3.3", "3.4"],
+              ids: ["3.3", "3.4", "3.33"],
             },
             {
               name: "Causal Tracing",
@@ -268,7 +308,7 @@ export const TAXONOMY = {
             {
               name: "Statement Verification",
               summary: "Checking each claim against primary artifacts plus flagging gaps",
-              ids: ["3.7"],
+              ids: ["3.7", "3.30", "3.35"],
             },
           ],
         },
@@ -279,7 +319,7 @@ export const TAXONOMY = {
             {
               name: "Source Prioritization",
               summary: "Ranking primary sources plus research questions by leverage",
-              ids: ["3.8", "3.9"],
+              ids: ["3.8", "3.9", "3.31"],
             },
             {
               name: "Durable Playbooks",
@@ -300,7 +340,7 @@ export const TAXONOMY = {
             {
               name: "Delegated Validation",
               summary: "Cross-checking independent streams plus red-teaming conclusions",
-              ids: ["3.14", "3.15"],
+              ids: ["3.14", "3.15", "3.32"],
             },
           ],
         },
@@ -316,7 +356,7 @@ export const TAXONOMY = {
             {
               name: "Assumption Simulators",
               summary: "Sliders revealing thresholds where conclusions change winners",
-              ids: ["3.17"],
+              ids: ["3.17", "3.34"],
             },
           ],
         },
@@ -353,7 +393,23 @@ export const TAXONOMY = {
             {
               name: "Competitive & Context Intel",
               summary: "Tear down alternatives and brief for meetings",
-              ids: ["3.24", "3.25"],
+              ids: ["3.24", "3.25", "3.29"],
+            },
+          ],
+        },
+        {
+          name: "Empirical Reconstruction & Reconciliation",
+          summary: "Reconstruct undocumented study pipelines and reconcile contradictory findings",
+          groups: [
+            {
+              name: "Protocol Reconstruction",
+              summary: "Reverse-engineer data pipelines and evaluation benchmark harnesses",
+              ids: ["3.26", "3.27"],
+            },
+            {
+              name: "Empirical Reconciliation",
+              summary: "Isolate confounders behind conflicting study findings",
+              ids: ["3.28"],
             },
           ],
         },
@@ -390,7 +446,7 @@ export const TAXONOMY = {
             {
               name: "Safe Handoffs",
               summary: "Scrub sensitive outputs and link tools for end-to-end automation",
-              ids: ["4.6", "4.7"],
+              ids: ["4.6", "4.7", "4.32"],
             },
             {
               name: "Load Clearing",
@@ -427,7 +483,7 @@ export const TAXONOMY = {
             {
               name: "Hidden Structure",
               summary: "Map dependency timelines and surface trackers ready for retirement",
-              ids: ["4.16", "4.17"],
+              ids: ["4.16", "4.17", "4.33"],
             },
           ],
         },
@@ -438,7 +494,7 @@ export const TAXONOMY = {
             {
               name: "Failure Mapping",
               summary: "Pre-mortem fragile plans and map operational dependencies visually",
-              ids: ["4.18", "4.19"],
+              ids: ["4.18", "4.19", "4.31", "4.34"],
             },
             {
               name: "Friction Conversion",
@@ -454,12 +510,23 @@ export const TAXONOMY = {
             {
               name: "Spend & Purchase Triage",
               summary: "Audit recurring spend and elicit big-purchase decisions",
-              ids: ["4.22", "4.23"],
+              ids: ["4.22", "4.23", "4.28", "4.29"],
             },
             {
               name: "Contract & Career Moves",
               summary: "Triage consumer contracts and bake off career materials",
-              ids: ["4.24", "4.25"],
+              ids: ["4.24", "4.25", "4.30", "4.35"],
+            },
+          ],
+        },
+        {
+          name: "Process & Policy Reconstruction",
+          summary: "Reconstruct undocumented team workflows and the historical context of policies",
+          groups: [
+            {
+              name: "Workflow & Policy Archaeology",
+              summary: "Reverse-engineer operational SOPs and legacy policy decisions",
+              ids: ["4.26", "4.27"],
             },
           ],
         },
@@ -485,7 +552,7 @@ export const TAXONOMY = {
             {
               name: "Failure Diagnostics",
               summary: "Interrogate missed steps and diagnose stuck transcripts",
-              ids: ["5.5", "5.6"],
+              ids: ["5.5", "5.6", "5.34"],
             },
           ],
         },
@@ -496,7 +563,7 @@ export const TAXONOMY = {
             {
               name: "Prompting Habits",
               summary: "Catch narrow prompting and codify recurring instructions",
-              ids: ["5.7", "5.8"],
+              ids: ["5.7", "5.8", "5.33"],
             },
             {
               name: "Workspace Hygiene",
@@ -528,7 +595,7 @@ export const TAXONOMY = {
             {
               name: "Contender Comparison",
               summary: "Test rival framings and reconcile independent verdicts",
-              ids: ["5.15", "5.16"],
+              ids: ["5.15", "5.16", "5.29", "5.35"],
             },
             {
               name: "Harness Improvement",
@@ -544,12 +611,12 @@ export const TAXONOMY = {
             {
               name: "Rule Maintenance",
               summary: "Delete stale directives and build autonomous test harnesses",
-              ids: ["5.19", "5.20"],
+              ids: ["5.19", "5.20", "5.31", "5.36"],
             },
             {
               name: "Outcome Assurance",
               summary: "Break work adversarially and expand narrow requests",
-              ids: ["5.21", "5.22"],
+              ids: ["5.21", "5.22", "5.30"],
             },
           ],
         },
@@ -560,12 +627,24 @@ export const TAXONOMY = {
             {
               name: "Spend & Session Health",
               summary: "Audit token budgets and visualize session drift",
-              ids: ["5.23", "5.26"],
+              ids: ["5.23", "5.26", "5.32"],
             },
             {
               name: "Effectiveness Verification",
               summary: "Verify skills change outcomes and codify failure patterns",
               ids: ["5.24", "5.25"],
+            },
+          ],
+        },
+        {
+          name: "Agent State & Prompt Reverse-Engineering",
+          summary:
+            "Reconstruct hidden system prompts, refusal boundaries, and truncated conversation context",
+          groups: [
+            {
+              name: "Prompt & State Reconstruction",
+              summary: "Recover system directives and truncated session checkpoints",
+              ids: ["5.27", "5.28"],
             },
           ],
         },

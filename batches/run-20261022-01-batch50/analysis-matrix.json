@@ -1,0 +1,321 @@
+{
+  "version": "1.0.0",
+  "corpusTotal": 237,
+  "canonicalTotal": 237,
+  "stagedTotal": 0,
+  "voiceProfile": {
+    "lengthPolicy": {
+      "min": 50,
+      "p25": 64,
+      "median": 75,
+      "mean": 76,
+      "p75": 87,
+      "max": 126,
+      "targetBand": "50-115 words"
+    },
+    "syntax": {
+      "avgSentences": 3.2,
+      "avgWordsPerSentence": 23.5,
+      "withColons": 115,
+      "withQuestions": 4,
+      "withCodeFences": 0,
+      "withHyphensOrBullets": 0,
+      "rule": "Imperative prose without markdown bullet lists or code fences in prompt text"
+    },
+    "placeholders": {
+      "count": 0,
+      "convention": "Zero template slots. Direct context references to workspace artifacts, repositories, drafts, and traces."
+    }
+  },
+  "taxonomyBreakdown": {
+    "categoryCounts": {
+      "1": 27,
+      "2": 25,
+      "3": 25,
+      "4": 25,
+      "5": 26,
+      "6": 10,
+      "7": 9,
+      "8": 10,
+      "9": 15,
+      "10": 15,
+      "11": 20,
+      "12": 15,
+      "13": 15
+    },
+    "globalPatterns": {
+      "Execute": 49,
+      "Audit": 39,
+      "Visualize": 24,
+      "Interactive": 28,
+      "Parallel agents": 27,
+      "Triage": 25,
+      "Codify": 30,
+      "Reconstruct": 5,
+      "Reconcile": 10
+    },
+    "targetMatrix": {
+      "Coding": {
+        "Execute": 2,
+        "Audit": 5,
+        "Visualize": 5,
+        "Interactive": 6,
+        "Parallel agents": 3,
+        "Triage": 3,
+        "Codify": 3,
+        "Reconstruct": 0,
+        "Reconcile": 0
+      },
+      "Writing": {
+        "Execute": 4,
+        "Audit": 2,
+        "Visualize": 4,
+        "Interactive": 3,
+        "Parallel agents": 5,
+        "Triage": 4,
+        "Codify": 3,
+        "Reconstruct": 0,
+        "Reconcile": 0
+      },
+      "Research": {
+        "Execute": 4,
+        "Audit": 3,
+        "Visualize": 4,
+        "Interactive": 3,
+        "Parallel agents": 4,
+        "Triage": 3,
+        "Codify": 4,
+        "Reconstruct": 0,
+        "Reconcile": 0
+      },
+      "General": {
+        "Execute": 4,
+        "Audit": 2,
+        "Visualize": 2,
+        "Interactive": 4,
+        "Parallel agents": 4,
+        "Triage": 5,
+        "Codify": 4,
+        "Reconstruct": 0,
+        "Reconcile": 0
+      },
+      "Meta": {
+        "Execute": 2,
+        "Audit": 8,
+        "Visualize": 3,
+        "Interactive": 3,
+        "Parallel agents": 3,
+        "Triage": 3,
+        "Codify": 4,
+        "Reconstruct": 0,
+        "Reconcile": 0
+      }
+    },
+    "sessionCounts": {
+      "fresh": 175,
+      "in-progress": 62
+    }
+  },
+  "gainAnalysis": {
+    "globalPatternGains": {
+      "Execute": 0.0711,
+      "Audit": 0.0796,
+      "Visualize": 0.101,
+      "Interactive": 0.0937,
+      "Parallel agents": 0.0954,
+      "Triage": 0.099,
+      "Codify": 0.0905,
+      "Reconstruct": 0.2134,
+      "Reconcile": 0.1543
+    },
+    "targetCategoryGains": {
+      "Coding": {
+        "Execute": 0.3178,
+        "Audit": 0.2134,
+        "Visualize": 0.2134,
+        "Interactive": 0.1963,
+        "Parallel agents": 0.2679,
+        "Triage": 0.2679,
+        "Codify": 0.2679,
+        "Reconstruct": 1,
+        "Reconcile": 1
+      },
+      "Writing": {
+        "Execute": 0.2361,
+        "Audit": 0.3178,
+        "Visualize": 0.2361,
+        "Interactive": 0.2679,
+        "Parallel agents": 0.2134,
+        "Triage": 0.2361,
+        "Codify": 0.2679,
+        "Reconstruct": 1,
+        "Reconcile": 1
+      },
+      "Research": {
+        "Execute": 0.2361,
+        "Audit": 0.2679,
+        "Visualize": 0.2361,
+        "Interactive": 0.2679,
+        "Parallel agents": 0.2361,
+        "Triage": 0.2679,
+        "Codify": 0.2361,
+        "Reconstruct": 1,
+        "Reconcile": 1
+      },
+      "General": {
+        "Execute": 0.2361,
+        "Audit": 0.3178,
+        "Visualize": 0.3178,
+        "Interactive": 0.2361,
+        "Parallel agents": 0.2361,
+        "Triage": 0.2134,
+        "Codify": 0.2361,
+        "Reconstruct": 1,
+        "Reconcile": 1
+      },
+      "Meta": {
+        "Execute": 0.3178,
+        "Audit": 0.1716,
+        "Visualize": 0.2679,
+        "Interactive": 0.2679,
+        "Parallel agents": 0.2679,
+        "Triage": 0.2679,
+        "Codify": 0.2361,
+        "Reconstruct": 1,
+        "Reconcile": 1
+      }
+    },
+    "priorityGaps": {
+      "Coding": [
+        {
+          "pattern": "Reconstruct",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Reverse-engineering undocumented data formats, bytecode/AST structures, and legacy wire protocols from artifacts"
+        },
+        {
+          "pattern": "Reconcile",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Proving zero behavioral divergence between rewrites/migrations (e.g. JS vs Rust/Wasm, ORM vs SQL, or dual parsers)"
+        },
+        {
+          "pattern": "Execute",
+          "currentCount": 2,
+          "gain": 0.3178,
+          "focus": "Direct outcome execution of complex engineering tasks (fuzz harness setup, hermetic build sandboxing, migration scripts)"
+        },
+        {
+          "pattern": "Audit",
+          "currentCount": 5,
+          "gain": 0.2134,
+          "focus": "Deep invariant verification: API idempotency, concurrency races, and memory leak diagnosis"
+        }
+      ],
+      "Writing": [
+        {
+          "pattern": "Reconstruct",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Reverse-engineering unstated editorial guidelines, voice signatures, and narrative frameworks from exemplar corpora"
+        },
+        {
+          "pattern": "Reconcile",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Reconciling divergent editorial drafts or verifying that technical revisions preserve semantic truth against copyedits"
+        },
+        {
+          "pattern": "Audit",
+          "currentCount": 2,
+          "gain": 0.3178,
+          "focus": "Auditing jargon density, unstated syllogisms, and documentation drift against actual code APIs"
+        },
+        {
+          "pattern": "Interactive",
+          "currentCount": 3,
+          "gain": 0.2679,
+          "focus": "Socratic interview workflows to elicit counter-arguments and steelman thesis claims"
+        }
+      ],
+      "Research": [
+        {
+          "pattern": "Reconstruct",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Reconstructing undocumented experimental pipelines and methodology steps from published tables and charts"
+        },
+        {
+          "pattern": "Reconcile",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Reconciling conflicting empirical findings across disparate papers and identifying differing confounding variables"
+        },
+        {
+          "pattern": "Audit",
+          "currentCount": 3,
+          "gain": 0.2679,
+          "focus": "Auditing statistical methodology for p-hacking, missing baseline controls, and selection bias"
+        },
+        {
+          "pattern": "Triage",
+          "currentCount": 3,
+          "gain": 0.2679,
+          "focus": "Triaging dense research preprints by evidentiary rigor and statistical reproducibility"
+        }
+      ],
+      "General": [
+        {
+          "pattern": "Reconstruct",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Reconstructing undocumented organizational processes and handoffs from meeting minutes and email threads"
+        },
+        {
+          "pattern": "Reconcile",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Reconciling discrepancies between invoices, purchase orders, statements, and contract fee tables"
+        },
+        {
+          "pattern": "Audit",
+          "currentCount": 2,
+          "gain": 0.3178,
+          "focus": "Auditing terms-of-service and vendor privacy policy revisions for unexpected data-sharing obligations"
+        },
+        {
+          "pattern": "Visualize",
+          "currentCount": 2,
+          "gain": 0.3178,
+          "focus": "Generating self-contained interactive bottleneck maps for multi-stakeholder operational workflows"
+        }
+      ],
+      "Meta": [
+        {
+          "pattern": "Reconstruct",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Reverse-engineering implicit prompt guidelines and refusal boundaries from observed black-box model completions"
+        },
+        {
+          "pattern": "Reconcile",
+          "currentCount": 0,
+          "gain": 1,
+          "focus": "Reconciling behavioral differences between model upgrades or prompt variants under regression test suites"
+        },
+        {
+          "pattern": "Execute",
+          "currentCount": 2,
+          "gain": 0.3178,
+          "focus": "Executing autonomous harness benchmarks and sub-agent stress harnesses with hard verification gates"
+        },
+        {
+          "pattern": "Visualize",
+          "currentCount": 3,
+          "gain": 0.2679,
+          "focus": "Interactive token burn rate, cache utilization, and context decay maps for long agent threads"
+        }
+      ]
+    }
+  }
+}

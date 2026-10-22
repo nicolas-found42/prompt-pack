@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Universal Agent Prompt Deck — static HTML/CSS/JS deck of 237 agent prompts.",
+  "description": "Universal Agent Prompt Deck — static HTML/CSS/JS deck of 287 agent prompts.",
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -13,11 +13,12 @@
     "check:tokens": "node scripts/check-tokens.mjs",
     "check:contrast": "node scripts/check-contrast.mjs",
     "check:arch": "node scripts/check-architecture.mjs",
-    "check": "npm run check:data && npm run check:tokens && npm run check:contrast && npm run check:arch && npm run format:check && npm run lint",
+    "check:rust": "cargo fmt --manifest-path generator/Cargo.toml -- --check && cargo test --manifest-path generator/Cargo.toml --offline",
+    "check": "npm run check:data && npm run check:tokens && npm run check:contrast && npm run check:arch && npm run format:check && npm run lint && npm run check:rust",
     "smoke": "node scripts/smoke-test.mjs",
     "test": "npm run check && npm run smoke",
-    "build": "node scripts/build-pages.mjs",
-    "dev": "npx --yes serve ."
+    "build": "cargo build --manifest-path generator/Cargo.toml --target wasm32-unknown-unknown --release --offline && node scripts/build-pages.mjs",
+    "dev": "npm run build && npx --yes serve _site"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-10-22",
+  "runId": "run-20261022-01-batch50",
+  "status": "validated_staged",
+  "totalRows": 50,
+  "results": [
+    {
+      "name": "Check 1: Exact Batch Size and Category Allocation",
+      "passed": true,
+      "details": "Total rows: 50 (expected 50). Quotas: Coding=10, Writing=10, Research=10, General=10, Meta=10"
+    },
+    {
+      "name": "Check 2: Schema Field Types & Required Values",
+      "passed": true,
+      "details": "50 rows verified against repository schema contract. Errors: 0"
+    },
+    {
+      "name": "Check 3: Sequential ID & Contiguous Order Allocation",
+      "passed": true,
+      "details": "50 unique IDs across expected ranges (1.28-1.37, 2.26-2.35, 3.26-3.35, 4.26-4.35, 5.27-5.36). Orders contiguous 238..287"
+    },
+    {
+      "name": "Check 4: Collision Freedom with Canonical Library",
+      "passed": true,
+      "details": "Zero collisions across 237 canonical IDs and orders."
+    },
+    {
+      "name": "Check 5: Verified Whitespace Word Counts & Length Policy",
+      "passed": true,
+      "details": "All 50 rows have exact derived word counts (min=59, max=78)."
+    },
+    {
+      "name": "Check 6: Zero Exact Text Duplicates",
+      "passed": true,
+      "details": "Verified against 237 canonical texts and across 50 batch prompts."
+    },
+    {
+      "name": "Check 7: Semantic Novelty & Editorial Review Coverage",
+      "passed": true,
+      "details": "50/50 entries reviewed. Average canonical lexical similarity: 0.128, max: 0.236."
+    },
+    {
+      "name": "Check 8: Exact Card vs JSON Text Parity",
+      "passed": true,
+      "details": "All 50 card prompt texts match batch JSON prompt texts verbatim."
+    },
+    {
+      "name": "Check 9: JSON Serialization and Parse Round-Trip",
+      "passed": true,
+      "details": "Serialized 50 rows to JSON string and parsed back with identical deep structure."
+    },
+    {
+      "name": "Check 10: Marker Extraction Simulation (BEGIN_ROWS_JSON / END_ROWS_JSON)",
+      "passed": true,
+      "details": "Successfully extracted and parsed 50 rows between exact fence markers."
+    }
+  ]
+}
