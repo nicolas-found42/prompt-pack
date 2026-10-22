@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prompt Pack — Recent Work Diorama</title>
+    <style>
+      :root {
+        --bg: #f7f8fa;
+        --surface: #ffffff;
+        --ink: #1b222c;
+        --muted: #4d5866;
+        --line: #7d8590;
+        --soft: #eef1f5;
+        --link: #1a56b0;
+        --mark-bg: #ffe58a;
+        --radius: 10px;
+        --space-2: 8px;
+        --space-3: 12px;
+        --space-4: 16px;
+        --space-5: 24px;
+        --type-body: clamp(0.94rem, 0.9rem + 0.2vw, 1rem);
+        --type-small: 0.85rem;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #12151a;
+          --surface: #1a1e25;
+          --ink: #e7eaee;
+          --muted: #a8b2be;
+          --line: #6d7683;
+          --soft: #22272f;
+          --link: #9cc0f7;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: var(--space-4);
+      }
+      h1 {
+        margin: 0 0 var(--space-2);
+        font-size: clamp(1.3rem, 1.1rem + 1vw, 1.8rem);
+      }
+      h2 {
+        margin: var(--space-5) 0 var(--space-2);
+        font-size: 1.15rem;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: var(--space-2);
+      }
+      p,
+      li {
+        font-size: var(--type-body);
+      }
+      .legend {
+        display: flex;
+        gap: var(--space-3);
+        flex-wrap: wrap;
+        margin: var(--space-3) 0;
+      }
+      .chip {
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: var(--type-small);
+        font-weight: 600;
+        color: var(--ink);
+        background: var(--soft);
+        border: 1px solid var(--line);
+      }
+      .chip.merged {
+        background: #d9f2e6;
+      }
+      .chip.unmerged {
+        background: #fff0d6;
+      }
+      .chip.uncommitted {
+        background: #e3edfb;
+      }
+      @media (prefers-color-scheme: dark) {
+        .chip.merged {
+          background: #1f3a2e;
+        }
+        .chip.unmerged {
+          background: #3a2f1a;
+        }
+        .chip.uncommitted {
+          background: #223247;
+        }
+      }
+      .diagram {
+        width: 100%;
+        height: auto;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+      .threads {
+        display: grid;
+        gap: var(--space-3);
+      }
+      .thread {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: var(--space-3);
+      }
+      .thread h3 {
+        margin: 0 0 4px;
+        font-size: 1rem;
+      }
+      .meta {
+        font-size: var(--type-small);
+        color: var(--muted);
+        margin: 2px 0;
+      }
+      .status {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: var(--type-small);
+        font-weight: 600;
+        margin-left: 6px;
+      }
+      .status.merged {
+        background: #d9f2e6;
+        color: #14532d;
+      }
+      .status.unmerged {
+        background: #fff0d6;
+        color: #7c4a03;
+      }
+      .status.uncommitted {
+        background: #e3edfb;
+        color: #1a3a6b;
+      }
+      @media (prefers-color-scheme: dark) {
+        .status.merged {
+          background: #1f3a2e;
+          color: #86efac;
+        }
+        .status.unmerged {
+          background: #3a2f1a;
+          color: #fcd34d;
+        }
+        .status.uncommitted {
+          background: #223247;
+          color: #9cc0f7;
+        }
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4);
+      }
+      @media (max-width: 720px) {
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      svg text {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+      }
+      @media (max-width: 480px) {
+        .diagram text {
+          font-size: 11px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Prompt Pack — Recent Work Diorama</h1>
+      <p>
+        Universal Agent Prompt Deck: static HTML/CSS/JS deck of 237 agent prompts across 13
+        categories. Branch <code>docs/prompt-research-catalog</code>, HEAD
+        <code>c9cccc5</code> (merge of PR #7). Evidence: git reflog, commits, uncommitted diff,
+        session transcripts.
+      </p>
+
+      <div class="legend">
+        <span class="chip merged">merged</span>
+        <span class="chip unmerged">committed but unmerged</span>
+        <span class="chip uncommitted">uncommitted</span>
+      </div>
+
+      <h2>1. Architecture and prompt-data flow</h2>
+      <svg
+        class="diagram"
+        viewBox="0 0 1200 520"
+        role="img"
+        aria-label="Prompt data flow from category modules through taxonomy, catalog, state, search, URL, renderers, styles, build and tests"
+      >
+        <rect
+          x="10"
+          y="10"
+          width="1180"
+          height="500"
+          fill="var(--surface)"
+          stroke="var(--line)"
+          rx="10"
+        />
+        <!-- category modules -->
+        <g>
+          <rect
+            x="40"
+            y="40"
+            width="200"
+            height="120"
+            fill="var(--soft)"
+            stroke="var(--line)"
+            rx="8"
+          />
+          <text x="50" y="62" font-weight="700" fill="var(--ink)">data/prompts/*.js</text>
+          <text x="50" y="82" font-size="12" fill="var(--muted)">13 category modules</text>
+          <text x="50" y="100" font-size="12" fill="var(--muted)">coding.js … writing.js</text>
+          <text x="50" y="118" font-size="12" fill="var(--muted)">+ index.js barrel</text>
+          <text x="50" y="140" font-size="11" fill="var(--link)">SHA e4e6e0c, 4016115</text>
+        </g>
+        <path
+          d="M240 100 L300 100"
+          stroke="var(--line)"
+          stroke-width="2"
+          marker-end="url(#arrow)"
+        />
+        <!-- taxonomy -->
+        <g>
+          <rect
+            x="300"
+            y="40"
+            width="200"
+            height="120"
+            fill="var(--soft)"
+            stroke="var(--line)"
+            rx="8"
+          />
+          <text x="310" y="62" font-weight="700" fill="var(--ink)">data/taxonomy.js</text>
+          <text x="310" y="82" font-size="12" fill="var(--muted)">groups, facets, paths</text>
+          <text x="310" y="100" font-size="12" fill="var(--muted)">13 categories, 237 ids</text>
+          <text x="310" y="118" font-size="12" fill="var(--muted)">uncommitted edit: comment</text>
+          <text x="310" y="140" font-size="11" fill="var(--link)">working tree (uncommitted)</text>
+        </g>
+        <path
+          d="M500 100 L560 100"
+          stroke="var(--line)"
+          stroke-width="2"
+          marker-end="url(#arrow)"
+        />
+        <!-- catalog -->
+        <g>
+          <rect
+            x="560"
+            y="40"
+            width="200"
+            height="120"
+            fill="var(--soft)"
+            stroke="var(--line)"
+            rx="8"
+          />
+          <text x="570" y="62" font-weight="700" fill="var(--ink)">app/catalog.js</text>
+          <text x="570" y="82" font-size="12" fill="var(--muted)">indexes corpus once</text>
+          <text x="570" y="100" font-size="12" fill="var(--muted)">lookup maps at boot</text>
+          <text x="570" y="118" font-size="12" fill="var(--muted)">single source of truth</text>
+        </g>
+        <path
+          d="M760 100 L820 100"
+          stroke="var(--line)"
+          stroke-width="2"
+          marker-end="url(#arrow)"
+        />
+        <!-- state/search/url -->
+        <g>
+          <rect
+            x="820"
+            y="40"
+            width="340"
+            height="120"
+            fill="var(--soft)"
+            stroke="var(--line)"
+            rx="8"
+          />
+          <text x="830" y="62" font-weight="700" fill="var(--ink)">
+            app/state.js · search.js · url.js
+          </text>
+          <text x="830" y="82" font-size="12" fill="var(--muted)">canonical view state</text>
+          <text x="830" y="100" font-size="12" fill="var(--muted)">search engine + scopes</text>
+          <text x="830" y="118" font-size="12" fill="var(--muted)">bi-dir URL hash sync</text>
+          <text x="830" y="140" font-size="11" fill="var(--link)">a1f7167, 0b90619</text>
+        </g>
+        <!-- renderers -->
+        <path
+          d="M990 160 L990 210"
+          stroke="var(--line)"
+          stroke-width="2"
+          marker-end="url(#arrow)"
+        />
+        <g>
+          <rect
+            x="40"
+            y="210"
+            width="1120"
+            height="90"
+            fill="var(--soft)"
+            stroke="var(--line)"
+            rx="8"
+          />
+          <text x="50" y="232" font-weight="700" fill="var(--ink)">
+            Renderers (pure): app/results.js · facets.js · featured.js · tree.js
+          </text>
+          <text x="50" y="252" font-size="12" fill="var(--muted)">
+            receive read-only data, write to DOM root; never import state.js or call URL APIs
+          </text>
+          <text x="50" y="272" font-size="12" fill="var(--muted)">
+            Start-here default hides on any URL hash (path/pattern/query)
+          </text>
+          <text x="50" y="292" font-size="11" fill="var(--link)">e4e6e0c, ac6c212</text>
+        </g>
+        <!-- styles/tokens -->
+        <path
+          d="M600 300 L600 340"
+          stroke="var(--line)"
+          stroke-width="2"
+          marker-end="url(#arrow)"
+        />
+        <g>
+          <rect
+            x="40"
+            y="340"
+            width="540"
+            height="110"
+            fill="var(--soft)"
+            stroke="var(--line)"
+            rx="8"
+          />
+          <text x="50" y="362" font-weight="700" fill="var(--ink)">
+            styles/tokens.css + 6 component sheets
+          </text>
+          <text x="50" y="382" font-size="12" fill="var(--muted)">
+            tokens, base, layout, tree, controls, cards
+          </text>
+          <text x="50" y="402" font-size="12" fill="var(--muted)">
+            light/dark theme symmetry; no raw hex in components
+          </text>
+          <text x="50" y="422" font-size="12" fill="var(--muted)">split from styles.css</text>
+          <text x="50" y="442" font-size="11" fill="var(--link)">
+            7cfb041, eca71b7 (tokens update)
+          </text>
+        </g>
+        <!-- build/test/ci -->
+        <g>
+          <rect
+            x="620"
+            y="340"
+            width="540"
+            height="110"
+            fill="var(--soft)"
+            stroke="var(--line)"
+            rx="8"
+          />
+          <text x="630" y="362" font-weight="700" fill="var(--ink)">Build / test / CI</text>
+          <text x="630" y="382" font-size="12" fill="var(--muted)">
+            scripts/check-data,tokens,contrast,arch
+          </text>
+          <text x="630" y="402" font-size="12" fill="var(--muted)">
+            format:check, lint, smoke-test (headless Chrome)
+          </text>
+          <text x="630" y="422" font-size="12" fill="var(--muted)">
+            build-pages → _site; GitHub Pages workflow
+          </text>
+          <text x="630" y="442" font-size="11" fill="var(--link)">
+            a391931, a5bbb65, b2b87f7, de6bcad
+          </text>
+        </g>
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="var(--line)" />
+          </marker>
+        </defs>
+      </svg>
+
+      <h2>2. Coherent recent work threads</h2>
+      <div class="threads">
+        <div class="thread">
+          <h3>
+            Deck scaling to 237 prompts across 13 categories
+            <span class="status merged">merged</span>
+          </h3>
+          <p class="meta">
+            Commits e4e6e0c (scale: per-category data, Start here default, honest search scope),
+            f1ac6b3 (trigger CI), 4016115 (expand to 237 + fresh-session tags), merge c9cccc5 (PR
+            #7). Files: data/prompts/*.js, data/taxonomy.js, app/*,
+            docs/scaling-content-architecture.md.
+          </p>
+          <p>
+            Per-category ES modules replace single prompts.js; taxonomy expands; search scope made
+            honest.
+          </p>
+        </div>
+        <div class="thread">
+          <h3>
+            Reconstruction + Agency categories (30 prompts, 2 new facets)
+            <span class="status merged">merged</span>
+          </h3>
+          <p class="meta">
+            Commit a144b9b (PR #4). Files: data/prompts/reconstruction.js, agency.js, taxonomy
+            facets.
+          </p>
+        </div>
+        <div class="thread">
+          <h3>PR gating on data/format/lint <span class="status merged">merged</span></h3>
+          <p class="meta">Commit a391931 (PR #5). Files: .github/workflows, package scripts.</p>
+        </div>
+        <div class="thread">
+          <h3>Visual appeal browsing/reading polish <span class="status merged">merged</span></h3>
+          <p class="meta">
+            Commits ac6c212, eca71b7 (tokens), merge 515d1b6 (PR #6). Styles/tokens updates.
+          </p>
+        </div>
+        <div class="thread">
+          <h3>Style split into six files <span class="status merged">merged</span></h3>
+          <p class="meta">Commit 7cfb041. styles/*.css by responsibility.</p>
+        </div>
+        <div class="thread">
+          <h3>Taxonomy tree navigation <span class="status merged">merged</span></h3>
+          <p class="meta">Commit a1f7167 (#1). app/tree.js, styles/tree.css.</p>
+        </div>
+        <div class="thread">
+          <h3>
+            Prompt research catalog (arXiv dimensions, 1000-record screening)
+            <span class="status uncommitted">uncommitted</span>
+          </h3>
+          <p class="meta">
+            Untracked: docs/prompt-research/research.md, prompts-chat-1000.jsonl,
+            docs/coding-prompt-gap-analysis.md. Modified: data/taxonomy.js (comment),
+            docs/adr/0001-scaling-strategy.md, docs/onboarding-progressive-disclosure.md,
+            docs/scaling-content-architecture.md. Branch docs/prompt-research-catalog (unmerged,
+            created 2026-10-21 23:01). Session recap: 992 scored after excluding 8 screen-blocked
+            records.
+          </p>
+          <p>
+            Research note only; no prompt records implemented. Coding gap analysis proposes 1.28,
+            1.29.
+          </p>
+        </div>
+        <div class="thread">
+          <h3>
+            Diorama deliverable (this file) <span class="status uncommitted">uncommitted</span>
+          </h3>
+          <p class="meta">
+            New file docs/recent-work-diorama.html. Browser verification pending at creation.
+          </p>
+        </div>
+      </div>
+
+      <h2>3. Branch / worktree / unfinished state</h2>
+      <div class="grid2">
+        <div class="thread">
+          <h3>Branches</h3>
+          <p class="meta">
+            Current: docs/prompt-research-catalog @ c9cccc5. main @ c9cccc5 (same). Remote
+            feat/prompt-expansion-and-fresh-session-tags @ 4016115 (merged via PR #7). No other
+            local branches. Reflog shows earlier topic branches (visual-appeal-browsing-reading,
+            add-pr-check, add-reconstruction-and-agency, scale-and-simplify, polish-deck-ui,
+            feat/tree-navigation-taxonomy) already merged.
+          </p>
+        </div>
+        <div class="thread">
+          <h3>Worktree / stashes</h3>
+          <p class="meta">
+            Single worktree. No stashes. Untracked: docs/coding-prompt-gap-analysis.md,
+            docs/prompt-research/. Modified 4 files (taxonomy comment + 3 docs). npm test may
+            regenerate ignored _site/.
+          </p>
+        </div>
+      </div>
+
+      <h2>4. Verification</h2>
+      <p>
+        Run <code>npm test</code> (check:data, check:tokens, check:contrast, check:arch,
+        format:check, lint, smoke). Results reported after execution. This HTML uses only defined
+        tokens; see styles/tokens.css.
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "1.28",
+    "title": "Binary Wire Protocol Layout Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 74,
+    "closestCanonical": {
+      "id": "9.4",
+      "title": "Byte-Accounting Format Falsification",
+      "pattern": "Reconstruct",
+      "lexicalSimilarity": 0.138
+    },
+    "closestBatch": {
+      "id": "1.37",
+      "title": "Untyped Production Payload Interface Reconstruction",
+      "lexicalSimilarity": 0.117
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reverse-engineer an undocumented binary network protocol and generate a zero-dependency decoder from raw packet captures.",
+      "inputChallenge": "brief-c-01",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "1.29",
+    "title": "Serialized Bytecode & AST Grammar Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 76,
+    "closestCanonical": {
+      "id": "11.3",
+      "title": "Golden Fixture Falsification Sweep",
+      "pattern": "Audit",
+      "lexicalSimilarity": 0.097
+    },
+    "closestBatch": {
+      "id": "1.37",
+      "title": "Untyped Production Payload Interface Reconstruction",
+      "lexicalSimilarity": 0.11
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Recover a formal AST node hierarchy and visitor interface from minified compiler bytecode snapshots.",
+      "inputChallenge": "brief-c-02",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "1.30",
+    "title": "Dual-Engine Behavior & Parser Parity Reconciliation",
+    "pattern": "Reconcile",
+    "words": 74,
+    "closestCanonical": {
+      "id": "11.2",
+      "title": "Differential Implementation Cross-Check",
+      "pattern": "Reconcile",
+      "lexicalSimilarity": 0.236
+    },
+    "closestBatch": {
+      "id": "3.27",
+      "title": "Benchmark Evaluation Protocol & Dataset Reconstruction",
+      "lexicalSimilarity": 0.099
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Run differential execution across two parser implementations to prove zero semantic divergence on edge-case inputs.",
+      "inputChallenge": "brief-c-03",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "1.31",
+    "title": "SQL vs ORM Query Parity & Cardinality Reconciliation",
+    "pattern": "Reconcile",
+    "words": 70,
+    "closestCanonical": {
+      "id": "11.2",
+      "title": "Differential Implementation Cross-Check",
+      "pattern": "Reconcile",
+      "lexicalSimilarity": 0.091
+    },
+    "closestBatch": {
+      "id": "5.29",
+      "title": "Foundation Model Version Upgrade Behavior Reconciliation",
+      "lexicalSimilarity": 0.106
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconcile query execution plans and result sets between raw SQL and ORM queries to eliminate silent data divergences.",
+      "inputChallenge": "brief-c-04",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "1.32",
+    "title": "Property-Based Invariant Fuzzing Harness",
+    "pattern": "Execute",
+    "words": 73,
+    "closestCanonical": {
+      "id": "11.4",
+      "title": "Property-Based Invariant Generator",
+      "pattern": "Execute",
+      "lexicalSimilarity": 0.204
+    },
+    "closestBatch": {
+      "id": "3.32",
+      "title": "Adversarial Falsification & Red-Team Hypothesis Testing",
+      "lexicalSimilarity": 0.098
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Build a standalone property-based fuzz test runner to uncover edge-case invariant violations in critical logic.",
+      "inputChallenge": "brief-c-05",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "1.33",
+    "title": "Zero-Dependency Micro-Benchmark & Flamegraph Suite",
+    "pattern": "Execute",
+    "words": 72,
+    "closestCanonical": {
+      "id": "11.7",
+      "title": "Baseline Performance Drift Harness",
+      "pattern": "Execute",
+      "lexicalSimilarity": 0.165
+    },
+    "closestBatch": {
+      "id": "4.33",
+      "title": "Cross-Functional Project Dependency Critical Path Map",
+      "lexicalSimilarity": 0.108
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Measure hot-path execution latency and heap allocations using an isolated, zero-dependency benchmark runner.",
+      "inputChallenge": "brief-c-06",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "1.34",
+    "title": "Adversarial Codebase Hardening Swarm",
+    "pattern": "Parallel agents",
+    "words": 68,
+    "closestCanonical": {
+      "id": "1.16",
+      "title": "Parallel Adversarial Bug-Hunt & Fuzzing",
+      "pattern": "Parallel agents",
+      "lexicalSimilarity": 0.165
+    },
+    "closestBatch": {
+      "id": "3.32",
+      "title": "Adversarial Falsification & Red-Team Hypothesis Testing",
+      "lexicalSimilarity": 0.137
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Orchestrate dual opposing agents to discover security edge cases and build verified invariant shields.",
+      "inputChallenge": "brief-c-10",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "1.35",
+    "title": "Refactor Triage by Reversibility & Blast Radius",
+    "pattern": "Triage",
+    "words": 68,
+    "closestCanonical": {
+      "id": "4.9",
+      "title": "Decision Bottleneck & Approval Queue Triage",
+      "pattern": "Triage",
+      "lexicalSimilarity": 0.127
+    },
+    "closestBatch": {
+      "id": "3.31",
+      "title": "Preprint Firehose Screening & Evidentiary Triage",
+      "lexicalSimilarity": 0.088
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Triage a backlog of technical refactors by architectural reversibility and failure blast radius.",
+      "inputChallenge": "brief-c-11",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "1.36",
+    "title": "Database Migration Rollback Contract Verification",
+    "pattern": "Reconcile",
+    "words": 74,
+    "closestCanonical": {
+      "id": "13.9",
+      "title": "Database Migration Reversibility Proof",
+      "pattern": "Execute",
+      "lexicalSimilarity": 0.222
+    },
+    "closestBatch": {
+      "id": "1.31",
+      "title": "SQL vs ORM Query Parity & Cardinality Reconciliation",
+      "lexicalSimilarity": 0.099
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Prove that forward database migrations and subsequent rollback scripts restore schemas to an identical state.",
+      "inputChallenge": "brief-c-14",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "1.37",
+    "title": "Untyped Production Payload Interface Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 68,
+    "closestCanonical": {
+      "id": "3.11",
+      "title": "Data Cleaning & Normalization Playbook Codification",
+      "pattern": "Codify",
+      "lexicalSimilarity": 0.103
+    },
+    "closestBatch": {
+      "id": "1.28",
+      "title": "Binary Wire Protocol Layout Reconstruction",
+      "lexicalSimilarity": 0.117
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconstruct strongly typed TypeScript definitions and union variants from a directory of raw JSON production logs.",
+      "inputChallenge": "brief-c-15",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.26",
+    "title": "Editorial Voice & Rhetorical Signature Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 70,
+    "closestCanonical": {
+      "id": "2.10",
+      "title": "Domain Lexicon & Framing Codification",
+      "pattern": "Codify",
+      "lexicalSimilarity": 0.135
+    },
+    "closestBatch": {
+      "id": "2.34",
+      "title": "House Style Linter Rule & Prompt Playbook Codification",
+      "lexicalSimilarity": 0.127
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reverse-engineer an author's distinct prose style and cadence parameters from an exemplar essay portfolio.",
+      "inputChallenge": "brief-w-01",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.27",
+    "title": "Lost Narrative Arc & Thesis Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 73,
+    "closestCanonical": {
+      "id": "2.13",
+      "title": "Interactive Voice-Note to Narrative Extraction",
+      "pattern": "Interactive",
+      "lexicalSimilarity": 0.125
+    },
+    "closestBatch": {
+      "id": "2.31",
+      "title": "Unstated Syllogisms & Evidentiary Gap Audit",
+      "lexicalSimilarity": 0.109
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconstruct a coherent thesis, argument sequence, and evidentiary structure from fragmented working notes.",
+      "inputChallenge": "brief-w-02",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.28",
+    "title": "Editorial Revision Semantic Preservation Reconciliation",
+    "pattern": "Reconcile",
+    "words": 64,
+    "closestCanonical": {
+      "id": "2.17",
+      "title": "Ephemeral Multi-Version Narrative Diff Visualizer",
+      "pattern": "Visualize",
+      "lexicalSimilarity": 0.103
+    },
+    "closestBatch": {
+      "id": "3.35",
+      "title": "Research Protocol Deviation & Preregistration Drift Audit",
+      "lexicalSimilarity": 0.129
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Verify that stylistic copyediting and prose streamlining preserved all underlying technical facts and nuances.",
+      "inputChallenge": "brief-w-03",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.29",
+    "title": "Technical Documentation vs Live API Code Drift Reconciliation",
+    "pattern": "Reconcile",
+    "words": 66,
+    "closestCanonical": {
+      "id": "11.3",
+      "title": "Golden Fixture Falsification Sweep",
+      "pattern": "Audit",
+      "lexicalSimilarity": 0.154
+    },
+    "closestBatch": {
+      "id": "3.27",
+      "title": "Benchmark Evaluation Protocol & Dataset Reconstruction",
+      "lexicalSimilarity": 0.1
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconcile documentation code snippets against current repository interfaces to eradicate broken examples.",
+      "inputChallenge": "brief-w-04",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.30",
+    "title": "Cognitive Load & Jargon Density Audit",
+    "pattern": "Audit",
+    "words": 61,
+    "closestCanonical": {
+      "id": "2.14",
+      "title": "Parallel Persona Reader Simulation",
+      "pattern": "Parallel agents",
+      "lexicalSimilarity": 0.099
+    },
+    "closestBatch": {
+      "id": "2.28",
+      "title": "Editorial Revision Semantic Preservation Reconciliation",
+      "lexicalSimilarity": 0.099
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Audit technical prose for unnecessary insider jargon, sentence depth bottlenecks, and comprehension friction.",
+      "inputChallenge": "brief-w-05",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.31",
+    "title": "Unstated Syllogisms & Evidentiary Gap Audit",
+    "pattern": "Audit",
+    "words": 78,
+    "closestCanonical": {
+      "id": "2.3",
+      "title": "Interactive Editorial Triage",
+      "pattern": "Interactive",
+      "lexicalSimilarity": 0.11
+    },
+    "closestBatch": {
+      "id": "2.27",
+      "title": "Lost Narrative Arc & Thesis Reconstruction",
+      "lexicalSimilarity": 0.109
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Audit an essay or persuasive proposal for unstated assumptions, logical leaps, and missing supporting evidence.",
+      "inputChallenge": "brief-w-06",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.32",
+    "title": "Executive Memo Extreme Compression",
+    "pattern": "Execute",
+    "words": 70,
+    "closestCanonical": {
+      "id": "3.6",
+      "title": "Cross-Session Research Audit & Deduplication",
+      "pattern": "Audit",
+      "lexicalSimilarity": 0.106
+    },
+    "closestBatch": {
+      "id": "2.27",
+      "title": "Lost Narrative Arc & Thesis Reconstruction",
+      "lexicalSimilarity": 0.104
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Compress a sprawling multi-page proposal into an authoritative one-page decision memo without losing trade-offs.",
+      "inputChallenge": "brief-w-07",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.33",
+    "title": "Socratic Thesis Defense & Edge-Case Interrogation",
+    "pattern": "Interactive",
+    "words": 73,
+    "closestCanonical": {
+      "id": "2.3",
+      "title": "Interactive Editorial Triage",
+      "pattern": "Interactive",
+      "lexicalSimilarity": 0.184
+    },
+    "closestBatch": {
+      "id": "2.31",
+      "title": "Unstated Syllogisms & Evidentiary Gap Audit",
+      "lexicalSimilarity": 0.106
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Stress-test a controversial article thesis through an interactive, multi-turn adversarial Socratic interview.",
+      "inputChallenge": "brief-w-08",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.34",
+    "title": "House Style Linter Rule & Prompt Playbook Codification",
+    "pattern": "Codify",
+    "words": 66,
+    "closestCanonical": {
+      "id": "2.6",
+      "title": "Style & Editorial Skill Codification",
+      "pattern": "Codify",
+      "lexicalSimilarity": 0.186
+    },
+    "closestBatch": {
+      "id": "2.26",
+      "title": "Editorial Voice & Rhetorical Signature Reconstruction",
+      "lexicalSimilarity": 0.127
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Codify recurring editorial feedback and brand voice rules into an automated linting prompt and regex dictionary.",
+      "inputChallenge": "brief-w-11",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "2.35",
+    "title": "Draft Version Evolution & Deletion Archaeology",
+    "pattern": "Reconstruct",
+    "words": 71,
+    "closestCanonical": {
+      "id": "2.17",
+      "title": "Ephemeral Multi-Version Narrative Diff Visualizer",
+      "pattern": "Visualize",
+      "lexicalSimilarity": 0.106
+    },
+    "closestBatch": {
+      "id": "2.28",
+      "title": "Editorial Revision Semantic Preservation Reconciliation",
+      "lexicalSimilarity": 0.11
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconstruct lost ideas, deleted arguments, and thesis shifts across git commit revisions of an essay.",
+      "inputChallenge": "brief-w-18",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.26",
+    "title": "Empirical Methodology & Pipeline Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 66,
+    "closestCanonical": {
+      "id": "3.4",
+      "title": "Information Access & Source Gap Introspection",
+      "pattern": "Audit",
+      "lexicalSimilarity": 0.098
+    },
+    "closestBatch": {
+      "id": "1.28",
+      "title": "Binary Wire Protocol Layout Reconstruction",
+      "lexicalSimilarity": 0.112
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconstruct an undocumented data processing and statistical analysis pipeline from a published research paper.",
+      "inputChallenge": "brief-r-01",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.27",
+    "title": "Benchmark Evaluation Protocol & Dataset Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 64,
+    "closestCanonical": {
+      "id": "11.14",
+      "title": "Multi-Model Blind Comparison Arena",
+      "pattern": "Parallel agents",
+      "lexicalSimilarity": 0.119
+    },
+    "closestBatch": {
+      "id": "5.29",
+      "title": "Foundation Model Version Upgrade Behavior Reconciliation",
+      "lexicalSimilarity": 0.125
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconstruct evaluation harness prompts, grading rubrics, and few-shot examples from an AI capability benchmark.",
+      "inputChallenge": "brief-r-02",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.28",
+    "title": "Contradictory Empirical Findings Reconciliation",
+    "pattern": "Reconcile",
+    "words": 64,
+    "closestCanonical": {
+      "id": "3.15",
+      "title": "Parallel Devil's Advocate & Pre-Mortem Red-Team",
+      "pattern": "Parallel agents",
+      "lexicalSimilarity": 0.13
+    },
+    "closestBatch": {
+      "id": "3.35",
+      "title": "Research Protocol Deviation & Preregistration Drift Audit",
+      "lexicalSimilarity": 0.11
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Isolate confounding variables and cohort variances explaining why two studies reached opposing conclusions.",
+      "inputChallenge": "brief-r-03",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.29",
+    "title": "Competitive Feature Matrix Claim vs Reality Reconciliation",
+    "pattern": "Reconcile",
+    "words": 62,
+    "closestCanonical": {
+      "id": "5.16",
+      "title": "Parallel Independent Verification & Judge Ensemble",
+      "pattern": "Parallel agents",
+      "lexicalSimilarity": 0.1
+    },
+    "closestBatch": {
+      "id": "5.30",
+      "title": "Autonomous Tool Output vs Ground Truth Parity Reconciliation",
+      "lexicalSimilarity": 0.124
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconcile vendor marketing claims and comparison matrices against technical documentation and live API tests.",
+      "inputChallenge": "brief-r-04",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.30",
+    "title": "Statistical Rigor & P-Hacking Vulnerability Audit",
+    "pattern": "Audit",
+    "words": 65,
+    "closestCanonical": {
+      "id": "13.10",
+      "title": "Zero-Downtime Schema Transition Verifier",
+      "pattern": "Audit",
+      "lexicalSimilarity": 0.086
+    },
+    "closestBatch": {
+      "id": "3.35",
+      "title": "Research Protocol Deviation & Preregistration Drift Audit",
+      "lexicalSimilarity": 0.134
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Audit an empirical research manuscript for uncorrected multiple testing, p-hacking, and selective reporting.",
+      "inputChallenge": "brief-r-05",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.31",
+    "title": "Preprint Firehose Screening & Evidentiary Triage",
+    "pattern": "Triage",
+    "words": 72,
+    "closestCanonical": {
+      "id": "3.8",
+      "title": "Source Credibility & Signal-to-Noise Triage",
+      "pattern": "Triage",
+      "lexicalSimilarity": 0.12
+    },
+    "closestBatch": {
+      "id": "2.31",
+      "title": "Unstated Syllogisms & Evidentiary Gap Audit",
+      "lexicalSimilarity": 0.092
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Triage a large batch of newly published preprints into tiered reading queues based on empirical rigor.",
+      "inputChallenge": "brief-r-06",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.32",
+    "title": "Adversarial Falsification & Red-Team Hypothesis Testing",
+    "pattern": "Parallel agents",
+    "words": 66,
+    "closestCanonical": {
+      "id": "3.3",
+      "title": "Parallel Hypothesis Delegation",
+      "pattern": "Parallel agents",
+      "lexicalSimilarity": 0.203
+    },
+    "closestBatch": {
+      "id": "1.34",
+      "title": "Adversarial Codebase Hardening Swarm",
+      "lexicalSimilarity": 0.137
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Orchestrate opposing research delegates to subject a core hypothesis to aggressive empirical falsification.",
+      "inputChallenge": "brief-r-07",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.33",
+    "title": "Interactive Systematic Review Search Query Builder",
+    "pattern": "Interactive",
+    "words": 74,
+    "closestCanonical": {
+      "id": "9.15",
+      "title": "Structural Impossibility Test",
+      "pattern": "Execute",
+      "lexicalSimilarity": 0.084
+    },
+    "closestBatch": {
+      "id": "3.35",
+      "title": "Research Protocol Deviation & Preregistration Drift Audit",
+      "lexicalSimilarity": 0.095
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Interactively construct, test, and tune complex Boolean literature search strings for scientific databases.",
+      "inputChallenge": "brief-r-08",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.34",
+    "title": "Interactive Sensitivity Threshold & Assumption Slider",
+    "pattern": "Visualize",
+    "words": 68,
+    "closestCanonical": {
+      "id": "3.17",
+      "title": "Ephemeral Sensitivity & Tradeoff Simulator",
+      "pattern": "Visualize",
+      "lexicalSimilarity": 0.186
+    },
+    "closestBatch": {
+      "id": "5.32",
+      "title": "Multi-Turn Context Decay & Token Utilization Visualizer",
+      "lexicalSimilarity": 0.149
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Generate an interactive visual simulator exposing tipping points where model conclusions reverse.",
+      "inputChallenge": "brief-r-09",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "3.35",
+    "title": "Research Protocol Deviation & Preregistration Drift Audit",
+    "pattern": "Reconcile",
+    "words": 60,
+    "closestCanonical": {
+      "id": "13.9",
+      "title": "Database Migration Reversibility Proof",
+      "pattern": "Execute",
+      "lexicalSimilarity": 0.108
+    },
+    "closestBatch": {
+      "id": "3.30",
+      "title": "Statistical Rigor & P-Hacking Vulnerability Audit",
+      "lexicalSimilarity": 0.134
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconcile a completed research paper against its formal preregistration to detect shifted endpoints and HARKing.",
+      "inputChallenge": "brief-r-19",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.26",
+    "title": "Undocumented Operational Workflow & Handoff Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 64,
+    "closestCanonical": {
+      "id": "3.11",
+      "title": "Data Cleaning & Normalization Playbook Codification",
+      "pattern": "Codify",
+      "lexicalSimilarity": 0.104
+    },
+    "closestBatch": {
+      "id": "2.27",
+      "title": "Lost Narrative Arc & Thesis Reconstruction",
+      "lexicalSimilarity": 0.109
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconstruct an undocumented multi-departmental business process into an actionable standard operating procedure.",
+      "inputChallenge": "brief-g-01",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.27",
+    "title": "Historical Decision Context & Invariant Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 66,
+    "closestCanonical": {
+      "id": "4.11",
+      "title": "Personal Decision Criteria & Constraint Codification",
+      "pattern": "Codify",
+      "lexicalSimilarity": 0.095
+    },
+    "closestBatch": {
+      "id": "4.30",
+      "title": "Vendor Terms of Service & Privacy Revision Audit",
+      "lexicalSimilarity": 0.093
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconstruct original constraints and rationale behind a legacy company policy to evaluate its modern validity.",
+      "inputChallenge": "brief-g-02",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.28",
+    "title": "Invoice, PO & Contract Fee Reconciliation",
+    "pattern": "Reconcile",
+    "words": 64,
+    "closestCanonical": {
+      "id": "12.11",
+      "title": "Phantom Dependency & Ghost Import Detector",
+      "pattern": "Audit",
+      "lexicalSimilarity": 0.083
+    },
+    "closestBatch": {
+      "id": "4.35",
+      "title": "B2B Vendor SLA Breach & Penalty Calculation",
+      "lexicalSimilarity": 0.13
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconcile monthly vendor invoices against master service agreement rate cards to detect billing errors.",
+      "inputChallenge": "brief-g-03",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.29",
+    "title": "Multi-Account Financial Ledger & Statement Reconciliation",
+    "pattern": "Reconcile",
+    "words": 62,
+    "closestCanonical": {
+      "id": "13.9",
+      "title": "Database Migration Reversibility Proof",
+      "pattern": "Execute",
+      "lexicalSimilarity": 0.116
+    },
+    "closestBatch": {
+      "id": "3.35",
+      "title": "Research Protocol Deviation & Preregistration Drift Audit",
+      "lexicalSimilarity": 0.126
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconcile internal bookkeeping entries against payment processor settlement exports to eliminate variances.",
+      "inputChallenge": "brief-g-04",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.30",
+    "title": "Vendor Terms of Service & Privacy Revision Audit",
+    "pattern": "Audit",
+    "words": 61,
+    "closestCanonical": {
+      "id": "1.21",
+      "title": "Runtime Memory & Execution Hot-Path Visualizer",
+      "pattern": "Visualize",
+      "lexicalSimilarity": 0.086
+    },
+    "closestBatch": {
+      "id": "4.28",
+      "title": "Invoice, PO & Contract Fee Reconciliation",
+      "lexicalSimilarity": 0.095
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Audit vendor Terms of Service updates to flag new indemnity burdens, data-sharing clauses, and liability shifts.",
+      "inputChallenge": "brief-g-05",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.31",
+    "title": "Operational Bottleneck & Departmental Handoff Visualizer",
+    "pattern": "Visualize",
+    "words": 67,
+    "closestCanonical": {
+      "id": "1.3",
+      "title": "Ephemeral Problem & State Visualizer",
+      "pattern": "Visualize",
+      "lexicalSimilarity": 0.161
+    },
+    "closestBatch": {
+      "id": "3.34",
+      "title": "Interactive Sensitivity Threshold & Assumption Slider",
+      "lexicalSimilarity": 0.103
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Generate an interactive visual map of inter-departmental ticket flows to pinpoint maximum idle wait states.",
+      "inputChallenge": "brief-g-06",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.32",
+    "title": "Travel Itinerary Disruption & Contingency Simulator",
+    "pattern": "Parallel agents",
+    "words": 67,
+    "closestCanonical": {
+      "id": "8.5",
+      "title": "Travel Itinerary Consolidation & Stress-Test",
+      "pattern": "Execute",
+      "lexicalSimilarity": 0.136
+    },
+    "closestBatch": {
+      "id": "3.32",
+      "title": "Adversarial Falsification & Red-Team Hypothesis Testing",
+      "lexicalSimilarity": 0.124
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Orchestrate parallel agents to stress-test tight travel schedules against delays and generate resilient backup plans.",
+      "inputChallenge": "brief-g-08",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.33",
+    "title": "Cross-Functional Project Dependency Critical Path Map",
+    "pattern": "Visualize",
+    "words": 60,
+    "closestCanonical": {
+      "id": "4.16",
+      "title": "Ephemeral Dependency & Timeline Visualizer",
+      "pattern": "Visualize",
+      "lexicalSimilarity": 0.125
+    },
+    "closestBatch": {
+      "id": "1.33",
+      "title": "Zero-Dependency Micro-Benchmark & Flamegraph Suite",
+      "lexicalSimilarity": 0.108
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Calculate and visualize zero-slack project dependencies to prevent cross-functional launch delays.",
+      "inputChallenge": "brief-g-15",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.34",
+    "title": "Crisis Incident Post-Mortem & Timeline Archaeology",
+    "pattern": "Reconstruct",
+    "words": 59,
+    "closestCanonical": {
+      "id": "13.4",
+      "title": "Ephemeral Incident Triage War-Room Generator",
+      "pattern": "Visualize",
+      "lexicalSimilarity": 0.087
+    },
+    "closestBatch": {
+      "id": "2.27",
+      "title": "Lost Narrative Arc & Thesis Reconstruction",
+      "lexicalSimilarity": 0.081
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconstruct an authoritative minute-by-minute timeline of an operational outage from scattered log snippets.",
+      "inputChallenge": "brief-g-18",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "4.35",
+    "title": "B2B Vendor SLA Breach & Penalty Calculation",
+    "pattern": "Audit",
+    "words": 64,
+    "closestCanonical": {
+      "id": "11.16",
+      "title": "Output Structure Determinism Harness",
+      "pattern": "Reconcile",
+      "lexicalSimilarity": 0.068
+    },
+    "closestBatch": {
+      "id": "4.28",
+      "title": "Invoice, PO & Contract Fee Reconciliation",
+      "lexicalSimilarity": 0.13
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Audit cloud service downtime logs against contract SLA tiers to compute exact penalty credits owed.",
+      "inputChallenge": "brief-g-19",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.27",
+    "title": "System Prompt & Refusal Boundary Reverse-Engineering",
+    "pattern": "Reconstruct",
+    "words": 68,
+    "closestCanonical": {
+      "id": "5.7",
+      "title": "Recurring Instruction to Skill & Memory Codification",
+      "pattern": "Codify",
+      "lexicalSimilarity": 0.099
+    },
+    "closestBatch": {
+      "id": "5.29",
+      "title": "Foundation Model Version Upgrade Behavior Reconciliation",
+      "lexicalSimilarity": 0.128
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reverse-engineer an undocumented AI agent's system directives and refusal boundaries from observed behavior.",
+      "inputChallenge": "brief-m-01",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.28",
+    "title": "Lost Agent Conversation State & Context Reconstruction",
+    "pattern": "Reconstruct",
+    "words": 65,
+    "closestCanonical": {
+      "id": "5.10",
+      "title": "Open Agent Thread & Session History Triage",
+      "pattern": "Triage",
+      "lexicalSimilarity": 0.105
+    },
+    "closestBatch": {
+      "id": "3.27",
+      "title": "Benchmark Evaluation Protocol & Dataset Reconstruction",
+      "lexicalSimilarity": 0.097
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconstruct an agent's active mental model and pending tasks from a truncated mid-task session transcript.",
+      "inputChallenge": "brief-m-02",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.29",
+    "title": "Foundation Model Version Upgrade Behavior Reconciliation",
+    "pattern": "Reconcile",
+    "words": 71,
+    "closestCanonical": {
+      "id": "5.16",
+      "title": "Parallel Independent Verification & Judge Ensemble",
+      "pattern": "Parallel agents",
+      "lexicalSimilarity": 0.115
+    },
+    "closestBatch": {
+      "id": "5.31",
+      "title": "Autonomous Agent Capability Benchmark Harness Execution",
+      "lexicalSimilarity": 0.131
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconcile prompt outputs across foundation model versions to prevent schema breaks and regression bugs.",
+      "inputChallenge": "brief-m-03",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.30",
+    "title": "Autonomous Tool Output vs Ground Truth Parity Reconciliation",
+    "pattern": "Reconcile",
+    "words": 65,
+    "closestCanonical": {
+      "id": "11.3",
+      "title": "Golden Fixture Falsification Sweep",
+      "pattern": "Audit",
+      "lexicalSimilarity": 0.13
+    },
+    "closestBatch": {
+      "id": "3.29",
+      "title": "Competitive Feature Matrix Claim vs Reality Reconciliation",
+      "lexicalSimilarity": 0.124
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Reconcile an agent's self-reported progress against actual git diffs and test logs to catch hallucinated work.",
+      "inputChallenge": "brief-m-04",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.31",
+    "title": "Autonomous Agent Capability Benchmark Harness Execution",
+    "pattern": "Execute",
+    "words": 62,
+    "closestCanonical": {
+      "id": "5.1",
+      "title": "Environment & Tool-Call Latency Audit",
+      "pattern": "Audit",
+      "lexicalSimilarity": 0.143
+    },
+    "closestBatch": {
+      "id": "5.36",
+      "title": "Deterministic Guardrail Shim & Output Filter Execution",
+      "lexicalSimilarity": 0.143
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Execute an autonomous benchmark harness evaluating agent reasoning, tool discipline, and error recovery.",
+      "inputChallenge": "brief-m-05",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.32",
+    "title": "Multi-Turn Context Decay & Token Utilization Visualizer",
+    "pattern": "Visualize",
+    "words": 66,
+    "closestCanonical": {
+      "id": "5.17",
+      "title": "Ephemeral Agent Execution & Tool-Chain Visualizer",
+      "pattern": "Visualize",
+      "lexicalSimilarity": 0.205
+    },
+    "closestBatch": {
+      "id": "3.34",
+      "title": "Interactive Sensitivity Threshold & Assumption Slider",
+      "lexicalSimilarity": 0.149
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Generate an interactive visual map of context window token consumption and attention decay across session turns.",
+      "inputChallenge": "brief-m-06",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.33",
+    "title": "Interactive Prompt Regression & Failure Debugger",
+    "pattern": "Interactive",
+    "words": 66,
+    "closestCanonical": {
+      "id": "4.10",
+      "title": "Ad-Hoc Process to Autonomous Playbook Codification",
+      "pattern": "Codify",
+      "lexicalSimilarity": 0.084
+    },
+    "closestBatch": {
+      "id": "3.33",
+      "title": "Interactive Systematic Review Search Query Builder",
+      "lexicalSimilarity": 0.092
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Interactively debug a failing prompt with an expert prompt engineer to isolate ambiguities and formatting traps.",
+      "inputChallenge": "brief-m-07",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.34",
+    "title": "Agent Failure Transcript Taxonomy & Root-Cause Triage",
+    "pattern": "Triage",
+    "words": 68,
+    "closestCanonical": {
+      "id": "1.5",
+      "title": "Primitive & Agent-Surface Architecture Audit",
+      "pattern": "Audit",
+      "lexicalSimilarity": 0.118
+    },
+    "closestBatch": {
+      "id": "5.32",
+      "title": "Multi-Turn Context Decay & Token Utilization Visualizer",
+      "lexicalSimilarity": 0.094
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Triage a collection of failed agent session transcripts into actionable root-cause engineering categories.",
+      "inputChallenge": "brief-m-08",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.35",
+    "title": "Dual-Agent Independent Code Review & Consensus Debate",
+    "pattern": "Parallel agents",
+    "words": 66,
+    "closestCanonical": {
+      "id": "5.15",
+      "title": "Parallel Prompt Strategy & Framing Bakeoff",
+      "pattern": "Parallel agents",
+      "lexicalSimilarity": 0.143
+    },
+    "closestBatch": {
+      "id": "1.34",
+      "title": "Adversarial Codebase Hardening Swarm",
+      "lexicalSimilarity": 0.131
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Orchestrate security and performance delegates in parallel to conduct a balanced, low-noise code review.",
+      "inputChallenge": "brief-m-09",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  },
+  {
+    "id": "5.36",
+    "title": "Deterministic Guardrail Shim & Output Filter Execution",
+    "pattern": "Execute",
+    "words": 68,
+    "closestCanonical": {
+      "id": "5.18",
+      "title": "Live Harness Self-Upgrade & Primitive Bootstrap",
+      "pattern": "Execute",
+      "lexicalSimilarity": 0.112
+    },
+    "closestBatch": {
+      "id": "5.31",
+      "title": "Autonomous Agent Capability Benchmark Harness Execution",
+      "lexicalSimilarity": 0.143
+    },
+    "substantiveNovelty": {
+      "distinctOutcome": "Deploy a fast, deterministic regex interceptor to block dangerous agent tool executions before they run.",
+      "inputChallenge": "brief-m-13",
+      "verdict": "SUBSTANTIVELY_NOVEL"
+    }
+  }
+]

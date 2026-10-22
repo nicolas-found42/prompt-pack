@@ -3,21 +3,22 @@
 > Location note: `docs/` already holds `css-organization.md`, which set the
 > convention this file follows (location note, recommendation, per-question
 > sections, risks table, numbered sources). Read and measured on 2026-10-20
-> against the repo state at `data/prompts.js` = 157 records / 117,899 bytes and
-> `data/taxonomy.js` = 24,677 bytes.
+> against the repo state at the time: the prompt corpus (`data/prompts/`) = 157
+> records / 117,899 bytes and `data/taxonomy.js` = 24,677 bytes.
 
 ## Recommendation
 
 Keep the no-build, no-runtime-dependency contract, and change the **shape of the
 data**, not the toolchain. Concretely:
 
-1. **Split `data/prompts.js` into one ES module per category**
-   (`data/prompts/coding.js` … `data/prompts/life-admin.js`), each exporting a
+1. **Split the prompt corpus into one ES module per category**
+   (`data/prompts/coding.js` … `data/prompts/writing.js`), each exporting a
    flat array, plus a hand-written `data/prompts/index.js` that statically
-   imports the eight and concatenates. Add `<link rel="modulepreload">` for the
+   imports the thirteen and concatenates. Add `<link rel="modulepreload">` for the
    data modules in `index.html`. Splitting is for **edit isolation and
    discoverability**; it costs bytes, and that cost must be acknowledged, not
-   waved away (measured: **+18.4% gzipped bytes** at today's size — see Q1).
+   waved away (measured: **+18.4% gzipped bytes** at the measured 157-record size
+   — see Q1).
 2. **Split each category module into `meta` and `text` exports** only when the
    eager payload crosses a stated budget. Today the entire deck is 35 KB gzipped;
    metadata alone is 12 KB and prompt bodies 25 KB (37 KB separately — two files
@@ -99,7 +100,7 @@ server, the request graph is three waves:
 | ------------------------------------------------------------------------------ | -------- | --------- | ------- |
 | CSS (6 files) + `app/main.js`                                                  | 7        | 4 ms      | 8 ms    |
 | app modules (`catalog`, `state`, `url`, `tree`, `search`, `results`, `facets`) | 7        | 14 ms     | 17 ms   |
-| `data/prompts.js` + `data/taxonomy.js`                                         | 2        | 19 ms     | 20 ms   |
+| Prompt + taxonomy modules (2 files then)                                       | 2        | 19 ms     | 20 ms   |
 
 `DOMContentLoaded` 20–21 ms, `load` 31–32 ms. Adding `<link rel="modulepreload">`
 for the app and data modules collapses waves 2–3 into wave 1 (data now starts at
@@ -460,7 +461,7 @@ Each step is independently useful and independently revertible.
 3. **`content-visibility: auto` + `contain-intrinsic-size: auto 270px` on
    `.card`** and a rendered-card cap with "Show more". Measured 11× layout
    reduction at 3,000 cards and 31× interaction-latency reduction at 10,000.
-4. **Split `data/prompts.js` into `data/prompts/<category>.js`** with a
+4. **Split the prompt corpus into `data/prompts/<category>.js`** with a
    hand-written barrel; add `modulepreload` links. Re-run the validator; the
    per-category record counts must still sum to the deck count.
 5. **Split `meta`/`text` per category** only when the eager payload passes the
@@ -512,7 +513,7 @@ All local numbers in this note were produced on 2026-10-20 on macOS arm64 with:
   because it repeats less.
 - Live-site figures were taken with `curl --http2` against
   `https://nicolas-found42.github.io/prompt-pack/`. The deployed build contains
-  **107** prompts (77,224-byte `data/prompts.js`, 24,260 bytes gzipped transfer),
+  **107** prompts (a single 77,224-byte prompt module, 24,260 bytes gzipped transfer),
   while the working tree contains 157, so live byte figures understate the
   repo's current size; the 157-record figures elsewhere in this note come from
   the working tree.
@@ -569,7 +570,7 @@ web.dev, V8, and first-party tool/GitHub documentation.
 36. MDN — HTTP/2 glossary (multiplexing, header compression, server push removal): https://developer.mozilla.org/en-US/docs/Glossary/HTTP_2
 37. MDN — `box-sizing` (`content-box` is the default: `width`/`height` apply to the content box, padding and border are added): https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 
-Repo files measured: `data/prompts.js`, `data/taxonomy.js`, `app/catalog.js`,
+Repo files measured: `data/prompts/`, `data/taxonomy.js`, `app/catalog.js`,
 `app/search.js`, `app/results.js`, `app/main.js`, `app/tree.js`, `app/state.js`,
 `app/url.js`, `index.html`, `scripts/build-pages.mjs`, `.github/workflows/pages.yml`,
 `eslint.config.mjs`, `.prettierrc.json`, `.prettierignore`.

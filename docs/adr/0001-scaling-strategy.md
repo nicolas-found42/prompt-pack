@@ -6,8 +6,9 @@ dependency.
 
 ## Decisions
 
-1. **Split `data/prompts.js` into one ES module per category** (`data/prompts/`
-   plus a hand-written `index.js` barrel), preloaded with
+1. **Split the prompt corpus into one ES module per category**
+   (`data/prompts/<category>.js` plus a hand-written `index.js` barrel),
+   preloaded with
    `<link rel="modulepreload">`. Measured cost: +18.4% gzipped at 157 records.
    The trade is bytes for edit isolation — two contributors adding prompts in
    different categories never touch the same file, and appends at the end of one

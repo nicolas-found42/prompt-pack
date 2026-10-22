@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Prompt Workshop | Universal Agent Prompt Deck</title>
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/controls.css" />
+    <link rel="stylesheet" href="styles/workshop.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to prompt workshop</a>
+    <main class="workshop-shell" id="main-content" tabindex="-1">
+      <nav class="workshop-nav" aria-label="Site navigation">
+        <a class="workshop-link" href="index.html">← Browse the prompt deck</a>
+      </nav>
+      <header class="workshop-header">
+        <div>
+          <p class="workshop-kicker">Deterministic Rust + WebAssembly builder</p>
+          <h1>Prompt Workshop</h1>
+          <p class="workshop-lede">
+            Create a prompt from a request or refine one you already have.
+          </p>
+        </div>
+        <p class="engine-status" id="engine-status" role="status" aria-live="polite">
+          Loading the local Rust engine…
+        </p>
+      </header>
+
+      <p class="privacy-note">
+        The app's only runtime fetch is this site's WebAssembly file. Input remains in this tab and
+        is never uploaded or sent to an AI or Jev service; copying is user-triggered and puts output
+        on the clipboard.
+      </p>
+
+      <form id="workshop-form" novalidate>
+        <div class="workshop-grid">
+          <section class="workshop-card" aria-labelledby="task-heading">
+            <h2 id="task-heading">1. Task text</h2>
+            <label class="workshop-label" for="mode">Mode</label>
+            <select id="mode">
+              <option value="create">Create a prompt</option>
+              <option value="refine">Refine an existing prompt</option>
+            </select>
+            <label class="workshop-label" id="task-label" for="task-input">Request</label>
+            <textarea
+              class="workshop-textarea task-input"
+              id="task-input"
+              rows="9"
+              spellcheck="true"
+              aria-describedby="task-help input-bytes"
+              placeholder="Describe the work you want done, including any requirements you already know."
+            ></textarea>
+            <div class="field-meta">
+              <span id="input-bytes">0 / 262,144 UTF-8 bytes</span>
+              <span id="task-help">Input is preserved verbatim in the generated prompt.</span>
+            </div>
+          </section>
+
+          <section class="workshop-card" aria-labelledby="context-heading">
+            <h2 id="context-heading">2. Task context</h2>
+            <label class="workshop-label" for="profile">Task profile</label>
+            <select id="profile">
+              <option value="general">General</option>
+              <option value="research">Research</option>
+              <option value="coding">Coding</option>
+              <option value="writing">Writing</option>
+              <option value="data-analysis">Data analysis</option>
+            </select>
+            <fieldset class="context-options">
+              <legend>Use these only when they apply</legend>
+              <label><input id="multi-step" type="checkbox" /> Multiple dependent steps</label>
+              <label
+                ><input id="external-evidence" type="checkbox" /> External sources or
+                evidence</label
+              >
+              <label><input id="tool-use" type="checkbox" /> Tools or retrieved content</label>
+              <label
+                ><input id="external-effects" type="checkbox" /> External or irreversible
+                actions</label
+              >
+            </fieldset>
+            <button class="workshop-primary" id="analyze-button" type="button" disabled>
+              Analyze request
+            </button>
+          </section>
+        </div>
+
+        <section
+          class="workshop-card analysis-card"
+          id="analysis-panel"
+          aria-labelledby="analysis-heading"
+          hidden
+        >
+          <h2 id="analysis-heading">3. Review the analysis</h2>
+          <p class="workshop-help">
+            Cue detection is literal phrase matching, not semantic judgment. Recommendations are
+            advisory; select or clear any section before building.
+          </p>
+          <h3>Detected cues</h3>
+          <div class="coverage-grid" id="coverage-list"></div>
+          <fieldset class="section-options">
+            <legend>Prompt sections</legend>
+            <div class="section-grid" id="section-list"></div>
+          </fieldset>
+          <button class="workshop-primary" id="build-button" type="button" disabled>
+            Build prompt
+          </button>
+        </section>
+
+        <section
+          class="workshop-card output-card"
+          id="output-panel"
+          aria-labelledby="output-heading"
+          hidden
+        >
+          <div class="output-heading-row">
+            <div>
+              <h2 id="output-heading">Generated prompt</h2>
+              <p class="workshop-help">
+                Review and edit the output after copying it into your agent.
+              </p>
+            </div>
+            <button class="ghost" id="copy-button" type="button" disabled>Copy prompt</button>
+          </div>
+          <textarea
+            class="workshop-textarea output-text"
+            id="output-text"
+            rows="24"
+            readonly
+            spellcheck="false"
+            aria-label="Generated prompt"
+          ></textarea>
+          <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+        </section>
+        <p class="workshop-status" id="workshop-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <footer class="workshop-footer">
+        <p>
+          No model calls, task-text persistence, or external processing.
+          <a href="docs/prompt-workshop.md">How the builder works and its limits</a>.
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="app/workshop.js"></script>
+  </body>
+</html>

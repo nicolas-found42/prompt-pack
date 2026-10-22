@@ -1,6 +1,6 @@
 # Repository Instructions for Agents
 
-Universal Agent Prompt Deck (`prompt-pack`): static, dependency-free HTML/CSS/JS deck of 237 agent prompts with native ES modules, token-driven theming, and an ARIA-compliant taxonomy tree.
+Universal Agent Prompt Deck (`prompt-pack`): static, dependency-free HTML/CSS/JS deck of 287 agent prompts with native ES modules, token-driven theming, and an ARIA-compliant taxonomy tree.
 
 ## Operating in this repository
 
@@ -85,7 +85,7 @@ A pass requires all six checks green and the headless browser smoke test confirm
   - Prompt IDs must be unique, non-empty, and contiguous within their category.
 - **Headless browser smoke verification**:
   - Must serve the built `_site/` directory over HTTP (native ES modules require HTTP, not `file://`).
-  - Headless Chrome verifies full DOM rendering ("Showing 237 of 237", interactive tree, zero console errors).
+  - Headless Chrome verifies full DOM rendering ("Showing 287 of 287", interactive tree, zero console errors).
 
 ---
 

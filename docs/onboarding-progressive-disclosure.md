@@ -6,7 +6,8 @@
 > `index.html` (103 lines), `app/main.js` (382), `app/tree.js`, `app/facets.js`,
 > `app/results.js` (41), `app/search.js` (44), `app/state.js` (45),
 > `app/url.js`, `data/taxonomy.js` (8 categories / 41 subcategories / 88 groups,
-> 137 nodes, 8 of them without a `summary`), and `data/prompts.js` (157 records).
+> 137 nodes, 8 of them without a `summary`), and `data/prompts/` (157 records
+> at the time of this reading; 237 across 13 category modules today).
 > Every "current" claim below is a reading of those files; every rule about
 > people is cited to a primary or canonical-practitioner source.
 
@@ -574,7 +575,7 @@ rather than replacing it everywhere.
 | **A fourth taxonomy level**                      | Growth is usually absorbed by nesting rather than by better grouping; deep hierarchies plus disclosure lose users. [30]                   | Cap at three levels; if categories exceed roughly a dozen, add a category landing view with its `summary` text. [40]                                                                    |
 | **Summaries stay dead data**                     | `summary` is copied onto nodes and never rendered, so nothing forces it to stay accurate. [40]                                            | Render it; add a lint or review step requiring a `summary` on every category, subcategory and group — all 41 subcategories and 88 groups have one today, while the 8 categories do not. |
 | **Print silently drops prompt bodies**           | No print stylesheet; closed `<details>` print as their summary line. [30]                                                                 | Add `open` to every prompt `<details>` on `beforeprint` (the `open` attribute is Boolean and settable from script [17]), restore afterwards.                                            |
-| **Plain-language pass rewrites the data**        | "Improve the copy" gets applied to `data/prompts.js`, where the titles are product content. [16]                                          | Scope the rewrite to `index.html`, `app/results.js`, `app/facets.js` and the empty states; prompt text stays specialist.                                                                |
+| **Plain-language pass rewrites the data**        | "Improve the copy" gets applied to `data/prompts/`, where the titles are product content. [16]                                            | Scope the rewrite to `index.html`, `app/results.js`, `app/facets.js` and the empty states; prompt text stays specialist.                                                                |
 | **Personalisation overrides a shared link**      | Recents or a remembered view applied on load can silently replace the state encoded in the URL. [27][41]                                  | Hash wins; storage is read only when the hash is empty, and every `localStorage` access is wrapped in `try/catch`.                                                                      |
 
 ## Sources

@@ -10,9 +10,10 @@ import { createServer } from "node:http";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { execSync, spawn } from "node:child_process";
+import { PROMPTS } from "../data/prompts/index.js";
 
 console.log("smoke-test: step 1 - building site artifact...");
-execSync("node scripts/build-pages.mjs", { stdio: "inherit" });
+execSync("npm run build", { stdio: "inherit" });
 
 // 1. Verify build output in _site/
 const OUT = "_site";
@@ -24,6 +25,18 @@ if (!existsSync(join(OUT, "index.html"))) {
 for (const dir of ["app", "data", "styles"]) {
   if (!existsSync(join(OUT, dir))) {
     console.error(`smoke-test FAIL: _site/${dir} is missing`);
+    process.exit(1);
+  }
+}
+for (const file of [
+  "workshop.html",
+  "app/workshop.js",
+  "styles/workshop.css",
+  "wasm/prompt_workshop.wasm",
+  "docs/prompt-workshop.md",
+]) {
+  if (!existsSync(join(OUT, file))) {
+    console.error(`smoke-test FAIL: _site/${file} is missing`);
     process.exit(1);
   }
 }
@@ -83,6 +96,7 @@ const mimeTypes = {
   ".json": "application/json; charset=utf-8",
   ".png": "image/png",
   ".svg": "image/svg+xml",
+  ".wasm": "application/wasm",
 };
 
 const server = createServer((req, res) => {
@@ -135,18 +149,20 @@ server.listen(0, "127.0.0.1", () => {
   });
 
   chromeProc.on("close", (code) => {
-    server.close();
-
     if (code !== 0) {
+      server.close();
       console.error("smoke-test FAIL: Headless Chrome exited with status", code);
       if (stderr) console.error(stderr);
       process.exit(1);
     }
 
-    // Assertions on the rendered page
     const failures = [];
-    if (!stdout.includes("Showing 237 of 237")) {
-      failures.push("Expected result counter 'Showing 237 of 237' was not rendered.");
+    if (/Uncaught|ERROR:CONSOLE/.test(stderr)) {
+      failures.push("The prompt deck emitted a browser runtime error.");
+    }
+    const expectedCountText = `Showing ${PROMPTS.length} of ${PROMPTS.length}`;
+    if (!stdout.includes(expectedCountText)) {
+      failures.push(`Expected result counter '${expectedCountText}' was not rendered.`);
     }
     if (!stdout.includes('class="card"')) {
       failures.push("No prompt cards rendered in DOM.");
@@ -165,16 +181,62 @@ server.listen(0, "127.0.0.1", () => {
         "Categories Reconstruction, Agency, Evaluation, Security, and Operations missing from rendered tree.",
       );
     }
-
     if (failures.length) {
+      server.close();
       console.error(`smoke-test FAIL: ${failures.length} DOM assertion(s) failed:`);
-      for (const f of failures) console.error(`  - ${f}`);
+      for (const failure of failures) console.error(`  - ${failure}`);
       process.exit(1);
     }
 
-    console.log(
-      "smoke-test: all browser assertions PASSED (237 prompts rendered, taxonomy tree interactive, zero console faults).",
-    );
-    process.exit(0);
+    console.log("smoke-test: prompt deck DOM assertions passed.");
+    const workshopArgs = [
+      "--headless=new",
+      "--dump-dom",
+      "--virtual-time-budget=8000",
+      "--no-sandbox",
+      "--disable-gpu",
+      `http://127.0.0.1:${port}/workshop.html`,
+    ];
+    const workshopProc = spawn(chromeBin, workshopArgs);
+    let workshopStdout = "";
+    let workshopStderr = "";
+    workshopProc.stdout.on("data", (chunk) => {
+      workshopStdout += chunk;
+    });
+    workshopProc.stderr.on("data", (chunk) => {
+      workshopStderr += chunk;
+    });
+    workshopProc.on("close", (workshopCode) => {
+      server.close();
+      if (workshopCode !== 0) {
+        console.error("smoke-test FAIL: Prompt Workshop Chrome exited with status", workshopCode);
+        if (workshopStderr) console.error(workshopStderr);
+        process.exit(1);
+      }
+      const workshopFailures = [];
+      if (!workshopStdout.includes('data-engine-ready="true"')) {
+        workshopFailures.push(
+          "The local Rust WebAssembly engine did not initialize in the live page.",
+        );
+      }
+      if (!workshopStdout.includes("Local Rust engine ready.")) {
+        workshopFailures.push("The Prompt Workshop did not announce engine readiness.");
+      }
+      if (/Uncaught|ERROR:CONSOLE/.test(workshopStderr)) {
+        workshopFailures.push("The Prompt Workshop emitted a browser runtime error.");
+      }
+      if (workshopFailures.length) {
+        console.error(
+          `smoke-test FAIL: ${workshopFailures.length} Prompt Workshop assertion(s) failed:`,
+        );
+        for (const failure of workshopFailures) console.error(`  - ${failure}`);
+        if (workshopStderr) console.error(workshopStderr);
+        process.exit(1);
+      }
+      console.log(
+        `smoke-test: all browser assertions PASSED (${PROMPTS.length} prompts rendered; Rust WebAssembly engine initialized; no page runtime errors).`,
+      );
+      process.exit(0);
+    });
   });
 });

@@ -1,0 +1,128 @@
+{
+  "runId": "run-20261022-01-batch50",
+  "timestamp": "2026-10-22",
+  "status": "integrated",
+  "description": "First 50-prompt expansion batch targeting measured gaps in Categories 1-5 (Coding, Writing, Research, General, Meta).",
+  "settings": {
+    "batchSize": 50,
+    "categoryTargets": {
+      "Coding": 10,
+      "Writing": 10,
+      "Research": 10,
+      "General": 10,
+      "Meta": 10
+    },
+    "sourceHint": "data/prompts/index.js",
+    "lengthPolicy": "50-115 words (observed deck range: min 50, median 75, max 126)",
+    "integrateIntoLibrary": false,
+    "additionalPriorities": "None",
+    "excludedTopics": "None"
+  },
+  "sourceFingerprints": {
+    "data/prompts/index.js": "83ac97fb55ab3a548cc18b49e7d89a17676b41f7c06b5c31be28f65902f12251",
+    "data/prompts/coding.js": "7bb0e0000d68de06092ec81ab4bbb947c4d6715864843f45b3b96ea60d1e6fc2",
+    "data/prompts/writing.js": "c2fc54ecc117682fea57ba7ef6e8131e81c3fe3c5e654818f6b1e75e274572dc",
+    "data/prompts/research.js": "30befc2bb9402615996332f5b0c69031817eaa4162bdd0ac06e62a6493488b4c",
+    "data/prompts/general.js": "870e1b9efbbb593d795353007ab93986d9682e42380887d1fc344f21eab54364",
+    "data/prompts/meta.js": "72d573638c7489953af5b876d8b72ce00cbbcaf6df746778fb8433fabbb56e32",
+    "data/prompts/learning.js": "0e6bf90bdfa0d811440224d76451f2d7ac121fe9becf7c5bb8cc1dc8c7925649",
+    "data/prompts/communication.js": "bb2d91f37eeb248b01f4dfad4a852dfb93b697075cbf719ca88f2c1f3c7baf8d",
+    "data/prompts/life-admin.js": "ebcc853b3ee9623eb802785837a0dd48c20ad571a9e0e9aebaee7bfa842dfe5c",
+    "data/prompts/reconstruction.js": "a6922e37969873d33b98d990d774f69dd9964b894003550f28cdde9beb5a986d",
+    "data/prompts/agency.js": "494493eeef52ebd6f1ff9762705da248eca94d47dfa0e17b391b753f4b74c87d",
+    "data/prompts/evaluation.js": "33daf0bf0ea68d8e6e34170514212eab5d6b14b4fd49bb0a48ae31b01a644ddc",
+    "data/prompts/security.js": "56943bbea7323743a3495e9ed7c6cc21fdf63cff09443a07870a25af338d16e5",
+    "data/prompts/operations.js": "0db7ed223b3c261778cb9d653ec5380d0f497814974708b259714eb3dbb9a413",
+    "data/taxonomy.js": "020e96e046802ee30f762ff0b95b15724788fd5fcb966709ca57552948e32e3d"
+  },
+  "corpusAccounting": {
+    "canonicalCorpusSize": 237,
+    "stagedBatchSize": 50,
+    "plannedLibraryTotal": 287,
+    "highestOccupiedCanonicalOrder": 237,
+    "allocatedOrders": {
+      "start": 238,
+      "end": 287,
+      "count": 50,
+      "contiguous": true
+    },
+    "allocatedIds": {
+      "Coding": {
+        "start": "1.28",
+        "end": "1.37",
+        "count": 10
+      },
+      "Writing": {
+        "start": "2.26",
+        "end": "2.35",
+        "count": 10
+      },
+      "Research": {
+        "start": "3.26",
+        "end": "3.35",
+        "count": 10
+      },
+      "General": {
+        "start": "4.26",
+        "end": "4.35",
+        "count": 10
+      },
+      "Meta": {
+        "start": "5.27",
+        "end": "5.36",
+        "count": 10
+      }
+    },
+    "reservedNextIds": {
+      "Coding": "1.38",
+      "Writing": "2.36",
+      "Research": "3.36",
+      "General": "4.36",
+      "Meta": "5.37"
+    },
+    "reservedNextOrder": 288
+  },
+  "coverageImpact": {
+    "targetCategories1to5": {
+      "before": {
+        "totalPrompts": 128,
+        "Reconstruct": 0,
+        "Reconcile": 0,
+        "Execute": 16,
+        "Audit": 20,
+        "Visualize": 18,
+        "Interactive": 19,
+        "Parallel agents": 19,
+        "Triage": 18,
+        "Codify": 18
+      },
+      "afterStaged": {
+        "totalPrompts": 178,
+        "Reconstruct": 13,
+        "Reconcile": 12,
+        "Execute": 21,
+        "Audit": 25,
+        "Visualize": 22,
+        "Interactive": 22,
+        "Parallel agents": 23,
+        "Triage": 21,
+        "Codify": 19
+      }
+    }
+  },
+  "validationStatus": {
+    "checksExecuted": 10,
+    "checksPassed": 10,
+    "status": "PASS",
+    "validationReportPath": "batches/run-20261022-01-batch50/validation-report.json"
+  },
+  "artifacts": {
+    "batchRowsJson": "batches/run-20261022-01-batch50/batch-rows.json",
+    "batchCardsMd": "batches/run-20261022-01-batch50/batch-cards.md",
+    "analysisMatrixJson": "batches/run-20261022-01-batch50/analysis-matrix.json",
+    "candidateBriefsJson": "batches/run-20261022-01-batch50/candidate-briefs.json",
+    "noveltyReviewJson": "batches/run-20261022-01-batch50/novelty-review.json",
+    "validationReportJson": "batches/run-20261022-01-batch50/validation-report.json"
+  },
+  "integratedAt": "2026-10-22"
+}
